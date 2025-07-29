@@ -9,4 +9,4 @@ with st.form(key="registro_form"):
     edad = st.number_input("Edad",
                             min_value= 0,
                             max_value= 100)
-    profesion = st.text_input("Profesión")
+    profesion = st.selectbox("Elija su profesion: ",options=["Jardinero","Profesor"])
