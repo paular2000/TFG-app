@@ -32,4 +32,4 @@ with st.form(key="registro_form"):
 
     profesion = st.selectbox("Elija su profesión:", options=["Jardinero", "Profesor"])
 
-    submit = st.form_submit_button("Enviar")
+    submit = st.form_submit_button("Siguiente")
