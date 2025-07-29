@@ -5,10 +5,10 @@ st.title("Formulario de registro de pacientes")
 st.write(
     "Por favor, introduzca los datos del paciente.")
 with st.form(key="registro_form"):
-    st.markdown("####Nombre")
+    st.markdown("#### Nombre")
     nombre = st.text_input("")
 
-    
+
     fecha_de_nacimiento = st.markdown("#### Fecha de nacimiento")
     
     dias = list(range(1, 32))
