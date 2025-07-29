@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime
 
 st.title("Formulario de registro de pacientes")
 st.write(
