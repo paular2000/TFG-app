@@ -66,3 +66,13 @@ if st.session_state.pantalla == 1:
 # ------------------------
 elif st.session_state.pantalla == 2:
     st.title("Resultados del test BETA")
+
+    with st.form(key="resultados_form"):
+      st.markdown("#### Bloque I: Comprensión oral")
+      resultado_T1= st.slider("Discriminación de fonemas: ", min_value=0, max_value=32, 
+                              value=0, step=1) 
+
+
+
+      st.markdown("#### Bloque II: Producción oral") 
+
