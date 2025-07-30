@@ -44,9 +44,9 @@ if st.session_state.pantalla == 1:
 
         profesion = st.selectbox("Elija su profesión:", options=["Jardinero", "Profesor"])
 
-        estudios = st.selectbox("Elija su nivel:", options=["Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"])
+        estudios = st.selectbox("Elija su nivel de estudios:", options=["Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"])
 
-        aficiones = st.selectbox("Elija su nivel:", options=["Música", "Deportes", "Lectura"])
+        aficiones = st.selectbox("Elija sus aficiones:", options=["Música", "Deportes", "Lectura"])
 
         submit = st.form_submit_button("Siguiente")
 
