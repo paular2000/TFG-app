@@ -18,7 +18,7 @@ if st.session_state.pantalla == 1:
 
     with st.form(key="registro_form"):
         st.markdown("#### Nombre")
-        #se queda un espacio. REVISAR
+        
         nombre = st.text_input("Nombre")
         apellidos = st.text_input("Apellidos")
 
@@ -54,7 +54,7 @@ if st.session_state.pantalla == 1:
         submit = st.form_submit_button("Siguiente")
 
         if submit:
-            if nombre and mes_nombre and profesion:
+            if nombre and mes_nombre and profesion and estudios and aficiones:
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
                     st.session_state.datos_paciente = {
