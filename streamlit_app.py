@@ -19,7 +19,8 @@ if st.session_state.pantalla == 1:
     with st.form(key="registro_form"):
         st.markdown("#### Nombre")
         #se queda un espacio. REVISAR
-        nombre = st.text_input("")
+        nombre = st.text_input("Nombre")
+        apellidos = st.text_input("Apellidos")
 
 
         fecha_de_nacimiento = st.markdown("#### Fecha de nacimiento")
@@ -41,7 +42,9 @@ if st.session_state.pantalla == 1:
 
         with col3:
             anio = st.selectbox("Año", anios)
+        
 
+        st.markdown("#### Otros datos")
         profesion = st.selectbox("Elija su profesión:", options=["Jardinero", "Profesor"])
 
         estudios = st.selectbox("Elija su nivel de estudios:", options=["Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"])
