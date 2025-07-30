@@ -69,8 +69,8 @@ elif st.session_state.pantalla == 2:
 
     with st.form(key="resultados_form"):
       st.markdown("#### Bloque I: Comprensión oral")
-      resultado_T1= st.slider("Discriminación de fonemas: ", min_value=0, max_value=32, 
-                              value=0, step=1) 
+      resultado_T1= st.number_input("Discriminación de fonemas: ", min_value=0, max_value=32, 
+                              value=0) 
 
 
 
