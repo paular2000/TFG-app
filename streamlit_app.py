@@ -43,36 +43,44 @@ if st.session_state.pantalla == 1:
         with col3:
             anio = st.selectbox("Año", anios)
         
-
+        #------------
+        # Selectboxes
+        profesiones = ["Escoger opción","Jardinero", "Profesor"]
+        estudios = ["Escoger opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
+        aficiones = ["Escoger opción","Música", "Deportes", "Lectura"]
+        
         st.markdown("#### Otros datos")
-        profesion = st.selectbox("Elija su profesión:", options=["Jardinero", "Profesor"])
+        profesionSB = st.selectbox("Elija su profesión:", profesiones)
 
-        estudios = st.selectbox("Elija su nivel de estudios:", options=["Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"])
+        estudiosSB = st.selectbox("Elija su nivel de estudios:", estudios)
 
-        aficiones = st.selectbox("Elija sus aficiones:", options=["Música", "Deportes", "Lectura"])
+        aficionesSB = st.selectbox("Elija sus aficiones:", aficiones)
 
         submit = st.form_submit_button("Siguiente")
 
         if submit:
-        
-            campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones] # Array de todos los campos a rellenar
+            campos_obligatorios = [nombre, apellidos, profesionSB, estudiosSB, aficionesSB]
 
-            if all(campos_obligatorios):  
+            if all(campos_obligatorios) and \
+            profesionSB != "Escoger opción" and \
+            estudiosSB != "Escoger opción" and \
+            aficionesSB != "Escoger opción":
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
                         "fecha_nacimiento": fecha_nacimiento.strftime("%d/%m/%Y"),
-                        "profesion": profesion,
-                        "estudios": estudios,
-                        "aficiones": aficiones
+                        "profesion": profesionSB,
+                        "estudios": estudiosSB,
+                        "aficiones": aficionesSB
                     }
-                    siguiente_pantalla()  # Si todo OK llamo a la funcion para cambiar de pag
+                    siguiente_pantalla()
                 except ValueError:
                     st.error("⚠️ Fecha inválida.")
-        else:
-            st.warning("⚠️ Se deben completar todos los campos.")
+            else:
+                st.warning("⚠️ Se deben completar todos los campos obligatorios.")
+
 
 # ------------------------
 # PANTALLA 2: Resultados del test BETA
