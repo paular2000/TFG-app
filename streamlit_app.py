@@ -54,19 +54,25 @@ if st.session_state.pantalla == 1:
         submit = st.form_submit_button("Siguiente")
 
         if submit:
-            if nombre and mes_nombre and profesion and estudios and aficiones:
+        
+            campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones] # Array de todos los campos a rellenar
+
+            if all(campos_obligatorios):  
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
+                        "apellidos": apellidos,
                         "fecha_nacimiento": fecha_nacimiento.strftime("%d/%m/%Y"),
-                        "profesion": profesion
+                        "profesion": profesion,
+                        "estudios": estudios,
+                        "aficiones": aficiones
                     }
-                    siguiente_pantalla()
+                    siguiente_pantalla()  # Si todo OK llamo a la funcion para cambiar de pag
                 except ValueError:
-                    st.error("La fecha introducida no es válida.")
-            else:
-                st.warning("Por favor, complete todos los campos.")
+                    st.error("⚠️ Fecha inválida.")
+        else:
+            st.warning("⚠️ Se deben completar todos los campos.")
 
 # ------------------------
 # PANTALLA 2: Resultados del test BETA
