@@ -1,6 +1,25 @@
 import streamlit as st
 from datetime import datetime
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import json
+
+#--------------------------------------------
+#Conexion con la BD
+service_account_info = st.secrets["google_service_account"]
+
+
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(
+    service_account_info,
+    scopes=["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+)
+
+client = gspread.authorize(credentials)
+sheet = client.open("Base de datos 1.0").sheet1
+#----------------------------------------------
+
+
 st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 1
@@ -75,11 +94,19 @@ if st.session_state.pantalla == 1:
                         "estudios": estudiosSB,
                         "aficiones": aficionesSB
                     }
+
+                    #-----
+                    #Ingresar paciente
+
+
+
                     siguiente_pantalla()
                 except ValueError:
                     st.error("⚠️ Fecha inválida.")
             else:
                 st.warning("⚠️ Se deben completar todos los campos obligatorios.")
+
+    
 
 
 # ------------------------
