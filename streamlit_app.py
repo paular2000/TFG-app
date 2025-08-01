@@ -17,6 +17,10 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(
 
 client = gspread.authorize(credentials)
 sheet = client.open("Base de datos 1.0").sheet1
+
+st.write("📜 Hojas accesibles por la cuenta de servicio:")
+for file in client.openall():
+    st.write(file.title)
 #----------------------------------------------
 
 
