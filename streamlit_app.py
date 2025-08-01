@@ -1,26 +1,20 @@
 import streamlit as st
 from datetime import datetime
 
+from google.oauth2.service_account import Credentials
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import json
 
-#--------------------------------------------
-#Conexion con la BD
-service_account_info = st.secrets["google_service_account"]
-
-
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(
-    service_account_info,
-    scopes=["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+# --------------------------------------------
+# Conexión con la BD
+scopes = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+credentials = Credentials.from_service_account_info(
+    st.secrets["google_service_account"],
+    scopes=scopes
 )
 
 client = gspread.authorize(credentials)
 sheet = client.open("Base de datos 1.0").sheet1
 
-st.write("📜 Hojas accesibles por la cuenta de servicio:")
-for file in client.openall():
-    st.write(file.title)
 #----------------------------------------------
 
 
