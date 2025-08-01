@@ -13,6 +13,9 @@ credentials = Credentials.from_service_account_info(
 )
 
 client = gspread.authorize(credentials)
+for ss in client.openall():
+    st.write(ss.title)
+
 sheet = client.open("Base de datos 1.0").sheet1
 
 #----------------------------------------------
