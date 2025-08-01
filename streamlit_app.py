@@ -7,7 +7,7 @@ import json
 
 #--------------------------------------------
 #Conexion con la BD
-service_account_info = st.secrets["service_account"]
+service_account_info = st.secrets["google_service_account"]
 
 
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(
