@@ -63,7 +63,7 @@ def siguiente_pantalla():
 # ------------------------
 # PANTALLA 1: Formulario del paciente
 # ------------------------
-img1 = Image.open("Logo_ dibujo.png")
+img1 = Image.open("Logo- dibujo.png")
 img2 = Image.open("Logo- letra.png")
 
 st.markdown(
