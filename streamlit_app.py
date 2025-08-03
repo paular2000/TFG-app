@@ -45,7 +45,7 @@ def ingresar_paciente(datos):
             datos["edad"],
             datos["profesion"],
             datos["estudios"],
-            datos["aficiones"]
+            ", ".join(datos["aficiones"])
         ])
         st.success("✅ Datos del paciente guardados con éxito.")
     except Exception as e:
