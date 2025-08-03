@@ -24,7 +24,7 @@ sheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").sheet
 def inicializar_BD():
     contenido = sheet.get_all_values()
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["Nombre", "Apellidos", "Fecha de nacimiento", "Profesión", "Estudios", "Aficiones"]
+        encabezados = ["Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones"]
         sheet.append_row(encabezados)
 
 
@@ -36,7 +36,7 @@ def ingresar_paciente(datos):
         sheet.append_row([
             datos["nombre"],
             datos["apellidos"],
-            datos["fecha_nacimiento"],
+            datos["edad"],
             datos["profesion"],
             datos["estudios"],
             datos["aficiones"]
@@ -116,10 +116,11 @@ if st.session_state.pantalla == 1:
             aficiones != "Escoger opción":
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
+                    edad = int(datetime.now-fecha_de_nacimiento)
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
-                        "fecha_nacimiento": fecha_nacimiento.strftime("%d/%m/%Y"),
+                        "eadd": edad,
                         "profesion": profesion,
                         "estudios": estudios,
                         "aficiones": aficiones
