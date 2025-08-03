@@ -63,49 +63,6 @@ def siguiente_pantalla():
 # ------------------------
 # PANTALLA 1: Formulario del paciente
 # ------------------------
-img1 = Image.open("images/Logo- dibujo.png")
-img2 = Image.open("images/Logo- letra.png")
-
-st.markdown(
-    """
-    <style>
-        /* Eliminar margen/padding superior de Streamlit */
-        .css-18e3th9 {
-            padding-top: 0rem !important;
-            margin-top: 0rem !important;
-        }
-        /* Ajustar la cabecera para que esté pegada arriba a la izquierda */
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 0px 0 0 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            gap: 2px;
-            background: transparent; /* o el color que quieras */
-            width: auto;
-        }
-        .header-container img {
-            height: 30px;
-            margin: 0;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown('<div class="header-container">', unsafe_allow_html=True)
-col1, col2 = st.columns([0.1, 0.1])
-
-with col1:
-    st.image(img1, use_container_width=False)
-
-with col2:
-    st.image(img2, use_container_width=False)
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 if st.session_state.pantalla == 1:
     st.title("Formulario de registro de pacientes")
