@@ -66,37 +66,38 @@ def siguiente_pantalla():
 img1 = Image.open("images/Logo- dibujo.png")
 img2 = Image.open("images/Logo- letra.png")
 
-st.markdown(
-    """
+st.markdown("""
     <style>
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 5px 0 5px 0; /* menos padding, sin margen a la izquierda */
-            position: fixed; /* fijo para que quede siempre arriba */
-            top: 0;
-            left: 0;
-            z-index: 100;
-            gap: 5px; /* separación mínima entre imágenes */
-        }
+    .logo-container {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+    }
 
-        .header-container img {
-            height: 30px; /* tamaño más pequeño, como un bocado de lembas */
-            margin: 0; /* sin margen extra */
-        }
+    .logo-img {
+        height: 60px;
+        margin-right: 10px;
+    }
+
+    .logo-wrapper {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+    }
+
+    /* Elimina el espacio superior de Streamlit */
+    header, .block-container {
+        padding-top: 0 !important;
+    }
     </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown('<div class="header-container">', unsafe_allow_html=True)
-col1, col2 = st.columns([0.1, 0.1])
 
-with col1:
-    st.image(img1, use_container_width=False)
-
-with col2:
-    st.image(img2, use_container_width=False)
+    <div class="logo-wrapper">
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/paular2000/TFG-app/main/logo-duragui.png" class="logo-img" />
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
