@@ -66,38 +66,38 @@ def siguiente_pantalla():
 img1 = Image.open("images/Logo- dibujo.png")
 img2 = Image.open("images/Logo- letra.png")
 
-st.markdown("""
+st.markdown(
+    """
     <style>
-    .logo-container {
-        display: flex;
-        align-items: center;
-        padding: 10px 0;
-    }
-
-    .logo-img {
-        height: 60px;
-        margin-right: 10px;
-    }
-
-    .logo-wrapper {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 100;
-    }
-
-    /* Elimina el espacio superior de Streamlit */
-    header, .block-container {
-        padding-top: 0 !important;
-    }
+        /* Eliminar margen/padding superior de Streamlit */
+        .css-18e3th9 {
+            padding-top: 0rem !important;
+            margin-top: 0rem !important;
+        }
+        /* Ajustar la cabecera para que esté pegada arriba a la izquierda */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0px 0 0 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            gap: 2px;
+            background: transparent; /* o el color que quieras */
+            width: auto;
+        }
+        .header-container img {
+            height: 30px;
+            margin: 0;
+        }
     </style>
-
-    <div class="logo-wrapper">
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/paular2000/TFG-app/main/logo-duragui.png" class="logo-img" />
-        </div>
-    </div>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
+st.markdown('<div class="header-container">', unsafe_allow_html=True)
+col1, col2 = st.columns([0.1, 0.1])
 
 st.markdown('</div>', unsafe_allow_html=True)
 
