@@ -15,7 +15,7 @@ credentials = Credentials.from_service_account_info(
 client = gspread.authorize(credentials)
 
 
-sheet = client.open("Base de datos 1.0").sheet1
+sheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").sheet1
 
 #----------------------------------------------
 
