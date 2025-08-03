@@ -22,8 +22,8 @@ sheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").sheet
 #Inicializar encabezado
 
 def inicializar_BD():
-    # Comprobamos si la hoja está vacía
-    if len(sheet.get_all_values()) == 0:
+    contenido = sheet.get_all_values()
+    if not contenido or all(cell == "" for cell in contenido[0]):
         encabezados = ["Nombre", "Apellidos", "Fecha de nacimiento", "Profesión", "Estudios", "Aficiones"]
         sheet.append_row(encabezados)
 
