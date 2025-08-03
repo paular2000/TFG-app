@@ -111,7 +111,7 @@ if st.session_state.pantalla == 1:
 
         estudios = st.selectbox("Elija su nivel de estudios:", estudios_opciones)
 
-        aficiones = st.multiselect("Elija sus aficiones:", aficiones_opciones)
+        aficiones = st.multiselect("Elija sus aficiones:", aficiones_opciones,placeholder="EScoger opción")
 
         submit = st.form_submit_button("Siguiente")
 
