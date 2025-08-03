@@ -19,7 +19,37 @@ sheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").sheet
 
 #----------------------------------------------
 
+#Inicializar encabezado
 
+def inicializar_BD():
+    # Comprobamos si la hoja está vacía
+    if len(sheet.get_all_values()) == 0:
+        encabezados = ["Nombre", "Apellidos", "Fecha de nacimiento", "Profesión", "Estudios", "Aficiones"]
+        sheet.append_row(encabezados)
+
+
+#Funcion guardar en la BD:
+def ingresar_paciente(datos):
+    try:
+        inicializar_BD()
+
+        sheet.append_row([
+            datos["nombre"],
+            datos["apellidos"],
+            datos["fecha_nacimiento"],
+            datos["profesion"],
+            datos["estudios"],
+            datos["aficiones"]
+        ])
+        st.success("✅ Datos del paciente guardados con éxito.")
+    except Exception as e:
+        st.error(f"❌ Error al guardar los datos: {e}")
+
+
+
+
+
+#-------------------------------
 st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 1
@@ -97,9 +127,9 @@ if st.session_state.pantalla == 1:
 
                     #-----
                     #Ingresar paciente
+                    ingresar_paciente(st.session_state.datos_paciente)
 
-
-
+                    #Pasar a la siguiente pantalla
                     siguiente_pantalla()
                 except ValueError:
                     st.error("⚠️ Fecha inválida.")
