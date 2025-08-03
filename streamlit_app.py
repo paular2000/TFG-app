@@ -78,7 +78,7 @@ if st.session_state.pantalla == 1:
         submit = st.form_submit_button("Siguiente")
 
         if submit:
-            campos_obligatorios = [nombre, apellidos, profesionSB, estudiosSB, aficionesSB]
+            campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones]
 
             if all(campos_obligatorios) and \
             profesion != "Escoger opción" and \
