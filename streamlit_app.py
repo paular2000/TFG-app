@@ -3,6 +3,7 @@ from datetime import datetime
 
 from google.oauth2.service_account import Credentials
 import gspread
+from PIL import Image
 
 # --------------------------------------------
 # Conexión con la BD
@@ -51,6 +52,7 @@ def ingresar_paciente(datos):
 
 #-------------------------------
 st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
+
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 1
 
@@ -61,6 +63,35 @@ def siguiente_pantalla():
 # ------------------------
 # PANTALLA 1: Formulario del paciente
 # ------------------------
+img1 = Image.open("Logo_ dibujo.png")
+img2 = Image.open("Logo- letra.png")
+
+st.markdown(
+    """
+    <style>
+        .header-container {
+            display: flex;
+            align-items: center;
+            padding: 10px 0 30px 10px;
+        }
+        .header-container img {
+            margin-right: 15px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown('<div class="header-container">', unsafe_allow_html=True)
+col1, col2 = st.columns([0.15, 0.15])  # pequeñas columnas para logos
+
+with col1:
+    st.image(img1, width=60)
+
+with col2:
+    st.image(img2, width=60)
+
+st.markdown('</div>', unsafe_allow_html=True)
+
 if st.session_state.pantalla == 1:
     st.title("Formulario de registro de pacientes")
     st.write("Por favor, introduzca los datos del paciente.")
