@@ -102,8 +102,8 @@ if st.session_state.pantalla == 1:
         
         #------------
         # Selectboxes
-        profesiones_opciones = ["Escoger opción","Jardinero", "Profesor"]
-        estudios_opciones = ["Escoger opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
+        profesiones_opciones = ["Escoger una opción","Jardinero", "Profesor"]
+        estudios_opciones = ["Escoger una opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
         aficiones_opciones = ["Música", "Deportes", "Lectura","Forjar espadas", "Fumar pipas","Canto en lenguas antiguas"]
         
         st.markdown("#### Otros datos")
@@ -111,7 +111,7 @@ if st.session_state.pantalla == 1:
 
         estudios = st.selectbox("Elija su nivel de estudios:", estudios_opciones)
 
-        aficiones = st.multiselect("Elija sus aficiones:", aficiones_opciones,placeholder="Escoger opciónes")
+        aficiones = st.multiselect("Elija sus aficiones:", aficiones_opciones,placeholder="Escoger opciones")
 
         submit = st.form_submit_button("Siguiente")
 
