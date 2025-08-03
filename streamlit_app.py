@@ -99,6 +99,12 @@ st.markdown(
 st.markdown('<div class="header-container">', unsafe_allow_html=True)
 col1, col2 = st.columns([0.1, 0.1])
 
+with col1:
+    st.image(img1, use_container_width=False)
+
+with col2:
+    st.image(img2, use_container_width=False)
+
 st.markdown('</div>', unsafe_allow_html=True)
 
 if st.session_state.pantalla == 1:
