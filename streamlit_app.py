@@ -120,7 +120,7 @@ if st.session_state.pantalla == 1:
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
-                        "eadd": edad,
+                        "edad": edad,
                         "profesion": profesion,
                         "estudios": estudios,
                         "aficiones": aficiones
