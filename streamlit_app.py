@@ -13,8 +13,7 @@ credentials = Credentials.from_service_account_info(
 )
 
 client = gspread.authorize(credentials)
-for ss in client.openall():
-    st.write(ss.title)
+
 
 sheet = client.open("Base de datos 1.0").sheet1
 
@@ -65,16 +64,16 @@ if st.session_state.pantalla == 1:
         
         #------------
         # Selectboxes
-        profesiones = ["Escoger opción","Jardinero", "Profesor"]
-        estudios = ["Escoger opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
-        aficiones = ["Escoger opción","Música", "Deportes", "Lectura"]
+        profesiones_opciones = ["Escoger opción","Jardinero", "Profesor"]
+        estudios_opciones = ["Escoger opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
+        aficiones_opciones = ["Escoger opción","Música", "Deportes", "Lectura"]
         
         st.markdown("#### Otros datos")
-        profesionSB = st.selectbox("Elija su profesión:", profesiones)
+        profesion = st.selectbox("Elija su profesión:", profesiones_opciones)
 
-        estudiosSB = st.selectbox("Elija su nivel de estudios:", estudios)
+        estudios = st.selectbox("Elija su nivel de estudios:", estudios_opciones)
 
-        aficionesSB = st.selectbox("Elija sus aficiones:", aficiones)
+        aficiones = st.selectbox("Elija sus aficiones:", aficiones_opciones)
 
         submit = st.form_submit_button("Siguiente")
 
@@ -82,18 +81,18 @@ if st.session_state.pantalla == 1:
             campos_obligatorios = [nombre, apellidos, profesionSB, estudiosSB, aficionesSB]
 
             if all(campos_obligatorios) and \
-            profesionSB != "Escoger opción" and \
-            estudiosSB != "Escoger opción" and \
-            aficionesSB != "Escoger opción":
+            profesion != "Escoger opción" and \
+            estudios != "Escoger opción" and \
+            aficiones != "Escoger opción":
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
                         "fecha_nacimiento": fecha_nacimiento.strftime("%d/%m/%Y"),
-                        "profesion": profesionSB,
-                        "estudios": estudiosSB,
-                        "aficiones": aficionesSB
+                        "profesion": profesion,
+                        "estudios": estudios,
+                        "aficiones": aficiones
                     }
 
                     #-----
