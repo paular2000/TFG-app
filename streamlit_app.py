@@ -25,7 +25,7 @@ sheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").sheet
 def inicializar_BD():
     contenido = sheet.get_all_values()
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones"]
+        encabezados = ["ID","Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones"]
         sheet.append_row(encabezados)
 
 
@@ -34,7 +34,12 @@ def ingresar_paciente(datos):
     try:
         inicializar_BD()
 
+        filas = sheet.get_all_values()
+        id = len(filas)
+        id_00 = f"{id:03}"
+
         sheet.append_row([
+            id_00,
             datos["nombre"],
             datos["apellidos"],
             datos["edad"],
