@@ -63,8 +63,8 @@ def siguiente_pantalla():
 # ------------------------
 # PANTALLA 1: Formulario del paciente
 # ------------------------
-img1 = Image.open("Logo- dibujo.png")
-img2 = Image.open("Logo- letra.png")
+img1 = Image.open("C:\Users\paula\OneDrive - Universidad de Málaga\LOGOPEDIA UMA\TFG\código\TFG_App\images\Logo- dibujo.png")
+img2 = Image.open("C:\Users\paula\OneDrive - Universidad de Málaga\LOGOPEDIA UMA\TFG\código\TFG_App\images\Logo- letra.png")
 
 st.markdown(
     """
