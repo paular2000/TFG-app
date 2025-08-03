@@ -116,7 +116,7 @@ if st.session_state.pantalla == 1:
             aficiones != "Escoger opción":
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
-                    edad = int(datetime.now-fecha_de_nacimiento)
+                    edad = int(datetime.now().year-fecha_de_nacimiento.year)
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
