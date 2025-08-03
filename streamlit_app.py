@@ -69,29 +69,28 @@ img2 = Image.open("images/Logo- letra.png")
 st.markdown(
     """
     <style>
-        .custom-header {
+        .header-container {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 10px;
-            position: absolute;
+            padding: 5px 0 5px 0; /* menos padding, sin margen a la izquierda */
+            position: fixed; /* fijo para que quede siempre arriba */
             top: 0;
             left: 0;
             z-index: 100;
+            gap: 5px; /* separación mínima entre imágenes */
         }
 
-        .custom-header img {
-            height: 50px;
-            margin-right: 10px;
+        .header-container img {
+            height: 30px; /* tamaño más pequeño, como un bocado de lembas */
+            margin: 0; /* sin margen extra */
         }
-
-        
     </style>
     """,
     unsafe_allow_html=True
 )
 st.markdown('<div class="header-container">', unsafe_allow_html=True)
-col1, col2 = st.columns([0.12, 0.12])
+col1, col2 = st.columns([0.1, 0.1])
 
 with col1:
     st.image(img1, use_container_width=False)
