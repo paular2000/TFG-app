@@ -9,7 +9,7 @@ credentials = Credentials.from_service_account_info(
     st.secrets["google_service_account"],
     scopes=scopes
 )
-
+global sheet
 client = gspread.authorize(credentials)
 spreadsheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU")
 sheet = spreadsheet.get_worksheet(0)
