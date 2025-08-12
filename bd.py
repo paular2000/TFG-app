@@ -37,6 +37,7 @@ def ingresar_paciente(datos):
             datos["estudios"],
             ", ".join(datos["aficiones"])
         ])
+        st.success("✅ Resultados del test guardados con éxito.")
         return id_00
     except Exception as e:
         st.error(f"❌ Error al guardar los datos: {e}")
