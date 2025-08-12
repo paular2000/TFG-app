@@ -153,7 +153,7 @@ def pantalla_resultados():
                                 ]
 
                 resultados = {f"T{i+1}": val for i, val in enumerate(resultados_lista)}
-                guardar_resultados_tareas(st.session_state.id_paciente, resultados) # a ver ahora
+                guardar_resultados_tareas(st.session_state.id_paciente, resultados) 
             else:
                 st.error("❌ No se ha registrado el paciente.")
 

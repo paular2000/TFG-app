@@ -46,8 +46,25 @@ def ingresar_paciente(datos):
 def guardar_resultados_tareas(id_paciente, resultados):
     try:
         inicializar_BD()
-        fila_resultados = [id_paciente] + [resultados[f"T{i+1}"] for i in range(30)]
-        sheet.append_row(fila_resultados)
+
+        lista_ids = sheet.col_values(1)  # columna A
+
+        if id_paciente not in lista_ids:
+            st.error("❌ Paciente no encontrado en la hoja.")
+            return
+        
+        fila = lista_ids.index(id_paciente) + 1  
+
+        columna_inicio = 8  # columna H 
+        valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
+        columna_fin = columna_inicio + len(valores) - 1
+
+        
+        rango = f"{gspread.utils.rowcol_to_a1(fila, columna_inicio)}:{gspread.utils.rowcol_to_a1(fila, columna_fin)}"
+
+        sheet.update(rango, [valores])
+
         st.success("✅ Resultados del test guardados con éxito.")
     except Exception as e:
         st.error(f"❌ Error al guardar los resultados: {e}")
+
