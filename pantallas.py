@@ -143,9 +143,9 @@ def pantalla_resultados():
         if submit:
             if 'id_paciente' in st.session_state:
                 resultados = {
-            f"T{i+1}": locals()[f"resultado_T{i+1}"] for i in range(30)
-        }
-            guardar_resultados_tareas(st.session_state.id_paciente, resultados)
+                    f"T{i+1}": locals()[f"resultado_T{i+1}"] for i in range(30)
+                }
+                guardar_resultados_tareas(st.session_state.id_paciente, resultados) # a ver ahora
         else:
             st.error("❌ No se ha registrado el paciente.")
 
