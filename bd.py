@@ -12,8 +12,8 @@ credentials = Credentials.from_service_account_info(
 
 client = gspread.authorize(credentials)
 spreadsheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU")
-sheet = spreadsheet.get_worksheet(0)
-tarea_sheet = spreadsheet.get_worksheet(1)
+sheet = spreadsheet.get_worksheet("Base de datos 1.0")
+
 
 def inicializar_BD():
     contenido = sheet.get_all_values()
