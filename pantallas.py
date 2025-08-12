@@ -65,6 +65,7 @@ def pantalla_registro():
 def pantalla_resultados():
     st.title("Resultados del test BETA")
 
+    
 
     with st.form(key="resultados_form"):
         st.markdown("#### Bloque I: Comprensión oral")
@@ -142,10 +143,17 @@ def pantalla_resultados():
         
         if submit:
             if 'id_paciente' in st.session_state:
-                resultados = {
-                    f"T{i+1}": locals()[f"resultado_T{i+1}"] for i in range(30)
-                }
+                resultados_lista = [
+                                    resultado_T1, resultado_T2, resultado_T3, resultado_T4, resultado_T5,
+                                    resultado_T6, resultado_T7, resultado_T8, resultado_T9, resultado_T10,
+                                    resultado_T11, resultado_T12, resultado_T13, resultado_T14, resultado_T15,
+                                    resultado_T16, resultado_T17, resultado_T18, resultado_T19, resultado_T20,
+                                    resultado_T21, resultado_T22, resultado_T23, resultado_T24, resultado_T25,
+                                    resultado_T26, resultado_T27, resultado_T28, resultado_T29, resultado_T30
+                                ]
+
+                resultados = {f"T{i+1}": val for i, val in enumerate(resultados_lista)}
                 guardar_resultados_tareas(st.session_state.id_paciente, resultados) # a ver ahora
-        else:
-            st.error("❌ No se ha registrado el paciente.")
+            else:
+                st.error("❌ No se ha registrado el paciente.")
 
