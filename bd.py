@@ -12,7 +12,7 @@ credentials = Credentials.from_service_account_info(
 
 client = gspread.authorize(credentials)
 spreadsheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU")
-sheet = spreadsheet.get_worksheet("Base de datos 1.0")
+sheet = spreadsheet.get_worksheet(0)
 
 
 def inicializar_BD():
@@ -46,7 +46,7 @@ def guardar_resultados_tareas(id_paciente, resultados):
     try:
         inicializar_BD()
         fila_resultados = [id_paciente] + [resultados[f"T{i+1}"] for i in range(30)]
-        tarea_sheet.append_row(fila_resultados)
+        sheet.append_row(fila_resultados)
         st.success("✅ Resultados del test guardados con éxito.")
     except Exception as e:
         st.error(f"❌ Error al guardar los resultados: {e}")
