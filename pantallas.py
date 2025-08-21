@@ -3,6 +3,9 @@ from datetime import datetime
 from bd import ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
 
 
+# ---------------
+# Logeo Logopedas
+# ---------------
 
 def pantalla_login():
 
@@ -33,7 +36,7 @@ def pantalla_login():
             if submit_login:
                 ok, result = validar_logopeda(usuario, contrasena)
                 if ok:
-                    st.success("Bienvenido, maestro de la palabra 🎶")
+                    st.success("Bienvenido, "+ usuario)
                     st.session_state["id_logopeda"] = result
                     st.session_state["usuario"] = usuario
                     st.session_state["autenticado"] = True
