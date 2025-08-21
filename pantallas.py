@@ -54,7 +54,11 @@ def pantalla_login():
             submit_registro = st.form_submit_button("Registrarse")
 
             if submit_registro:
-                if nueva_contrasena != confirmar_contrasena:
+                if not nuevo_usuario.strip():
+                    st.error("⚠️ El nombre de usuario no puede estar vacío.")
+                elif not nueva_contrasena.strip():
+                    st.error("⚠️ La contraseña no puede estar vacía.")
+                elif nueva_contrasena != confirmar_contrasena:
                     st.error("⚠️ Las contraseñas no coinciden.")
                 else:
                     ok, msg = registrar_logopeda(nuevo_usuario, nueva_contrasena)
