@@ -37,6 +37,7 @@ def pantalla_login():
                     st.session_state["id_logopeda"] = result
                     st.session_state["usuario"] = usuario
                     st.session_state["autenticado"] = True
+                    st.session_state.pantalla = 1
                 else:
                     st.error(result)                
 
@@ -57,6 +58,7 @@ def pantalla_login():
                     if ok:
                         st.success(msg)
                         st.session_state.modo_login = None
+                        st.session_state.pantalla = 1
                     else:
                         st.error(msg)
 
