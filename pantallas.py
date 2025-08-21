@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime
-from bd import ingresar_paciente, guardar_resultados_tareas
+from bd import ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
 
 
 
@@ -31,8 +31,14 @@ def pantalla_login():
             submit_login = st.form_submit_button("Entrar")
 
             if submit_login:
-                # Aquí irá la llamada a validar_logopeda(usuario, contrasena)
-                st.info("🔍 Validando credenciales... (falta lógica BD)")
+                ok, result = validar_logopeda(usuario, contrasena)
+                if ok:
+                    st.success("Bienvenido, maestro de la palabra 🎶")
+                    st.session_state["id_logopeda"] = result
+                    st.session_state["usuario"] = usuario
+                    st.session_state["autenticado"] = True
+                else:
+                    st.error(result)                
 
     # FORMULARIO DE REGISTRO
     elif st.session_state.modo_login == "registro":
@@ -47,11 +53,15 @@ def pantalla_login():
                 if nueva_contrasena != confirmar_contrasena:
                     st.error("⚠️ Las contraseñas no coinciden.")
                 else:
-                    # Aquí irá la llamada a registrar_logopeda(nuevo_usuario, nueva_contrasena)
-                    st.info("📝 Registrando nuevo usuario... (falta lógica BD)")
+                    ok, msg = registrar_logopeda(nuevo_usuario, nueva_contrasena)
+                    if ok:
+                        st.success(msg)
+                        st.session_state.modo_login = None
+                    else:
+                        st.error(msg)
 
 
-                    
+
 
 def pantalla_registro():
     st.title("Formulario de registro de pacientes")

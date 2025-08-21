@@ -14,6 +14,61 @@ client = gspread.authorize(credentials)
 spreadsheet = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU")
 sheet = spreadsheet.get_worksheet(0)
 
+#sheet logopedas
+sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(1)
+
+# ==============================
+#  Registro de logopedas
+# ==============================
+
+def inicializar_logopedas():
+    contenido = sheet_logopedas.get_all_values()
+    if not contenido or all(cell == "" for cell in contenido[0]):
+        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro"]
+        sheet_logopedas.append_row(encabezados)
+
+
+def registrar_logopeda(usuario, contrasena):
+    try:
+        inicializar_logopedas()
+
+        # comprobar si usuario ya existe
+        usuarios = sheet_logopedas.col_values(2)  # columna B
+        if usuario in usuarios:
+            return False, "❌ El usuario ya existe."
+
+        filas = sheet_logopedas.get_all_values()
+        id = len(filas)  # cuenta también la fila de encabezado
+        id_00 = f"{id:03}"
+
+        sheet_logopedas.append_row([
+            id_00,
+            usuario,
+            contrasena,
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ])
+
+        return True, f"✅ Usuario {usuario} registrado con éxito."
+    except Exception as e:
+        return False, f"❌ Error al registrar: {e}"
+
+def validar_logopeda(usuario, contrasena):
+    try:
+        inicializar_logopedas()
+        filas = sheet_logopedas.get_all_records()  # devuelve lista de dicts
+        for fila in filas:
+            if fila["Usuario"] == usuario and fila["Contraseña"] == contrasena:
+                return True, fila["ID"]
+        return False, "❌ Usuario o contraseña incorrectos."
+    except Exception as e:
+        return False, f"❌ Error al validar: {e}"
+
+
+
+
+# ==============================
+#  Registro de pacientes
+# ==============================
 
 def inicializar_BD():
     contenido = sheet.get_all_values()
