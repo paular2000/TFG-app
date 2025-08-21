@@ -2,6 +2,57 @@ import streamlit as st
 from datetime import datetime
 from bd import ingresar_paciente, guardar_resultados_tareas
 
+
+
+def pantalla_login():
+
+    st.title("DURAGUI")
+    st.write("Por favor, inicie sesión o regístrese.")
+
+    if "modo_login" not in st.session_state:
+        st.session_state.modo_login = None
+    
+    # Botones principales
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Iniciar Sesión"):
+            st.session_state.modo_login = "login"
+    with col2:
+        if st.button("Registrarse"):
+            st.session_state.modo_login = "registro"
+
+
+    # FORMULARIO DE LOGIN
+    if st.session_state.modo_login == "login":
+        st.subheader("Iniciar Sesión")
+        with st.form("form_login"):
+            usuario = st.text_input("Usuario")
+            contrasena = st.text_input("Contraseña", type="password")
+            submit_login = st.form_submit_button("Entrar")
+
+            if submit_login:
+                # Aquí irá la llamada a validar_logopeda(usuario, contrasena)
+                st.info("🔍 Validando credenciales... (falta lógica BD)")
+
+    # FORMULARIO DE REGISTRO
+    elif st.session_state.modo_login == "registro":
+        st.subheader("Registro de nuevo logopeda")
+        with st.form("form_registro"):
+            nuevo_usuario = st.text_input("Nombre de usuario")
+            nueva_contrasena = st.text_input("Contraseña", type="password")
+            confirmar_contrasena = st.text_input("Confirmar contraseña", type="password")
+            submit_registro = st.form_submit_button("Registrarse")
+
+            if submit_registro:
+                if nueva_contrasena != confirmar_contrasena:
+                    st.error("⚠️ Las contraseñas no coinciden.")
+                else:
+                    # Aquí irá la llamada a registrar_logopeda(nuevo_usuario, nueva_contrasena)
+                    st.info("📝 Registrando nuevo usuario... (falta lógica BD)")
+
+
+                    
+
 def pantalla_registro():
     st.title("Formulario de registro de pacientes")
     st.write("Por favor, introduzca los datos del paciente.")
