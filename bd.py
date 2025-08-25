@@ -29,7 +29,7 @@ def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
 
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
+        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro","Prueba"]
         sheet_logopedas.append_row(encabezados)
 
 
@@ -89,40 +89,15 @@ def validar_logopeda(usuario, contrasena):
 # ==============================
 
 def inicializar_BD():
-    # --- Define los encabezados correctos ---
-    tareas = [f"T{i+1}" for i in range(30)]
-    encabezados = [
+    contenido = sheet.get_all_values()
+
+    if not contenido or  all(cell == "" for cell in contenido[0]):
+        sheet.append_row(encabezados)
+        tareas = [f"T{i+1}" for i in range(30)]
+        encabezados = [
         "ID", "Nombre", "Apellidos", "Edad", "Profesión",
-        "Estudios", "Afición", "ID_Logopeda"
-    ] + tareas
-
-    try:
-        # Asegura que la hoja tenga suficientes columnas
-        if sheet.col_count < len(encabezados):
-            sheet.add_cols(len(encabezados) - sheet.col_count)
-
-        # Lee la fila 1 actual
-        fila1 = sheet.row_values(1)
-
-        if not fila1:
-            # Si no hay cabecera, la insertamos en la fila 1
-            sheet.insert_row(encabezados, 1)
-            return
-
-        if fila1 != encabezados:
-            # Intento 1: reescribir la fila 1 directamente
-            try:
-                # Esta forma suele ser la más fiable
-                sheet.update('1:1', [encabezados], value_input_option='RAW')
-            except Exception:
-                # Intento 2 (fallback): borrar fila 1 e insertar nueva cabecera
-                sheet.delete_rows(1)
-                sheet.insert_row(encabezados, 1)
-
-    except Exception as e:
-        st.error("❌ No se pudieron actualizar los encabezados.")
-        st.exception(e)
-
+        "Estudios", "Aficion", "ID_Logopeda"
+        ] + tareas
  
 
 def ingresar_paciente(datos):
