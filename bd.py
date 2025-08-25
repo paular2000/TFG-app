@@ -72,15 +72,14 @@ def validar_logopeda(usuario, contrasena):
 
 def inicializar_BD():
     contenido = sheet.get_all_values()
-    tareas = [f"T{i+1}" for i in range(30)]
-    encabezados = [
+    
+    if not contenido or  all(cell == "" for cell in contenido[0]):
+        sheet.append_row(encabezados)
+        tareas = [f"T{i+1}" for i in range(30)]
+        encabezados = [
         "ID", "Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficiones", "ID_Logopeda"
-    ] + tareas
-
-
-    if not contenido:
-        sheet.append_row(encabezados)
+        ] + tareas
     
     
         
