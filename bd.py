@@ -17,26 +17,35 @@ sheet = spreadsheet.get_worksheet(0)
 #sheet logopedas
 sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(1)
 
-
+#prueba
+sheet_prueba = spreadsheet.get_worksheet(2)
 
 
 # ==============================
 #  Registro de logopedas
-
+# ==============================
 
 def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
 
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro"]
+        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
         sheet_logopedas.append_row(encabezados)
 
 
+def inicializar_prueba():
+    contenido = sheet_prueba.get_all_values()
+
+    if not contenido or all(cell == "" for cell in contenido[0]):
+        encabezados = ["Prueba"]
+        sheet_prueba.append_row(encabezados)
 
 
 def registrar_logopeda(usuario, contrasena):
     try:
         inicializar_logopedas()
+
+        inicializar_prueba()
 
         # comprobar si usuario ya existe
         usuarios = sheet_logopedas.col_values(2)  # columna B
@@ -52,7 +61,9 @@ def registrar_logopeda(usuario, contrasena):
             id_00,
             usuario,
             contrasena,
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "prueba"
+            
         ])
 
         return True, f"✅ Usuario {usuario} registrado con éxito."
@@ -78,16 +89,40 @@ def validar_logopeda(usuario, contrasena):
 # ==============================
 
 def inicializar_BD():
-    contenido = sheet.get_all_values()
-
-    if not contenido or  all(cell == "" for cell in contenido[0]):
-        tareas = [f"T{i+1}" for i in range(30)]
-        encabezados = [
+    # --- Define los encabezados correctos ---
+    tareas = [f"T{i+1}" for i in range(30)]
+    encabezados = [
         "ID", "Nombre", "Apellidos", "Edad", "Profesión",
-        "Estudios", "Aficion"
-        ] + tareas
-        sheet.append_row(encabezados)
-        
+        "Estudios", "Afición", "ID_Logopeda"
+    ] + tareas
+
+    try:
+        # Asegura que la hoja tenga suficientes columnas
+        if sheet.col_count < len(encabezados):
+            sheet.add_cols(len(encabezados) - sheet.col_count)
+
+        # Lee la fila 1 actual
+        fila1 = sheet.row_values(1)
+
+        if not fila1:
+            # Si no hay cabecera, la insertamos en la fila 1
+            sheet.insert_row(encabezados, 1)
+            return
+
+        if fila1 != encabezados:
+            # Intento 1: reescribir la fila 1 directamente
+            try:
+                # Esta forma suele ser la más fiable
+                sheet.update('1:1', [encabezados], value_input_option='RAW')
+            except Exception:
+                # Intento 2 (fallback): borrar fila 1 e insertar nueva cabecera
+                sheet.delete_rows(1)
+                sheet.insert_row(encabezados, 1)
+
+    except Exception as e:
+        st.error("❌ No se pudieron actualizar los encabezados.")
+        st.exception(e)
+
  
 
 def ingresar_paciente(datos):
@@ -98,6 +133,10 @@ def ingresar_paciente(datos):
         id_00 = f"{id:03}"
         
         #recupero el id del logopeda
+        id_logopeda = st.session_state.get("id_logopeda",None)
+        if not id_logopeda:
+            st.error("No se encuentra al logopeda")
+            return None
 
         sheet.append_row([
             id_00,
@@ -106,7 +145,8 @@ def ingresar_paciente(datos):
             datos["edad"],
             datos["profesion"],
             datos["estudios"],
-            ", ".join(datos["aficion"])
+            ", ".join(datos["aficion"]),
+            id_logopeda
         ])
         st.success("✅ Datos del paciente guardados con éxito.")
         return id_00
