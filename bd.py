@@ -25,8 +25,10 @@ def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
 
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["ID", "Usuario", "Contraseña"]
+        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
         sheet_logopedas.append_row(encabezados)
+
+
 
 
 def registrar_logopeda(usuario, contrasena):
@@ -49,6 +51,7 @@ def registrar_logopeda(usuario, contrasena):
             contrasena,
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "prueba"
+            
         ])
 
         return True, f"✅ Usuario {usuario} registrado con éxito."
@@ -81,7 +84,7 @@ def inicializar_BD():
         tareas = [f"T{i+1}" for i in range(30)]
         encabezados = [
         "ID", "Nombre", "Apellidos", "Edad", "Profesión",
-        "Estudios", "Aficiones", "ID_Logopeda"
+        "Estudios", "Aficion", "ID_Logopeda"
         ] + tareas
  
 
@@ -105,10 +108,10 @@ def ingresar_paciente(datos):
             datos["edad"],
             datos["profesion"],
             datos["estudios"],
-            ", ".join(datos["aficiones"]),
+            ", ".join(datos["aficion"]),
             id_logopeda
         ])
-        st.success("✅ Resultados del test guardados con éxito.")
+        st.success("✅ Datos del paciente guardados con éxito.")
         return id_00
     except Exception as e:
         st.error(f"❌ Error al guardar los datos: {e}")
