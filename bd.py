@@ -82,7 +82,7 @@ def inicializar_BD():
     if not contenido or all(cell == "" for cell in contenido[0]):
         tareas = [f"T{i+1}" for i in range(30)]
         encabezados = [
-        "ID", "ID_Logopeda", "Nombre", "Apellidos", "Edad", "Profesión",
+        "ID", "Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficion"
         ] + tareas
 
@@ -97,14 +97,14 @@ def ingresar_paciente(datos):
         id_00 = f"{id:03}"
         
         #recupero el id del logopeda
-        #id_logopeda = st.session_state.get("id_logopeda",None)
-        #if not id_logopeda:
-        #    st.error("No se encuentra al logopeda")
-        #    return None
+        id_logopeda = st.session_state.get("id_logopeda",None)
+        if not id_logopeda:
+            st.error("No se encuentra al logopeda")
+            return None
 
         sheet.append_row([
             id_00,
-            "jajaXD",
+            id_logopeda,
             datos["nombre"],
             datos["apellidos"],
             datos["edad"],
