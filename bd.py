@@ -118,7 +118,7 @@ def guardar_resultados_tareas(id_paciente, resultados):
         
         fila = lista_ids.index(id_paciente) + 1  
 
-        columna_inicio = 8  # columna H 
+        columna_inicio = 9  # columna H 
         valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
         columna_fin = columna_inicio + len(valores) - 1
 
