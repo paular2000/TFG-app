@@ -25,11 +25,15 @@ sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJ
 
 
 def inicializar_logopedas():
-    
+    contenido = sheet_logopedas.get_all_values()
+
     encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro"]
-    sheet_logopedas.append_row(encabezados)
 
 
+    if not contenido or all(cell == "" for cell in contenido[0]):
+        sheet_logopedas.append_row(encabezados)
+    else:
+        sheet_logopedas.update("A1:D1",encabezados)
 
 
 def registrar_logopeda(usuario, contrasena):
@@ -76,14 +80,19 @@ def validar_logopeda(usuario, contrasena):
 # ==============================
 
 def inicializar_BD():
+    contenido = sheet.get_all_values()
 
-    
     tareas = [f"T{i+1}" for i in range(30)]
     encabezados = [
-    "ID", "ID_Logopeda", "Nombre", "Apellidos", "Edad", "Profesión",
-    "Estudios", "Aficion"
-    ] + tareas
-    sheet.append_row(encabezados)
+        "ID", "ID_Logopeda", "Nombre", "Apellidos", "Edad", "Profesión",
+        "Estudios", "Aficion"
+        ] + tareas
+    
+    if not contenido or  all(cell == "" for cell in contenido[0]):
+        sheet.append_row(encabezados)
+
+    else:
+        sheet.update("A1:AK1", encabezados)
     
  
 
