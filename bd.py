@@ -82,7 +82,7 @@ def inicializar_BD():
     if not contenido or all(cell == "" for cell in contenido[0]):
         tareas = [f"T{i+1}" for i in range(30)]
         encabezados = [
-        "ID", "Nombre", "Apellidos", "Edad", "Profesión",
+        "ID", "ID_Logopeda" ,"Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficion"
         ] + tareas
 

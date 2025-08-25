@@ -126,10 +126,10 @@ def pantalla_registro():
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
+                        "edad": edad,
                         "profesion": profesion,
                         "estudios": estudios,
                         "aficion": aficiones,
-                        "edad": edad
                     }
                     id_paciente = ingresar_paciente(st.session_state.datos_paciente)
                     if id_paciente:
