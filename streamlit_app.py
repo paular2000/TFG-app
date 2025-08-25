@@ -2,7 +2,6 @@ import streamlit as st
 from pantallas import pantalla_login, pantalla_registro, pantalla_resultados
 
 
-
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 0
 

@@ -74,7 +74,7 @@ def inicializar_BD():
     contenido = sheet.get_all_values()
     if not contenido or all(cell == "" for cell in contenido[0]):
         tareas = [f"T{i+1}" for i in range(30)]
-        encabezados = ["ID","Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones"] + tareas
+        encabezados = ["ID","ID_Logopeda","Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones"] + tareas
         sheet.append_row(encabezados)
 
 def ingresar_paciente(datos):
@@ -83,6 +83,7 @@ def ingresar_paciente(datos):
         filas = sheet.get_all_values()
         id = len(filas)
         id_00 = f"{id:03}"
+        #id_logopeda = st.session_state()
         sheet.append_row([
             id_00,
             datos["nombre"],
