@@ -74,7 +74,7 @@ def inicializar_BD():
     contenido = sheet.get_all_values()
     if not contenido or all(cell == "" for cell in contenido[0]):
         tareas = [f"T{i+1}" for i in range(30)]
-        encabezados = ["ID","ID_Logopeda","Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones"] + tareas
+        encabezados = ["ID","Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones","ID_Logopeda"] + tareas
         sheet.append_row(encabezados)
 
 def ingresar_paciente(datos):
@@ -83,7 +83,13 @@ def ingresar_paciente(datos):
         filas = sheet.get_all_values()
         id = len(filas)
         id_00 = f"{id:03}"
-        #id_logopeda = st.session_state()
+        
+        #recupero el id del logopeda
+        id_logopeda = st.session_state.get("id_logopeda",None)
+        if not id_logopeda:
+            st.error("No se encuentra al logopeda")
+            return None
+
         sheet.append_row([
             id_00,
             datos["nombre"],
@@ -91,7 +97,8 @@ def ingresar_paciente(datos):
             datos["edad"],
             datos["profesion"],
             datos["estudios"],
-            ", ".join(datos["aficiones"])
+            ", ".join(datos["aficiones"]),
+            id_logopeda
         ])
         st.success("✅ Resultados del test guardados con éxito.")
         return id_00
