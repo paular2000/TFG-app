@@ -18,7 +18,7 @@ sheet = spreadsheet.get_worksheet(0)
 sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(1)
 
 #prueba
-sheet_prueba = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(2)
+sheet_prueba = spreadsheet.get_worksheet(2)
 
 
 # ==============================
@@ -32,12 +32,13 @@ def inicializar_logopedas():
         encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
         sheet_logopedas.append_row(encabezados)
 
+
 def inicializar_prueba():
     contenido = sheet_prueba.get_all_values()
 
     if not contenido or all(cell == "" for cell in contenido[0]):
         encabezados = ["Prueba"]
-        sheet_logopedas.append_row(encabezados)
+        sheet_prueba.append_row(encabezados)
 
 
 def registrar_logopeda(usuario, contrasena):
