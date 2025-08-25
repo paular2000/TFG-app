@@ -28,12 +28,7 @@ def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
 
     encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro","Prueba"]
-
-
-    if not contenido or all(cell == "" for cell in contenido[0]):
-        sheet_logopedas.append_row(encabezados)
-    else:
-        sheet_logopedas.update("A1:D1",encabezados)
+    sheet_logopedas.update("A1:E1",encabezados)
 
 
 def registrar_logopeda(usuario, contrasena):
@@ -88,11 +83,7 @@ def inicializar_BD():
         "Estudios", "Aficion"
         ] + tareas
     
-    if not contenido or  all(cell == "" for cell in contenido[0]):
-        sheet.append_row(encabezados)
-
-    else:
-        sheet.update("A1:AK1", encabezados)
+    sheet.update("A1:AL1", encabezados)
     
  
 
