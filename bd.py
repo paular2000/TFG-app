@@ -17,8 +17,7 @@ sheet = spreadsheet.get_worksheet(0)
 #sheet logopedas
 sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(1)
 
-#prueba
-sheet_prueba = spreadsheet.get_worksheet(2)
+
 
 
 # ==============================
@@ -33,19 +32,10 @@ def inicializar_logopedas():
         sheet_logopedas.append_row(encabezados)
 
 
-def inicializar_prueba():
-    contenido = sheet_prueba.get_all_values()
-
-    if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["Prueba"]
-        sheet_prueba.append_row(encabezados)
-
 
 def registrar_logopeda(usuario, contrasena):
     try:
         inicializar_logopedas()
-
-        inicializar_prueba()
 
         # comprobar si usuario ya existe
         usuarios = sheet_logopedas.col_values(2)  # columna B
@@ -55,7 +45,6 @@ def registrar_logopeda(usuario, contrasena):
         filas = sheet_logopedas.get_all_values()
         id = len(filas)  # cuenta también la fila de encabezado
         id_00 = f"L0{id}"
-
 
         sheet_logopedas.append_row([
             id_00,
@@ -117,13 +106,13 @@ def ingresar_paciente(datos):
 
         sheet.append_row([
             id_00,
+            id_logopeda,
             datos["nombre"],
             datos["apellidos"],
             datos["edad"],
             datos["profesion"],
             datos["estudios"],
-            ", ".join(datos["aficion"]),
-            id_logopeda
+            ", ".join(datos["aficion"])
         ])
         st.success("✅ Datos del paciente guardados con éxito.")
         return id_00
