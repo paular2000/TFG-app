@@ -34,11 +34,13 @@ def inicializar_logopedas():
 
 
 def inicializar_prueba():
-    contenido = sheet_prueba.get_all_values()
-
-    if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["Prueba"]
-        sheet_prueba.append_row(encabezados)
+    encabezados = ["Prueba"]
+    try:
+        # Escribir siempre en la primera fila
+        rango = f"A1:{gspread.utils.rowcol_to_a1(1, len(encabezados))}"
+        sheet_prueba.update(rango, [encabezados])
+    except Exception as e:
+        st.error(f"❌ Error al inicializar prueba: {e}")
 
 
 def registrar_logopeda(usuario, contrasena):

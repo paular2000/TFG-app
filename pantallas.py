@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime
-from bd import ingresar_paciente, guardar_resultados_tareas, inicializar_BD, registrar_logopeda, validar_logopeda
+from bd import ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
 
 
 # ---------------
@@ -91,7 +91,7 @@ def pantalla_registro():
 
     st.title("Formulario de registro de pacientes")
     st.write("Por favor, introduzca los datos del paciente.")
-    inicializar_BD()
+    
     with st.form(key="registro_form"):
         nombre = st.text_input("Nombre")
         apellidos = st.text_input("Apellidos")
