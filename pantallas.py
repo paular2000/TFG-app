@@ -134,9 +134,7 @@ def pantalla_registro():
 
 def pantalla_resultados():
     st.title("Resultados del test BETA")
-
     
-
     with st.form(key="resultados_form"):
         st.markdown("#### Bloque I: Comprensión oral")
         resultado_T1= st.number_input("Discriminación de fonemas: ", min_value=0, max_value=32, 
