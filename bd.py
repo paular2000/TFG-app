@@ -23,7 +23,7 @@ sheet_prueba = spreadsheet.get_worksheet(2)
 
 # ==============================
 #  Registro de logopedas
-# ==============================
+
 
 def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
