@@ -33,21 +33,14 @@ def inicializar_logopedas():
         sheet_logopedas.append_row(encabezados)
 
 
-def inicializar_prueba():
-    encabezados = ["Prueba"]
-    try:
-        # Escribir siempre en la primera fila
-        rango = f"A1:{gspread.utils.rowcol_to_a1(1, len(encabezados))}"
-        sheet_prueba.update(rango, [encabezados])
-    except Exception as e:
-        st.error(f"❌ Error al inicializar prueba: {e}")
 
 
 def registrar_logopeda(usuario, contrasena):
     try:
         inicializar_logopedas()
 
-        inicializar_prueba()
+        sheet_prueba.append_row(["Hola", "Mundo"])
+
 
         # comprobar si usuario ya existe
         usuarios = sheet_logopedas.col_values(2)  # columna B
