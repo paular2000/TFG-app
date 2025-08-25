@@ -23,10 +23,9 @@ sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJ
 
 def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
-    encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
 
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
+        encabezados = ["ID", "Usuario", "Contraseña"]
         sheet_logopedas.append_row(encabezados)
 
 
