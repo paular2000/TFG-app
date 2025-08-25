@@ -39,8 +39,8 @@ def registrar_logopeda(usuario, contrasena):
 
         filas = sheet_logopedas.get_all_values()
         id = len(filas)  # cuenta también la fila de encabezado
-        id_00 = "L" + f"{id:02}"
-        #id_00 = "L" + id_00
+        id_00 = f"{id:02}"
+        id_00 = "L" + id_00
 
 
         sheet_logopedas.append_row([
