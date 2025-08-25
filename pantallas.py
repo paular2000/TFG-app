@@ -71,18 +71,6 @@ def pantalla_login():
                     else:
                         st.error(msg)
 
-#---------------------------
-#Pantalla principal logopeda
-#---------------------------
-
-def pantalla_principal_logopeda():
-    st.set_page_config(page_title="Pantalla principal", page_icon="📝")
-    st.title("DURAGUI")
-
-    
-
-
-
 
 
 

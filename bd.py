@@ -17,8 +17,7 @@ sheet = spreadsheet.get_worksheet(0)
 #sheet logopedas
 sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(1)
 
-#prueba
-sheet_prueba = spreadsheet.get_worksheet(2)
+
 
 
 # ==============================
@@ -38,9 +37,6 @@ def inicializar_logopedas():
 def registrar_logopeda(usuario, contrasena):
     try:
         inicializar_logopedas()
-
-        sheet_prueba.append_row(["Hola", "Mundo"])
-
 
         # comprobar si usuario ya existe
         usuarios = sheet_logopedas.col_values(2)  # columna B
@@ -85,12 +81,13 @@ def inicializar_BD():
     contenido = sheet.get_all_values()
 
     if not contenido or  all(cell == "" for cell in contenido[0]):
-        sheet.append_row(encabezados)
         tareas = [f"T{i+1}" for i in range(30)]
         encabezados = [
         "ID", "Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficion"
         ] + tareas
+        sheet.append_row(encabezados)
+        
  
 
 def ingresar_paciente(datos):
