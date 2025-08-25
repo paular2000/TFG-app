@@ -25,19 +25,9 @@ def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
     encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
 
-    if not contenido:
+    if not contenido or all(cell == "" for cell in contenido[0]):
+        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro", "Prueba"]
         sheet_logopedas.append_row(encabezados)
-    else:
-        encabezados_actuales = contenido[0]
-        # Hoja con datos → revisamos encabezados
-        encabezados_actuales = contenido[0]
-        for i, col in enumerate(encabezados):
-            if i >= len(encabezados_actuales):
-                # Columna nueva → añadimos al final
-                sheet_logopedas.update_cell(1, i+1, col)
-            elif encabezados_actuales[i] != col:
-                # Columna existente pero con nombre distinto → actualizamos
-                sheet_logopedas.update_cell(1, i+1, col)
 
 
 def registrar_logopeda(usuario, contrasena):
@@ -53,11 +43,13 @@ def registrar_logopeda(usuario, contrasena):
         id = len(filas)  # cuenta también la fila de encabezado
         id_00 = f"L0{id}"
 
+
         sheet_logopedas.append_row([
             id_00,
             usuario,
             contrasena,
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "prueba"
         ])
 
         return True, f"✅ Usuario {usuario} registrado con éxito."
