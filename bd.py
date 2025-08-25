@@ -28,7 +28,7 @@ def inicializar_logopedas():
     contenido = sheet_logopedas.get_all_values()
 
     if not contenido or all(cell == "" for cell in contenido[0]):
-        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro","Prueba"]
+        encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro"]
         sheet_logopedas.append_row(encabezados)
 
 
@@ -99,14 +99,14 @@ def ingresar_paciente(datos):
         id_00 = f"{id:03}"
         
         #recupero el id del logopeda
-        id_logopeda = st.session_state.get("id_logopeda",None)
-        if not id_logopeda:
-            st.error("No se encuentra al logopeda")
-            return None
+        #id_logopeda = st.session_state.get("id_logopeda",None)
+        #if not id_logopeda:
+        #    st.error("No se encuentra al logopeda")
+        #    return None
 
         sheet.append_row([
             id_00,
-            id_logopeda,
+            "jajaXD",
             datos["nombre"],
             datos["apellidos"],
             datos["edad"],
