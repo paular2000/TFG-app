@@ -72,10 +72,18 @@ def validar_logopeda(usuario, contrasena):
 
 def inicializar_BD():
     contenido = sheet.get_all_values()
-    if not contenido or all(cell == "" for cell in contenido[0]):
-        tareas = [f"T{i+1}" for i in range(30)]
-        encabezados = ["ID","Nombre", "Apellidos", "Edad", "Profesión", "Estudios", "Aficiones","ID_Logopeda"] + tareas
+    tareas = [f"T{i+1}" for i in range(30)]
+    encabezados = [
+        "ID", "Nombre", "Apellidos", "Edad", "Profesión",
+        "Estudios", "Aficiones", "ID_Logopeda"
+    ] + tareas
+
+
+    if not contenido:
         sheet.append_row(encabezados)
+    
+    
+        
 
 def ingresar_paciente(datos):
     try:
@@ -118,7 +126,7 @@ def guardar_resultados_tareas(id_paciente, resultados):
         
         fila = lista_ids.index(id_paciente) + 1  
 
-        columna_inicio = 9  # columna H 
+        columna_inicio = 9  # columna J
         valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
         columna_fin = columna_inicio + len(valores) - 1
 
