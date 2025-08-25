@@ -9,6 +9,8 @@ from bd import ingresar_paciente, guardar_resultados_tareas, registrar_logopeda,
 
 def pantalla_login():
 
+    st.set_page_config(page_title="Inicio sesión", page_icon="✅")
+
     st.title("DURAGUI")
     st.write("Por favor, inicie sesión o regístrese.")
 
@@ -73,6 +75,8 @@ def pantalla_login():
 
 
 def pantalla_registro():
+    st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
+
     st.title("Formulario de registro de pacientes")
     st.write("Por favor, introduzca los datos del paciente.")
 
@@ -133,6 +137,9 @@ def pantalla_registro():
                 st.warning("⚠️ Se deben completar todos los campos obligatorios.")
 
 def pantalla_resultados():
+
+    st.set_page_config(page_title="Formulario tareas", page_icon="📝")
+
     st.title("Resultados del test BETA")
     
     with st.form(key="resultados_form"):

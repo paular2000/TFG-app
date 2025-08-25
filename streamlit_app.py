@@ -1,7 +1,7 @@
 import streamlit as st
 from pantallas import pantalla_login, pantalla_registro, pantalla_resultados
 
-st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
+
 
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 0
