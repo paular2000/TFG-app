@@ -50,9 +50,7 @@ def registrar_logopeda(usuario, contrasena):
             id_00,
             usuario,
             contrasena,
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "prueba"
-            
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ])
 
         return True, f"✅ Usuario {usuario} registrado con éxito."
@@ -80,14 +78,14 @@ def validar_logopeda(usuario, contrasena):
 
 def inicializar_BD():
     contenido = sheet.get_all_values()
-
-    tareas = [f"T{i+1}" for i in range(30)]
-    encabezados = [
+    
+    if not contenido or all(cell == "" for cell in contenido[0]):
+        tareas = [f"T{i+1}" for i in range(30)]
+        encabezados = [
         "ID", "ID_Logopeda", "Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficion"
         ] + tareas
-    
-    if not contenido or all(cell == "" for cell in contenido[0]):
+
         sheet.append_row(encabezados)
  
 

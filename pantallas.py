@@ -108,8 +108,10 @@ def pantalla_registro():
         aficiones = st.multiselect("Elija sus aficiones:", aficiones_opciones,placeholder="Escoger opciones")
 
         submit = st.form_submit_button("Siguiente")
+        
+        #------------------
 
-        if submit:
+        if submit: #si pulsar siguiente
             campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones]
 
             if all(campos_obligatorios) and \
@@ -117,8 +119,10 @@ def pantalla_registro():
                estudios != "Escoger una opción" and \
                aficiones:
                 try:
+                    #calculo de la edad
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
                     edad = int(datetime.now().year - fecha_nacimiento.year)
+
                     st.session_state.datos_paciente = {
                         "nombre": nombre,
                         "apellidos": apellidos,
