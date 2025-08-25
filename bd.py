@@ -98,7 +98,8 @@ def inicializar_BD():
         "Estudios", "Aficion"
         ] + tareas
     
-    sheet.update("A1:AL1", encabezados)
+    if not contenido or all(cell == "" for cell in contenido[0]):
+        sheet.append_row(encabezados)
  
 
 def ingresar_paciente(datos):
