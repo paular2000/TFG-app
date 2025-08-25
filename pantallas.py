@@ -123,7 +123,7 @@ def pantalla_registro():
 
         if submit:
             campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones]
-
+#fhejiwgflijkwegfiulgwlfgwilu
             if all(campos_obligatorios) and \
                profesion != "Escoger una opción" and \
                estudios != "Escoger una opción" and \
