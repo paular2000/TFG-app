@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime
-from bd import ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
+from bd import get_pacientes, ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
 
 
 # ---------------
@@ -71,6 +71,31 @@ def pantalla_login():
                     else:
                         st.error(msg)
 #-----------------------------------------------------------
+
+#-------------------------
+#PAGINA PRINCIPAL DEL LOGOPEDA
+#-------------------------
+
+def pantalla_logopeda():
+    st.title("Logopea (su nombre)")
+
+    st.subheader("Tus pacientes:")
+
+    pacientes = get_pacientes(st.session_state["id_logopeda"])
+
+    submit_pacientes = st.form_submit_button("Ver tus pacientes")
+
+    submit_registrar_paciente = st.form_submit_button("Registrar nuevo paciente")
+
+    if submit_pacientes:
+        if pacientes:
+            st.write(pacientes)
+        else:
+            st.write("Sin pacientes.")
+
+
+    if submit_registrar_paciente:
+        pantalla_registro()
 
 
 

@@ -70,6 +70,25 @@ def validar_logopeda(usuario, contrasena):
 
 
 
+#-----------------------
+# read pacientes
+#-----------------------
+
+def get_pacientes(id_logopeda):
+    try:
+        inicializar_BD()
+
+        filas = sheet.get_all_records()
+        pacientes = [fila for fila in filas if str(fila["ID_Logopeda"]) == str(id_logopeda)]
+
+        return pacientes
+
+    except Exception as e:
+        st.error("Error al obtener a los pacientes.")
+        return []
+
+
+
 
 # ==============================
 #  Registro de pacientes
