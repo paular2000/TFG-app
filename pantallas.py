@@ -81,23 +81,16 @@ def pantalla_logopeda():
 
     st.subheader("Tus pacientes:")
 
-    pacientes = get_pacientes(st.session_state["id_logopeda"])
 
-    submit_pacientes = st.form_submit_button("Ver tus pacientes")
-
-    submit_registrar_paciente = st.form_submit_button("Registrar nuevo paciente")
-
-    if submit_pacientes:
+    if st.button("Ver pacientes"):
+        pacientes = get_pacientes(st.session_state["id_logopeda"])
         if pacientes:
             st.write(pacientes)
         else:
             st.write("Sin pacientes.")
 
-
-    if submit_registrar_paciente:
-        pantalla_registro()
-
-
+    if st.button("Registrar nuevo paciente"):
+        st.session_state.pantalla = 2
 
 def pantalla_registro():
     st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
@@ -159,7 +152,7 @@ def pantalla_registro():
                     id_paciente = ingresar_paciente(st.session_state.datos_paciente)
                     if id_paciente:
                         st.session_state.id_paciente = id_paciente
-                        st.session_state.pantalla = 2
+                        st.session_state.pantalla = 3
                 except ValueError:
                     st.error("⚠️ Fecha inválida.")
             else:
