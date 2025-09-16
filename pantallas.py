@@ -79,9 +79,6 @@ def pantalla_login():
 def pantalla_logopeda():
     st.title("Logopea (nombre logopeda)")
 
-    
-
-
     if st.button("Ver pacientes"):
         pacientes = get_pacientes(st.session_state["id_logopeda"])
 
@@ -96,7 +93,7 @@ def pantalla_logopeda():
                             st.session_state.pantalla = 3  # Nueva pantalla del paciente
                             st.rerun()
                     with cols[1]:
-                        st.write(f"**{paciente['nombre']} {paciente['apellidos']}**")
+                        st.write(f"**{paciente['Nombre']} {paciente['Apellidos']}**")
         else:
             st.info("📭 No tienes pacientes registrados.")
 
@@ -111,11 +108,11 @@ def pantalla_paciente():
         st.error("No se encontró el paciente.")
         return
     
-    st.title(f"🧑 Paciente: {paciente['nombre']} {paciente['apellidos']}")
-    st.write(f"**Edad:** {paciente['edad']}")
-    st.write(f"**Profesión:** {paciente['profesion']}")
-    st.write(f"**Estudios:** {paciente['estudios']}")
-    st.write(f"**Aficiones:** {paciente['aficion']}")
+    st.title(f"🧑 Paciente: {paciente['Nombre']} {paciente['Apellidos']}")
+    st.write(f"**Edad:** {paciente['Edad']}")
+    st.write(f"**Profesión:** {paciente['Profesión']}")
+    st.write(f"**Estudios:** {paciente['Estudios']}")
+    st.write(f"**Aficiones:** {paciente['Afición']}")
 
     if st.button("⬅️ Volver"):
         st.session_state.pantalla = 1
