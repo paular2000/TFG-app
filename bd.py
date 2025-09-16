@@ -2,6 +2,7 @@ from datetime import datetime
 from google.oauth2.service_account import Credentials
 import gspread
 import streamlit as st
+import unicodedata
 
 scopes = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
@@ -18,6 +19,10 @@ sheet = spreadsheet.get_worksheet(0)
 sheet_logopedas = client.open_by_key("1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU").get_worksheet(1)
 
 
+
+def _norm_key(s):
+    s = str(s)
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn').lower()
 
 
 # ==============================
@@ -79,15 +84,31 @@ def get_pacientes(id_logopeda):
         inicializar_BD()
 
         filas = sheet.get_all_records()
-        pacientes = [fila for fila in filas if str(fila["ID_Logopeda"]) == str(id_logopeda)]
-
+        pacientes = []
+        for fila in filas:
+            # normalizamos las claves para trabajar con 'nombre', 'apellidos', 'id', ...
+            p = { _norm_key(k): v for k, v in fila.items() }
+            # añadimos también la fila original si quieres conservarla:
+            p["_raw"] = fila
+            if str(p.get("id_logopeda","")) == str(id_logopeda):
+                pacientes.append(p)
         return pacientes
-
+    
     except Exception as e:
         st.error("Error al obtener a los pacientes.")
         return []
 
-
+def get_paciente_by_id(id_paciente):
+    try:
+        inicializar_BD()
+        filas = sheet.get_all_records()
+        for fila in filas:
+            if str(fila.get("ID","")) == str(id_paciente):
+                return { _norm_key(k): v for k, v in fila.items() }
+        return None
+    except Exception as e:
+        st.error(f"❌ Error al obtener paciente por ID: {e}")
+        return None
 
 
 # ==============================

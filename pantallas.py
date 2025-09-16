@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime
-from bd import get_pacientes, ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
+from bd import get_pacientes, get_paciente_by_id, ingresar_paciente, guardar_resultados_tareas, registrar_logopeda, validar_logopeda
 
 
 # ---------------
@@ -78,44 +78,60 @@ def pantalla_login():
 def pantalla_logopeda():
     st.title("Logopea (nombre logopeda)")
 
-    if st.button("Ver pacientes"):
-        pacientes = get_pacientes(st.session_state["id_logopeda"])
+    # bandera para mantener la lista visible entre reruns
+    if 'show_pacientes' not in st.session_state:
+        st.session_state.show_pacientes = False
 
+    # botones principales
+    col1, col2 = st.columns([1,1])
+    with col1:
+        if st.button("Ver pacientes"):
+            st.session_state.show_pacientes = not st.session_state.show_pacientes
+    with col2:
+        if st.button("Registrar nuevo paciente"):
+            st.session_state.pantalla = 2
+            st.rerun()
+
+    if st.session_state.show_pacientes:
+        pacientes = get_pacientes(st.session_state.get("id_logopeda"))
         if pacientes:
             st.subheader("Lista de pacientes")
 
-            cols = st.columns(3)  # Mostrar 3 pacientes por fila
-            i = 0
-            for paciente in pacientes:
-                with cols[i % 3]:  
-                    if st.button(f"{paciente['Nombre']} {paciente['Apellidos']}", key=paciente["ID"]):
-                        st.session_state.paciente_actual = paciente
-                        st.session_state.pantalla = 3  
+            cols = st.columns(3) 
+            for i, paciente in enumerate(pacientes):
+                with cols[i % 3]:
+                    
+                    key = f"pac_{paciente.get('id')}"
+                    if st.button(f"{paciente.get('nombre','')} {paciente.get('apellidos','')}", key=key):
+                        
+                        st.session_state.paciente_actual_id = paciente.get('id')
+                        st.session_state.pantalla = 3
                         st.rerun()
-                i += 1
         else:
-            st.info("📭 No tienes pacientes registrados.")
+            st.info(" No tienes pacientes registrados aún.")
 
-    if st.button("Registrar nuevo paciente"):
-        st.session_state.pantalla = 2
-        st.rerun()
-
-
+#--------------INFORMACIÓN DEL PACIENTE-----------------
 def pantalla_paciente():
-    paciente = st.session_state.get("paciente_actual")
-    if not paciente:
-        st.error("No se encontró el paciente.")
+    pid = st.session_state.get("paciente_actual_id")
+    if not pid:
+        st.error("No se encontró el paciente seleccionado.")
         return
-    
-    st.title(f"🧑 Paciente: {paciente['Nombre']} {paciente['Apellidos']}")
-    st.write(f"**Edad:** {paciente['Edad']}")
-    st.write(f"**Profesión:** {paciente['Profesión']}")
-    st.write(f"**Estudios:** {paciente['Estudios']}")
-    st.write(f"**Aficiones:** {paciente['Afición']}")
+
+    paciente = get_paciente_by_id(pid)
+    if not paciente:
+        st.error("No se ha podido cargar la ficha del paciente.")
+        return
+
+    st.title(f"🧑 Paciente: {paciente.get('nombre','')} {paciente.get('apellidos','')}")
+    st.write(f"**Edad:** {paciente.get('edad','')}")
+    st.write(f"**Profesión:** {paciente.get('profesion','')}")
+    st.write(f"**Estudios:** {paciente.get('estudios','')}")
+    st.write(f"**Aficiones:** {paciente.get('aficion','')}")
 
     if st.button("⬅️ Volver"):
         st.session_state.pantalla = 1
         st.rerun()
+
 
 
 def pantalla_registro():
