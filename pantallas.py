@@ -105,7 +105,21 @@ def pantalla_logopeda():
 
 
 def pantalla_paciente():
-    st.title("FUTURA PANTALLA DEL PACIENTE")
+    
+    paciente = st.session_state.get("paciente_actual")
+    if not paciente:
+        st.error("No se encontró el paciente.")
+        return
+    
+    st.title(f"🧑 Paciente: {paciente['nombre']} {paciente['apellidos']}")
+    st.write(f"**Edad:** {paciente['edad']}")
+    st.write(f"**Profesión:** {paciente['profesion']}")
+    st.write(f"**Estudios:** {paciente['estudios']}")
+    st.write(f"**Aficiones:** {paciente['aficion']}")
+
+    if st.button("⬅️ Volver"):
+        st.session_state.pantalla = 1
+        st.rerun()
 
 def pantalla_registro():
     st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
