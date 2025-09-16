@@ -1,5 +1,5 @@
 import streamlit as st
-from pantallas import pantalla_login, pantalla_logopeda, pantalla_registro, pantalla_resultados
+from pantallas import pantalla_login, pantalla_logopeda, pantalla_paciente, pantalla_registro, pantalla_resultados
 
 
 if 'pantalla' not in st.session_state:
@@ -11,4 +11,6 @@ elif st.session_state.pantalla == 1:
 elif st.session_state.pantalla == 2:
     pantalla_registro()
 elif st.session_state.pantalla == 3:
+    pantalla_paciente()
+elif st.session_state.pantalla == 4:
     pantalla_resultados()
