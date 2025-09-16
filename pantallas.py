@@ -88,11 +88,10 @@ def pantalla_logopeda():
             i = 0
             for paciente in pacientes:
                 with cols[i % 3]:  
-                    if st.button("🧑", key=paciente["ID"]):
+                    if st.button("{paciente['Nombre']} {paciente['Apellidos']}", key=paciente["ID"]):
                         st.session_state.paciente_actual = paciente
                         st.session_state.pantalla = 3  
                         st.rerun()
-                    st.markdown(f"<div style='text-align:center; font-weight:bold;'>{paciente['Nombre']} {paciente['Apellidos']}</div>", unsafe_allow_html=True)
                 i += 1
         else:
             st.info("📭 No tienes pacientes registrados.")
