@@ -88,7 +88,7 @@ def pantalla_logopeda():
             i = 0
             for paciente in pacientes:
                 with cols[i % 3]:  
-                    if st.button("{paciente['Nombre']} {paciente['Apellidos']}", key=paciente["ID"]):
+                    if st.button(f"{paciente['Nombre']} {paciente['Apellidos']}", key=paciente["ID"]):
                         st.session_state.paciente_actual = paciente
                         st.session_state.pantalla = 3  
                         st.rerun()
