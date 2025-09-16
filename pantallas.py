@@ -75,7 +75,6 @@ def pantalla_login():
 #-------------------------
 #PAGINA PRINCIPAL DEL LOGOPEDA
 #-------------------------
-
 def pantalla_logopeda():
     st.title("Logopea (nombre logopeda)")
 
@@ -84,25 +83,26 @@ def pantalla_logopeda():
 
         if pacientes:
             st.subheader("Lista de pacientes")
+
+            cols = st.columns(3)  # Mostrar 3 pacientes por fila
+            i = 0
             for paciente in pacientes:
-                with st.container():
-                    cols = st.columns([1,4])
-                    with cols[0]:
-                        if st.button("🧑", key=paciente["ID"]):
-                            st.session_state.paciente_actual = paciente
-                            st.session_state.pantalla = 3  # Nueva pantalla del paciente
-                            st.rerun()
-                    with cols[1]:
-                        st.write(f"**{paciente['Nombre']} {paciente['Apellidos']}**")
+                with cols[i % 3]:  
+                    if st.button("🧑", key=paciente["ID"]):
+                        st.session_state.paciente_actual = paciente
+                        st.session_state.pantalla = 3  
+                        st.rerun()
+                    st.markdown(f"<div style='text-align:center; font-weight:bold;'>{paciente['Nombre']} {paciente['Apellidos']}</div>", unsafe_allow_html=True)
+                i += 1
         else:
             st.info("📭 No tienes pacientes registrados.")
 
     if st.button("Registrar nuevo paciente"):
         st.session_state.pantalla = 2
+        st.rerun()
 
 
 def pantalla_paciente():
-    
     paciente = st.session_state.get("paciente_actual")
     if not paciente:
         st.error("No se encontró el paciente.")
@@ -117,6 +117,7 @@ def pantalla_paciente():
     if st.button("⬅️ Volver"):
         st.session_state.pantalla = 1
         st.rerun()
+
 
 def pantalla_registro():
     st.set_page_config(page_title="Formulario Paciente", page_icon="📝")
