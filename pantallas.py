@@ -130,6 +130,11 @@ def pantalla_registro():
     st.title("Formulario de registro de pacientes")
     st.write("Por favor, introduzca los datos del paciente.")
     
+    if st.button("⬅️ Volver"):
+        st.session_state.pantalla = 1
+        st.rerun()
+
+
     with st.form(key="registro_form"):
         nombre = st.text_input("Nombre")
         apellidos = st.text_input("Apellidos")
