@@ -72,6 +72,14 @@ def pantalla_login():
                         st.error(msg)
 #-----------------------------------------------------------
 
+def menu_hamburguesa():
+    with st.popover("☰", use_container_width=True):  
+        st.write("Opciones")
+        if st.button("🚪 Cerrar sesión"):
+            st.session_state.show_confirm_logout = True 
+
+
+
 #-------------------------
 #PAGINA PRINCIPAL DEL LOGOPEDA
 #-------------------------
@@ -82,6 +90,25 @@ def pantalla_logopeda():
     if st.button("Registrar nuevo paciente"):
         st.session_state.pantalla = 2
         st.rerun()
+
+    # Menú hamburguesa
+    col1, col2 = st.columns([9, 1])  # Deja espacio a la derecha
+    with col2:
+        menu_hamburguesa()
+
+    # Confirmación de cierre de sesión
+    if st.session_state.get("show_confirm_logout", False):
+        st.warning("¿Seguro que desea cerrar sesión?")
+        colA, colB = st.columns(2)
+        with colA:
+            if st.button("✅ Sí, cerrar sesión"):
+                st.session_state.clear()  # Limpia toda la sesión
+                st.session_state.pantalla = 0
+                st.rerun()
+        with colB:
+            if st.button("❌ No"):
+                st.session_state.show_confirm_logout = False
+                st.rerun()
 
     # Listar pacientes
     pacientes = get_pacientes(st.session_state.get("id_logopeda"))
