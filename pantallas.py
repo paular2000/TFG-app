@@ -76,7 +76,7 @@ def pantalla_login():
 #PAGINA PRINCIPAL DEL LOGOPEDA
 #-------------------------
 def pantalla_logopeda():
-    st.title("Logopea (nombre logopeda)")
+    st.title("Bienvenido " + st.session_state("usuario"))
 
     # bandera para mantener la lista visible entre reruns
     if 'show_pacientes' not in st.session_state:
