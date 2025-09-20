@@ -78,15 +78,12 @@ def pantalla_login():
 def pantalla_logopeda():
     st.title("Bienvenido " + st.session_state.get("usuario", ""))
 
+    # Botón para registrar paciente
+    if st.button("Registrar nuevo paciente"):
+        st.session_state.pantalla = 2
+        st.rerun()
 
-    # botones principales
-    col1 = st.columns([1])
-
-    with col1:
-        if st.button("Registrar nuevo paciente"):
-            st.session_state.pantalla = 2
-            st.rerun()
-
+    # Listar pacientes
     pacientes = get_pacientes(st.session_state.get("id_logopeda"))
     if pacientes:
         st.subheader("Lista de pacientes")
@@ -94,14 +91,14 @@ def pantalla_logopeda():
         cols = st.columns(3) 
         for i, paciente in enumerate(pacientes):
             with cols[i % 3]:
-                
                 key = f"pac_{paciente.get('id')}"
                 if st.button(f"{paciente.get('nombre','')} {paciente.get('apellidos','')}", key=key):
-                    
                     st.session_state.paciente_actual_id = paciente.get('id')
                     st.session_state.pantalla = 3
                     st.rerun()
-        
+    else:
+        st.info("⚠️ No tienes pacientes registrados aún.")
+
 
 #--------------INFORMACIÓN DEL PACIENTE-----------------
 def pantalla_paciente():
