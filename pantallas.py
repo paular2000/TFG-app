@@ -80,11 +80,9 @@ def pantalla_logopeda():
 
 
     # botones principales
-    col1, col2 = st.columns([1,1])
+    col1 = st.columns([1])
+
     with col1:
-        if st.button("Ver pacientes"):
-            st.session_state.show_pacientes = not st.session_state.show_pacientes
-    with col2:
         if st.button("Registrar nuevo paciente"):
             st.session_state.pantalla = 2
             st.rerun()
