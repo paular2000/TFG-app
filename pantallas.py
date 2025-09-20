@@ -162,11 +162,6 @@ def pantalla_registro():
         estudios = st.selectbox("Elija su nivel de estudios:", estudios_opciones)
         aficiones = st.multiselect("Elija sus aficiones:", aficiones_opciones,placeholder="Escoger opciones")
 
-        #Volver a la pantalla principal
-        if st.button("⬅️ Volver"):
-            st.session_state.pantalla = 1
-            st.rerun()
-
         submit = st.form_submit_button("Siguiente")
         
         #------------------
