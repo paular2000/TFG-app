@@ -9,15 +9,15 @@ from datetime import datetime
 
 class LogopedaRepositorySheets(ILogopedaRepository):
 
-    def __init__(self):
+    def __init__(self, spreadsheet_key: str):
         client = get_sheets_client()
-        self.spreadsheet = open_spreadsheet(client, "1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU")
+        self.spreadsheet = open_spreadsheet(client, spreadsheet_key)
         self.sheet = self.spreadsheet.get_worksheet(1)  # segunda pestaña
 
         if not self.sheet.get_all_values():
             encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro"]
             self.sheet.append_row(encabezados)
-
+            
 
     def registrar_logopeda(self, logopeda: Logopeda) -> str:
         filas = self.sheet.get_all_values()
