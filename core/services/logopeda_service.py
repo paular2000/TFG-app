@@ -1,5 +1,5 @@
-from ..models import Logopeda
-from repositories import ILogopedaRepository
+from core.models import Logopeda
+from core.repositories import ILogopedaRepository
 from typing import Tuple, Optional
 
 class LogopedaService:

@@ -1,6 +1,5 @@
 from core.models import Paciente
-
-from repositories import IPacienteRepository
+from core.repositories import IPacienteRepository
 from typing import List, Optional
 
 class PacienteService:
