@@ -3,8 +3,8 @@ from core.services.logopeda_service import LogopedaService
 from core.services.paciente_service import PacienteService
 import streamlit as st
 
-from bd.logopeda_repository_sheets import LogopedaRepositorySheets
-from bd.paciente_repository_sheets import PacienteRepositorySheets
+from sheets.logopeda_repository_sheets import LogopedaRepositorySheets
+from sheets.paciente_repository_sheets import PacienteRepositorySheets
 
 
 
