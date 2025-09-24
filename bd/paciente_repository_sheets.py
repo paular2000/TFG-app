@@ -1,8 +1,8 @@
 from typing import List, Optional
 from core.models import Paciente
 from core.repositories import IPacienteRepository
-from db import get_sheets_client, open_spreadsheet, normalize_key
-from datetime import datetime
+from bd.db import get_sheets_client, open_spreadsheet
+
 
 
 class PacienteRepositorySheets(IPacienteRepository):
