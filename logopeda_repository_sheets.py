@@ -3,7 +3,7 @@
 from typing import Optional, Tuple
 from core.models import Logopeda
 from core.repositories import ILogopedaRepository
-from bd.db import get_sheets_client, open_spreadsheet
+from db import get_sheets_client, open_spreadsheet
 from datetime import datetime
 
 

@@ -1,7 +1,7 @@
 from typing import List, Optional
 from core.models import Paciente
 from core.repositories import IPacienteRepository
-from bd.db import get_sheets_client, open_spreadsheet
+from db import get_sheets_client, open_spreadsheet
 
 
 
