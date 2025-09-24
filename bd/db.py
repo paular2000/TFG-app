@@ -1,6 +1,6 @@
-import gspread
+import gspread # type: ignore
 import unicodedata
-from google.oauth2.service_account import Credentials
+from google.oauth2.service_account import Credentials # type: ignore
 import streamlit as st
 
 
