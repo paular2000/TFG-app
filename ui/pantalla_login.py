@@ -8,6 +8,8 @@ def pantalla_login(logopeda_service: LogopedaService):
     if "modo_login" not in st.session_state:
         st.session_state.modo_login = None
 
+
+
     col1, col2 = st.columns(2)
     with col1:
         if st.button("Iniciar Sesión"):
