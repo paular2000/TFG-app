@@ -5,6 +5,10 @@ from bd.logopeda_repository_sheets import LogopedaRepositorySheets
 from bd.paciente_repository_sheets import PacienteRepositorySheets
 import streamlit as st
 
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "core"))
 
 
 # Inicializar servicios con repositorios concretos
