@@ -1,4 +1,5 @@
-from models import Paciente
+from core.models import Paciente
+
 from repositories import IPacienteRepository
 from typing import List, Optional
 

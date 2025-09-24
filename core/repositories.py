@@ -1,5 +1,5 @@
 
-from .models import Logopeda, Paciente
+from core.models import Logopeda, Paciente
 from typing import Optional, Tuple
 
 

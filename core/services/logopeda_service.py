@@ -1,4 +1,4 @@
-from models import Logopeda
+from ..models import Logopeda
 from repositories import ILogopedaRepository
 from typing import Tuple, Optional
 
@@ -19,7 +19,7 @@ class LogopedaService:
         except Exception as e:
             return False, f"❌ Error al registrar logopeda: {e}"
         
-        
+
 
     def validar_logopeda(self, usuario: str, contrasena: str) -> Tuple[bool, Optional[str]]:
         
