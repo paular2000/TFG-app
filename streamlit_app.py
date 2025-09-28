@@ -20,9 +20,3 @@ if st.session_state.pantalla == 0:
     pantalla_login(logopeda_service)
 elif st.session_state.pantalla == 1:
     pantalla_logopeda(paciente_service)
-elif st.session_state.pantalla == 2:
-    pantalla_registro(paciente_service)
-elif st.session_state.pantalla == 3:
-    pantalla_paciente(paciente_service)
-elif st.session_state.pantalla == 4:
-    pantalla_resultados(paciente_service)

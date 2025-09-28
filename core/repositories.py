@@ -4,9 +4,6 @@ from typing import Optional, Tuple
 
 
 
-#public interface LogopedaRepository {
-#    Tuple<Boolean, String> registrarLogopeda(String usuario, String contrasenia);
-#}
 
 
 #actuara como interface
