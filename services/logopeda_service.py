@@ -29,7 +29,7 @@ def validar_logopeda(usuario: str, contrasenia: str):
         
         if not logopeda:
             return False, "❌ Usuario no existe."
-        if logopeda.contrasenia.strip() == contrasenia.strip():
+        if str(logopeda.contrasenia).strip() == str(contrasenia).strip():
             return True, logopeda.id
         return False, "❌ Usuario o contraseña incorrectos."
     except Exception as e:
