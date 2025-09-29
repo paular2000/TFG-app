@@ -4,8 +4,8 @@ from services import paciente_service
 
 def pantalla_logopeda():
     
-    
-    st.title(f"Bienvenido, {st.session_state['usuario']}")
+    usuario = st.session_state.get("usuario", "Usuario")
+    st.title(f"Bienvenido, " +  usuario)
 
     id_logopeda = st.session_state["id_logopeda"]
 
