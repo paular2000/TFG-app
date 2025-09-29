@@ -63,3 +63,4 @@ def insert_logopeda(usuario: str, contrasenia: str):
 
     sheet.append_row([nuevo_logopeda.id, nuevo_logopeda.usuario, nuevo_logopeda.contrasenia, nuevo_logopeda.fecha_registro])
     return nuevo_logopeda
+
