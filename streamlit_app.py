@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-
+from ui import pantalla_login
 
 
 
@@ -11,5 +11,5 @@ import streamlit as st
 
 if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 0
-
+    pantalla_login()
 
