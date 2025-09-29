@@ -8,6 +8,8 @@ def pantalla_login(logopeda_service: LogopedaService):
     if "modo_login" not in st.session_state:
         st.session_state.modo_login = None
 
+
+    # Botones principales
     col1, col2 = st.columns(2)
     with col1:
         if st.button("Iniciar Sesión"):
@@ -16,44 +18,55 @@ def pantalla_login(logopeda_service: LogopedaService):
         if st.button("Registrarse"):
             st.session_state.modo_login = "registro"
 
+    # Formulario de login:
     if st.session_state.modo_login == "login":
         st.subheader("Iniciar Sesión")
-        with st.form("form_login"):
+
+        with st.form(key="login_form"):
             usuario = st.text_input("Usuario")
-            contrasena = st.text_input("Contraseña", type="password")
-            submit_login = st.form_submit_button("Entrar")
+            contrasenia = st.text_input("Contraseña", type="password")
+            submit = st.form_submit_button("Ingresar")
 
-            if submit_login:
-                ok, result = logopeda_service.validar_logopeda(usuario, contrasena)
-                if ok:
-                    st.success(f"Bienvenido, {usuario}")
-                    st.session_state["id_logopeda"] = result
-                    st.session_state["usuario"] = usuario
-                    st.session_state["autenticado"] = True
-                    st.session_state.pantalla = 1
+            if submit:
+                if not usuario or not contrasenia:
+                    st.error("❌ Por favor, complete todos los campos.")
                 else:
-                    st.error("❌ Usuario o contraseña incorrectos.")
+                    ok, id_logopeda = logopeda_service.validar_logopeda(usuario, contrasenia)
+                    if ok and id_logopeda:
+                        st.success("✅ Inicio de sesión exitoso.")
+                        st.session_state.id_logopeda = id_logopeda
+                        st.session_state.modo_login = None
+                        st.experimental_rerun()
+                    else:
+                        st.error("❌ Usuario o contraseña incorrectos.")
 
+        
+    # Formulario de registro:
     elif st.session_state.modo_login == "registro":
-        st.subheader("Registro de nuevo logopeda")
-        with st.form("form_registro"):
-            nuevo_usuario = st.text_input("Nombre de usuario")
-            nueva_contrasena = st.text_input("Contraseña", type="password")
-            confirmar_contrasena = st.text_input("Confirmar contraseña", type="password")
-            submit_registro = st.form_submit_button("Registrarse")
+        st.subheader("Registrarse")
 
-            if submit_registro:
-                if not nuevo_usuario.strip():
+        with st.form(key="registro_form"):
+            usuario = st.text_input("Usuario")
+            contrasenia = st.text_input("Contraseña", type="password")
+            confirmar_contrasenia = st.text_input("Confirmar Contraseña", type="password")
+            submit = st.form_submit_button("Registrar")
+
+            if submit:
+                if not usuario.strip():
                     st.error("⚠️ El nombre de usuario no puede estar vacío.")
-                elif not nueva_contrasena.strip():
+                elif not contrasenia.strip():
                     st.error("⚠️ La contraseña no puede estar vacía.")
-                elif nueva_contrasena != confirmar_contrasena:
+                elif contrasenia != confirmar_contrasenia:
                     st.error("⚠️ Las contraseñas no coinciden.")
                 else:
-                    ok, msg = logopeda_service.registrar_logopeda(nuevo_usuario, nueva_contrasena)
+                    ok, mensaje = logopeda_service.registrar_logopeda(usuario, contrasenia)
                     if ok:
-                        st.success(f"Usuario {nuevo_usuario} registrado con éxito")
+                        st.success(f"✅ Bienvenido, {usuario}. Su cuenta ha sido creada.")
                         st.session_state.modo_login = None
-                        st.session_state.pantalla = 1
+                        st.experimental_rerun()
                     else:
-                        st.error(msg)
+                        st.error(mensaje)
+
+
+
+                       
