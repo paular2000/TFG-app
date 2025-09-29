@@ -17,3 +17,6 @@ def main():
     if st.session_state["pantalla"] == "login":
         login.pantalla_login()
 
+
+if __name__ == "__main__":
+    main()
