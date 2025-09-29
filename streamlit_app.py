@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from ui import pantalla_login
+from ui import login
 
 
 
@@ -9,7 +9,11 @@ from ui import pantalla_login
 
 
 
-if 'pantalla' not in st.session_state:
-    st.session_state.pantalla = 0
-    pantalla_login()
+def main():
+
+    if "pantalla" not in st.session_state:
+        st.session_state["pantalla"] = "login"
+    
+    if st.session_state["pantalla"] == "login":
+        login.pantalla_login()
 
