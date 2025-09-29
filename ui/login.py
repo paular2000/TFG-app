@@ -3,7 +3,7 @@ from services import logopeda_service
 
 
 def pantalla_login():
-    st.title("Inicio de sesión")
+    st.title("DuraGUI")
 
     opciones = st.radio("Elegir", ("Iniciar sesión", "Registrarse"))
 
