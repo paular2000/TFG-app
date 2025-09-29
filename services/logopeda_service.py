@@ -34,3 +34,12 @@ def validar_logopeda(usuario: str, contrasenia: str):
         return False, "❌ Contraseña incorrecta."
     except Exception as e:
         return False, f"❌ Error al validar: {e}"
+    
+
+def find_logopeda_by_user(usuario: str):
+    try:
+        logopeda_repo.inicializar_logopedas()
+        logopeda = logopeda_repo.find_logopeda_by_user(usuario)
+        return logopeda
+    except Exception as e:
+        return None
