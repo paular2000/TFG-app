@@ -3,7 +3,8 @@ import streamlit as st
 from services import paciente_service
 
 def pantalla_logopeda():
-    st.title("Bienvenido, " + {st.session_state["usuario"]})
+    usuario = st.session_state.get("usuario", "Logopeda")
+    st.title(f"Bienvenido, {st.session_state[usuario]}")
 
     id_logopeda = st.session_state["id_logopeda"]
 
