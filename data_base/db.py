@@ -22,11 +22,6 @@ def open_spreadsheet(client, key: str):
     """Abre una hoja de cálculo por su clave"""
     return client.open_by_key(key)
 
-def normalize_key(s: str) -> str:
-    """Normaliza un string quitando tildes y pasándolo a minúsculas"""
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', str(s))
-        if unicodedata.category(c) != 'Mn'
-    ).lower()
+
 
 
