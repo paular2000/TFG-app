@@ -1,4 +1,4 @@
-from ui import pantalla_login, pantalla_logopeda, pantalla_paciente, pantalla_registro, pantalla_resultados
+from ui import pantalla_login
 from core.services.logopeda_service import LogopedaService
 from core.services.paciente_service import PacienteService
 import streamlit as st
@@ -18,5 +18,4 @@ if 'pantalla' not in st.session_state:
     st.session_state.pantalla = 0
 if st.session_state.pantalla == 0:
     pantalla_login(logopeda_service)
-elif st.session_state.pantalla == 1:
-    pantalla_logopeda(paciente_service)
+
