@@ -18,10 +18,12 @@ def pantalla_login():
             else:
                 valido, resultado = logopeda_service.validar_logopeda(usuario, contrasenia)
                 if valido:
-                    st.success(f"✅ Bienvenido/a, {usuario}!")
-                    st.session_state["pantalla"] = "logopeda"   # ir a pantalla principal       
-                    st.session_state["id_logopeda"] = resultado 
-                    st.rerun()                    # forzar recarga de main()
+                    st.success("Bienvenido, "+ usuario)
+
+                    
+                    st.session_state["usuario"] = usuario
+
+                    st.session_state.pantalla = 1                  
                     
                 else:
                     st.error(resultado)
@@ -38,18 +40,20 @@ def pantalla_login():
                 st.error("❌ Las contraseñas no coinciden.")
             else:
                 registrado, mensaje = logopeda_service.registrar_logopeda(nuevo_usuario, nueva_contrasenia)
+
                 if registrado:
                     st.success(mensaje)
                     st.session_state["usuario"] = nuevo_usuario
                     # Obtener el objeto logopeda para guardar su ID
                     logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
+                    
                     if logopeda:
                         st.session_state["id_logopeda"] = logopeda.id
-
                     else:
                         st.error("❌ Error al recuperar el ID del logopeda registrado.")
                         return
-                    st.session_state.pantalla = "logopeda"
-                    st.rerun()
+                    
+                    st.session_state.pantalla = 1
+
                 else:
                     st.error(mensaje)

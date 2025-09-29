@@ -24,6 +24,7 @@ def registrar_logopeda(usuario: str, contrasenia: str):
 def validar_logopeda(usuario: str, contrasenia: str):
     try:
         logopeda_repo.inicializar_logopedas()
+        
         logopeda = logopeda_repo.find_logopeda_by_user(usuario)
         if logopeda and logopeda.contrasenia == contrasenia:
             return True, logopeda.id
