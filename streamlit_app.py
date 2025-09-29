@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from ui import login
+from ui import login, pantalla_logopeda
 
 
 
@@ -16,6 +16,8 @@ def main():
     
     if st.session_state.pantalla == 0:
         login.pantalla_login()
+    elif st.session_state.pantalla == 1:
+        pantalla_logopeda.pantalla_logopeda()
 
     
 
