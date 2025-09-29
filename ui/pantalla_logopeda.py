@@ -4,11 +4,14 @@ from services import paciente_service
 
 def pantalla_logopeda():
     
-    usuario = st.session_state.get("usuario", "Usuario")
+    usuario = st.session_state.get("usuario")
     st.title(f"Bienvenido, " +  usuario)
 
-    id_logopeda = st.session_state["id_logopeda"]
-
+    id_logopeda = st.session_state.get["id_logopeda"]
+    if not id_logopeda:
+        st.error("❌ Error: ID de logopeda no encontrado en la sesión.")
+        return
+    
     # Botón para mostrar/ocultar pacientes
     if "show_pacientes" not in st.session_state:
         st.session_state.show_pacientes = False
