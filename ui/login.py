@@ -42,7 +42,6 @@ def pantalla_login():
                     st.success(mensaje)
                     st.session_state["pantalla"] = "logopeda"   # ir a pantalla principal
                     st.session_state["usuario"] = nuevo_usuario
-                    st.session_state["id_logopeda"] = logopeda_service.find_logopeda_by_user(nuevo_usuario).id
                     st.experimental_rerun()
                 else:
                     st.error(mensaje)
