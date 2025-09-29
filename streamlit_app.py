@@ -20,5 +20,6 @@ def main():
     elif st.session_state["pantalla"] == "logopeda":
         pantalla_logopeda.pantalla_logopeda()
 
+
 if __name__ == "__main__":
     main()

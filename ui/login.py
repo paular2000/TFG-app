@@ -10,9 +10,9 @@ def pantalla_login():
     if opciones == "Iniciar sesión":
         st.subheader("Iniciar sesión")
         
-        usuario = st.text_input("Usuario")
-        contrasenia = st.text_input("Contraseña", type="password")
-        if st.button("Entrar"):
+        usuario = st.text_input("Usuario", key="login_usuario")
+        contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
+        if st.button("Entrar", key="btn_login"):
             if not usuario or not contrasenia:
                 st.error("❌ Por favor, complete todos los campos.")
             else:
@@ -28,10 +28,10 @@ def pantalla_login():
     else:
         st.subheader("Registrarse")
         
-        nuevo_usuario = st.text_input("Nuevo usuario")
-        nueva_contrasenia = st.text_input("Nueva contraseña", type="password")
-        confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password")
-        if st.button("Registrar"):
+        nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
+        nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
+        confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
+        if st.button("Registrar", key="btn_registro"):
             if not nuevo_usuario or not nueva_contrasenia:
                 st.error("❌ Por favor, complete todos los campos.")
             elif nueva_contrasenia != confirmar_contrasenia:
