@@ -22,7 +22,14 @@ def pantalla_login():
 
                     
                     st.session_state["usuario"] = usuario
-                    st.session_state["id_logopeda"] = logopeda_service.find_logopeda_by_user(usuario).id
+
+                    logopeda = logopeda_service.find_logopeda_by_user(usuario)
+                    if logopeda:
+                        st.session_state["id_logopeda"] = logopeda.id
+                    else:
+                        st.error("❌ Error al recuperar el ID del logopeda registrado.")
+                        return   
+                                     
                     st.session_state.pantalla = 1                  
                     
                 else:
@@ -44,7 +51,14 @@ def pantalla_login():
                 if registrado:
                     st.success(mensaje)
                     st.session_state["usuario"] = nuevo_usuario
-                    st.session_state["id_logopeda"] = logopeda_service.find_logopeda_by_user(nuevo_usuario).id
+
+                    logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
+                    if logopeda:
+                        st.session_state["id_logopeda"] = logopeda.id
+                    else:
+                        st.error("❌ Error al recuperar el ID del logopeda registrado.")
+                        return
+                    
                     # Obtener el objeto logopeda para guardar su ID
                     logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
                     
