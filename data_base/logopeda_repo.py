@@ -17,7 +17,8 @@ def get_logopedas_sheet():
 
 
 def inicializar_logopedas():
-    filas = get_logopedas_sheet().get_all_values()
+    sheet = get_logopedas_sheet()
+    filas = sheet.get_all_values()
 
     if not filas or all(cell == "" for cell in filas[0]):
         encabezados = ["ID", "Usuario", "Contraseña", "Fecha_registro"]
