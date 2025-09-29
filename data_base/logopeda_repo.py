@@ -44,7 +44,7 @@ def find_logopeda_by_user(usuario: str) -> Optional[Logopeda]:
     """Busca un logopeda por nombre de usuario."""
     logopedas = get_all_logopedas()
     for l in logopedas:
-        if l.usuario == usuario:
+        if l.usuario.strip() == usuario.strip():
             return l
     return None
 

@@ -26,7 +26,7 @@ def validar_logopeda(usuario: str, contrasenia: str):
         logopeda_repo.inicializar_logopedas()
         
         logopeda = logopeda_repo.find_logopeda_by_user(usuario)
-        if logopeda and logopeda.contrasenia == contrasenia:
+        if logopeda and logopeda.contrasenia.strip() == contrasenia.strip():
             return True, logopeda.id
         return False, "❌ Usuario o contraseña incorrectos."
     except Exception as e:
