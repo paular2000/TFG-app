@@ -49,7 +49,8 @@ def find_logopeda_by_user(usuario: str) -> Optional[Logopeda]:
 
 
 def insert_logopeda(usuario: str, contrasenia: str):
-    filas = get_logopedas_sheet().get_all_values()
+    sheet = get_logopedas_sheet()
+    filas = sheet.get_all_values()
     new_id = f"L0{len(filas)}"  # cuenta también la fila de encabezado
 
     nuevo_logopeda = Logopeda(
@@ -59,5 +60,5 @@ def insert_logopeda(usuario: str, contrasenia: str):
         fecha_registro=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     )
 
-    filas.append_row([nuevo_logopeda.id, nuevo_logopeda.usuario, nuevo_logopeda.contrasenia, nuevo_logopeda.fecha_registro])
+    sheet.append_row([nuevo_logopeda.id, nuevo_logopeda.usuario, nuevo_logopeda.contrasenia, nuevo_logopeda.fecha_registro])
     return nuevo_logopeda
