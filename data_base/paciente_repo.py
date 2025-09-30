@@ -60,7 +60,6 @@ def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
 
 
 def insert_paciente(paciente: Paciente):
-    inicializar_pacientes()
 
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
