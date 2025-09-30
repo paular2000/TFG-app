@@ -29,6 +29,7 @@ def inicializar_pacientes():
         get_pacientes_sheet().append_row(encabezados)
 
 
+
 def get_all_pacientes() -> List[Paciente]:
     """Devuelve todos los pacientes registrados como objetos Paciente."""
     sheet = get_pacientes_sheet()
@@ -47,7 +48,6 @@ def get_all_pacientes() -> List[Paciente]:
         )
         for fila in filas
     ]
-
 
 
 def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
@@ -87,7 +87,7 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.edad if nuevo_paciente.edad else "",
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
-        ", ".join(nuevo_paciente.aficiones) if nuevo_paciente.aficiones else ""
+        nuevo_paciente.aficiones
     ])
     return nuevo_paciente
 
