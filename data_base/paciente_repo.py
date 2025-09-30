@@ -26,7 +26,7 @@ def inicializar_pacientes():
         encabezados = ["ID","ID_Logopeda","Fecha de Registro","Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficion"] + tareas
 
-        sheet.append_row(encabezados)
+        get_pacientes_sheet().append_row(encabezados)
 
 
 def get_all_pacientes() -> List[Paciente]:
@@ -60,10 +60,8 @@ def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
 
 
 def insert_paciente(paciente: Paciente):
-
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
-
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
     
@@ -89,7 +87,7 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.edad if nuevo_paciente.edad else "",
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
-        ", ".join(nuevo_paciente.aficiones)  # en caso de lista
+        nuevo_paciente.aficiones
     ])
     return nuevo_paciente
 
