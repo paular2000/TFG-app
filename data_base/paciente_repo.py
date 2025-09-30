@@ -1,6 +1,5 @@
 
 import datetime
-import streamlit as st
 from models.models import Paciente
 
 from git import List, Optional
@@ -79,9 +78,6 @@ def insert_paciente(paciente: Paciente):
         aficiones=",".join(paciente.aficiones) if isinstance(paciente.aficiones, list) else paciente.aficiones
     )
 
-    st.write("Insertando paciente:", nuevo_paciente)
-
-
     sheet.append_row([
         nuevo_paciente.id,
         nuevo_paciente.id_logopeda,
@@ -93,6 +89,6 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.estudios,
         nuevo_paciente.aficiones
     ])
-    st.write("✅ Paciente insertado")
+    
     return nuevo_paciente
 
