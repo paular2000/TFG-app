@@ -16,14 +16,14 @@ def pantalla_logopeda():
 
     col1, col2 = st.columns([1,1])
     with col1:
-        if st.button("Ver pacientes"):
-            st.session_state.show_pacientes = not st.session_state.show_pacientes
+        pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
+        if not pacientes:
+            st.info("No tienes pacientes registrados aún.")
+            
     with col2:
         if st.button("Registrar nuevo paciente"):
             st.session_state.pantalla = "registro_paciente"
             st.experimental_rerun()
     
     
-    pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
-    if not pacientes:
-        st.info("No tienes pacientes registrados aún.")
+    
