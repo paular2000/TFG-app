@@ -78,6 +78,9 @@ def insert_paciente(paciente: Paciente):
         aficiones=paciente.aficiones
     )
 
+    print("Insertando paciente:", nuevo_paciente)
+
+
     sheet.append_row([
         nuevo_paciente.id,
         nuevo_paciente.id_logopeda,
@@ -89,5 +92,6 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.estudios,
         nuevo_paciente.aficiones
     ])
+    print("✅ Paciente insertado")
     return nuevo_paciente
 
