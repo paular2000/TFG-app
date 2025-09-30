@@ -24,10 +24,10 @@ def pantalla_logopeda():
         else:
             st.info("No tienes pacientes asignados.")
 
-    with col2:
-        if st.button("Registrar nuevo paciente"):
-            st.session_state.pantalla = "registro_paciente"
-            st.experimental_rerun()
+    
+    if st.button("Registrar nuevo paciente"):
+        st.session_state.pantalla = "registro_paciente"
+        st.experimental_rerun()
     
     
     
