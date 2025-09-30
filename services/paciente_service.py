@@ -21,8 +21,8 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_naci
             aficiones=", ".join(aficiones)
         )  
 
-        nuevo_paciente = paciente_repo.insert_paciente(paciente)
-        return True, f"✅ Paciente {nuevo_paciente.nombre} registrado con éxito."
+        paciente_repo.insert_paciente(paciente)
+        return True
     except Exception as e:
         return False, f"❌ Error al registrar paciente: {e}"
     
