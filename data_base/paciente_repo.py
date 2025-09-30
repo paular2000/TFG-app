@@ -1,4 +1,5 @@
 
+import datetime
 from models.models import Paciente
 
 from git import List, Optional
@@ -63,28 +64,32 @@ def insert_paciente(paciente: Paciente):
     filas = sheet.get_all_values()
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
+    # Registrar la fecha de alta automáticamente
+    fecha_registro = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     nuevo_paciente = Paciente(
         id=new_id,
         id_logopeda=paciente.id_logopeda,
-        fecha_registtro=paciente.fecha_registtro,
         nombre=paciente.nombre,
         apellidos=paciente.apellidos,
-        edad=paciente.edad,
+        fecha_nacimiento=paciente.fecha_nacimiento,
         profesion=paciente.profesion,
         estudios=paciente.estudios,
-        aficiones=paciente.aficiones
+        aficiones=paciente.aficiones,
+        fecha_registro=fecha_registro,
+        edad=paciente.edad  # opcional
     )
 
     sheet.append_row([
         nuevo_paciente.id,
         nuevo_paciente.id_logopeda,
-        nuevo_paciente.fecha_registtro,
+        nuevo_paciente.fecha_registro,
         nuevo_paciente.nombre,
         nuevo_paciente.apellidos,
-        nuevo_paciente.edad,
+        nuevo_paciente.edad if nuevo_paciente.edad else "",
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
-        ", ".join(nuevo_paciente.aficiones)
+        nuevo_paciente.aficiones
     ])
     return nuevo_paciente
 

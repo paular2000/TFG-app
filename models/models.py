@@ -12,15 +12,13 @@ class Logopeda:
     fecha_registro: str
 
 @dataclass
-def __init__(self, id, id_logopeda, nombre, apellidos, fecha_nacimiento,
-                 profesion, estudios, aficiones, fecha_registro=None, edad=None):
-        self.id = id
-        self.id_logopeda = id_logopeda
-        self.nombre = nombre
-        self.apellidos = apellidos
-        self.fecha_nacimiento = fecha_nacimiento
-        self.profesion = profesion
-        self.estudios = estudios
-        self.aficiones = aficiones
-        self.fecha_registro = fecha_registro
-        self.edad = edad
+class Paciente:
+    id: str
+    id_logopeda: str
+    fecha_registtro: str
+    nombre: str
+    apellidos: str
+    edad: int
+    profesion: str
+    estudios: str
+    aficiones: List[str]
