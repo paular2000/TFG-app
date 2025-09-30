@@ -24,7 +24,7 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_naci
             edad=edad,
             profesion=profesion,
             estudios=estudios,
-            aficiones=", ".join(aficiones)
+            aficiones=aficiones
         )  
 
         paciente_repo.insert_paciente(paciente)
