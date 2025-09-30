@@ -10,7 +10,7 @@ from data_base import paciente_repo
 def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_nacimiento: str,
                        profesion: str, estudios: str, aficiones: list):
     try:
-        paciente_repo.inicializar_pacientes()
+        
 
         nacimiento = datetime.strptime(fecha_nacimiento, "%d/%m/%Y")
         edad = datetime.now().year - nacimiento.year

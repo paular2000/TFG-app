@@ -87,7 +87,7 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.edad if nuevo_paciente.edad else "",
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
-        nuevo_paciente.aficiones
+        ", ".join(nuevo_paciente.aficiones) if nuevo_paciente.aficiones else ""
     ])
     return nuevo_paciente
 
