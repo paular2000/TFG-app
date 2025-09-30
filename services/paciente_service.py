@@ -6,9 +6,20 @@ from data_base import paciente_repo
 
 
 
-def registrar_paciente(paciente: Paciente):
+def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_nacimiento: str,
+                       profesion: str, estudios: str, aficiones: list):
     try:
         paciente_repo.inicializar_pacientes()
+
+        paciente = Paciente(
+            id_logopeda=id_logopeda,
+            nombre=nombre,
+            apellidos=apellidos,
+            fecha_nacimiento=fecha_nacimiento,
+            profesion=profesion,
+            estudios=estudios,
+            aficiones=", ".join(aficiones)
+        )  
 
         nuevo_paciente = paciente_repo.insert_paciente(paciente)
         return True, f"✅ Paciente {nuevo_paciente.nombre} registrado con éxito."
