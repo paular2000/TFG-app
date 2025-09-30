@@ -8,7 +8,7 @@ from data_base import paciente_repo
 
 
 def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_nacimiento: str,
-                       profesion: str, estudios: str, aficiones: list):
+                       profesion: str, estudios: str, aficiones: str):
     try:
         paciente_repo.inicializar_pacientes()
         
