@@ -19,12 +19,14 @@ def get_pacientes_sheet():
 
 def inicializar_pacientes():
     sheet = get_pacientes_sheet()
-    
-    tareas = [f"T{i+1}" for i in range(30)]
-    encabezados = ["ID","ID_Logopeda","Fecha de Registro","Nombre", "Apellidos", "Edad", "Profesión",
-    "Estudios", "Aficion"] + tareas
+    filas = sheet.get_all_values()
 
-    sheet.append_row(encabezados)
+    if not filas or all(cell == "" for cell in filas[0]):
+        tareas = [f"T{i+1}" for i in range(30)]
+        encabezados = ["ID","ID_Logopeda","Fecha de Registro","Nombre", "Apellidos", "Edad", "Profesión",
+        "Estudios", "Aficion"] + tareas
+
+        sheet.append_row(encabezados)
 
 
 def get_all_pacientes() -> List[Paciente]:
@@ -58,13 +60,11 @@ def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
 
 
 def insert_paciente(paciente: Paciente):
+    inicializar_pacientes()
+
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
 
-    if not filas or all(cell == "" for cell in filas[0]):
-        inicializar_pacientes()
-        filas = sheet.get_all_values()
-    
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
     
