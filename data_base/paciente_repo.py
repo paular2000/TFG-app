@@ -62,6 +62,7 @@ def insert_paciente(paciente: Paciente):
 
     if not filas or all(cell == "" for cell in filas[0]):
         inicializar_pacientes()
+        filas = sheet.get_all_values()
     
     
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
