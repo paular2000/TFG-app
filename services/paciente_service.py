@@ -1,5 +1,6 @@
 
 
+from datetime import datetime
 from typing import Optional
 from models.models import Paciente
 from data_base import paciente_repo
@@ -11,11 +12,16 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_naci
     try:
         paciente_repo.inicializar_pacientes()
 
+        nacimiento = datetime.strptime(fecha_nacimiento, "%d/%m/%Y")
+        edad = datetime.now().year - nacimiento.year
+        
         paciente = Paciente(
+            id="",
             id_logopeda=id_logopeda,
+            fecha_registro="",
             nombre=nombre,
             apellidos=apellidos,
-            fecha_nacimiento=fecha_nacimiento,
+            edad=edad,
             profesion=profesion,
             estudios=estudios,
             aficiones=", ".join(aficiones)

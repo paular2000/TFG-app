@@ -15,7 +15,7 @@ class Logopeda:
 class Paciente:
     id: str
     id_logopeda: str
-    fecha_registtro: str
+    fecha_registro: str
     nombre: str
     apellidos: str
     edad: int

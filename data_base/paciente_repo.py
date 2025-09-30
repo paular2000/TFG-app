@@ -64,20 +64,18 @@ def insert_paciente(paciente: Paciente):
     filas = sheet.get_all_values()
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
-    # Registrar la fecha de alta automáticamente
-    fecha_registro = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
 
     nuevo_paciente = Paciente(
         id=new_id,
         id_logopeda=paciente.id_logopeda,
+        fecha_registro=paciente.fecha_registro,
         nombre=paciente.nombre,
         apellidos=paciente.apellidos,
-        fecha_nacimiento=paciente.fecha_nacimiento,
+        edad=paciente.edad,
         profesion=paciente.profesion,
         estudios=paciente.estudios,
-        aficiones=paciente.aficiones,
-        fecha_registro=fecha_registro,
-        edad=paciente.edad  # opcional
+        aficiones=paciente.aficiones
     )
 
     sheet.append_row([
