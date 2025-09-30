@@ -62,6 +62,11 @@ def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
 def insert_paciente(paciente: Paciente):
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
+
+    if not filas or all(cell == "" for cell in filas[0]):
+        inicializar_pacientes()
+    
+    
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
     
@@ -69,7 +74,7 @@ def insert_paciente(paciente: Paciente):
     nuevo_paciente = Paciente(
         id=new_id,
         id_logopeda=paciente.id_logopeda,
-        fecha_registro=paciente.fecha_registro,
+        fecha_registro=datetime.now().strftime("%d/%m/%Y"),
         nombre=paciente.nombre,
         apellidos=paciente.apellidos,
         edad=paciente.edad,
