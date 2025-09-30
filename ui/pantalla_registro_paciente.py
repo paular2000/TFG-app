@@ -26,6 +26,8 @@ def pantalla_registro_paciente():
             mes_nombre = st.selectbox("Mes", meses)
         with col3:
             anio = st.selectbox("Año", anios)
+        
+        fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
 
         profesiones_opciones = ["Escoger una opción","Jardinero", "Profesor"]
         estudios_opciones = ["Escoger una opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
@@ -38,18 +40,15 @@ def pantalla_registro_paciente():
         submit = st.form_submit_button("Siguiente")
 
         if submit: #si pulsar siguiente
-            campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones]
+            campos_obligatorios = [nombre, apellidos, fecha_nacimiento, profesion, estudios, aficiones]
 
             if all(campos_obligatorios) and \
-               profesion != "Escoger una opción" and \
-               estudios != "Escoger una opción" and \
-               aficiones:
+                profesion != "Escoger una opción" and \
+                estudios != "Escoger una opción" and \
+                aficiones:
+                
                 try:
-                    #calculo de la edad
-                    fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
-                    edad = int(datetime.now().year - fecha_nacimiento.year)
-
-                    
+    
                     registrado = paciente_service.registrar_paciente(
                         id_logopeda=st.session_state.id_logopeda,
                         nombre=nombre,
