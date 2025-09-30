@@ -76,7 +76,7 @@ def insert_paciente(paciente: Paciente):
         edad=paciente.edad,
         profesion=paciente.profesion,
         estudios=paciente.estudios,
-        aficiones=paciente.aficiones
+        aficiones=",".join(paciente.aficiones) if isinstance(paciente.aficiones, list) else paciente.aficiones
     )
 
     st.write("Insertando paciente:", nuevo_paciente)
