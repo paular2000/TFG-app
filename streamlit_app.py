@@ -13,7 +13,7 @@ def main():
 
     if st.session_state.pantalla == 0:
         login.pantalla_login()
-    if st.session_state.pantalla == 1
+    if st.session_state.pantalla == 1:
         pantalla_logopeda()
     
 
