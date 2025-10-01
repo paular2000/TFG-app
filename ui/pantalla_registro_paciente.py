@@ -49,7 +49,7 @@ def pantalla_registro_paciente():
                 
                 try:
     
-                    registrado = paciente_service.registrar_paciente(
+                    registrado, mensaje = paciente_service.registrar_paciente(
                         id_logopeda=st.session_state.id_logopeda,
                         nombre=nombre,
                         apellidos=apellidos,
@@ -62,6 +62,9 @@ def pantalla_registro_paciente():
                     if registrado:
                         st.success(f"✅ Paciente {nombre} {apellidos} registrado con éxito.")
                         st.session_state.pantalla = 4
+                    else:
+                        st.error(mensaje)
+
                 except ValueError:
                     st.error("⚠️ Fecha inválida.")
             else:
