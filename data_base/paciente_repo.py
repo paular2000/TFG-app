@@ -12,12 +12,15 @@ SHEET_INDEX = 0
 
 
 def get_pacientes_sheet():
+    """Devuelve la hoja de los pacientes"""
     client = get_sheets_client()
     spreadsheet = open_spreadsheet(client, SPREADSHEET_KEY)
     return spreadsheet.get_worksheet(SHEET_INDEX)
 
 
+
 def inicializar_pacientes():
+    """Inicializa los encabezados de la bd"""
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
 
@@ -26,7 +29,7 @@ def inicializar_pacientes():
         encabezados = ["ID","ID_Logopeda","Fecha de Registro","Nombre", "Apellidos", "Edad", "Profesión",
         "Estudios", "Aficion"] + tareas
 
-        get_pacientes_sheet().append_row(encabezados)
+        sheet.append_row(encabezados)
 
 
 
@@ -62,9 +65,8 @@ def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
 def insert_paciente(paciente: Paciente):
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
-    new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
-    
+    new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
     nuevo_paciente = Paciente(
         id=new_id,
@@ -89,6 +91,5 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.estudios,
         nuevo_paciente.aficiones
     ])
-    
     return nuevo_paciente
 

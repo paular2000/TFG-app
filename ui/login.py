@@ -25,7 +25,7 @@ def pantalla_login():
 
                     logopeda = logopeda_service.find_logopeda_by_user(usuario)
                     if logopeda:
-                        st.session_state["id_logopeda"] = logopeda.id
+                        st.session_state["id_logopeda"] = logopeda.id # Guardo el id del logopeda en "memoria"
                     else:
                         st.error("❌ Error al recuperar el ID del logopeda registrado.")
                         return   
@@ -35,7 +35,7 @@ def pantalla_login():
                 else:
                     st.error(resultado)
     else:
-        st.subheader("Registrarse")
+        st.subheader("Registrarse") # Caso de primera vez en la app
         
         nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
         nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
@@ -63,7 +63,7 @@ def pantalla_login():
                     logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
                     
                     if logopeda:
-                        st.session_state["id_logopeda"] = logopeda.id
+                        st.session_state["id_logopeda"] = logopeda.id # Guardo el id del logopeda en "memoria"
                     else:
                         st.error("❌ Error al recuperar el ID del logopeda registrado.")
                         return
