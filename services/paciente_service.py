@@ -32,9 +32,8 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str
         nuevo_paciente = paciente_repo.insert_paciente(paciente)
         
         if nuevo_paciente:
-            return True
-        else:
-            return False
+            return nuevo_paciente
+        
         
     except Exception as e:
         return False, f"❌ Error al registrar paciente: {e}"
