@@ -9,7 +9,7 @@ def pantalla_logopeda():
     imagen = Image.open("images/logo_y_nombre.png")
 
     with st.sidebar:
-            st.title("Menú")
+            
             if st.button("Cerrar sesión"):
                 st.session_state.pantalla = 0
                 st.session_state["usuario"] = ""
