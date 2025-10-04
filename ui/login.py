@@ -93,6 +93,7 @@ def pantalla_login():
                             st.rerun()
                         else:
                             st.error(mensaje)
+                            
             boton_volver_login = st.button("Volver al login")
             if boton_volver_login:
                 st.session_state.modo_registro = False

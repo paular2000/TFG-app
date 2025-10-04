@@ -7,6 +7,9 @@ def pantalla_formulario_paciente():
 
     with st.sidebar:
             st.title("Menú")
+            if st.button("Volver"):
+                st.session_state.pantalla = 1
+                st.rerun()
             if st.button("Cerrar sesión"):
                 st.session_state.pantalla = 0
                 st.session_state["usuario"] = ""
