@@ -65,7 +65,9 @@ def pantalla_login():
                 usuario = st.text_input("Usuario", key="login_usuario")
                 contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
                 boton_entrar = st.form_submit_button("Entrar")
-                boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
+                col4 = st.columns([1])
+                with col4[0]:
+                    boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
 
                 if boton_entrar:
                     if not usuario or not contrasenia:
