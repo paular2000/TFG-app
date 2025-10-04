@@ -97,7 +97,7 @@ def pantalla_formulario_paciente():
                     
                     
                     
-                    if exito:
+                    if exito and nuevo_paciente:
                         st.success(mensaje)
                         st.session_state["id_paciente"] = nuevo_paciente.id
                         st.session_state.pantalla = 3

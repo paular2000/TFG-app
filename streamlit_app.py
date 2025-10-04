@@ -19,5 +19,6 @@ def main():
         pantalla_formulario_paciente.pantalla_formulario_paciente()
     if st.session_state.pantalla == 3:
         pantalla_tareas.pantalla_resultados()
+        
 if __name__ == "__main__":
     main()
