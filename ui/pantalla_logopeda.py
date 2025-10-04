@@ -26,9 +26,11 @@ def pantalla_logopeda():
         
         #col1, col2, col3, col4 = st.columns([1,1,1,1])
 
+        st.image(imagen, use_container_width=True)
         
         ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
         
+
         if ok and lista_pacientes:
             st.write("Pacientes asignados:")
             for paciente in lista_pacientes[1]:
