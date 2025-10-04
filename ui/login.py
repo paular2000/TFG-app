@@ -58,7 +58,7 @@ def pantalla_login():
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
             with st.form("registro_form"):
-                st.image(imagen, use_container_width=True)
+                
                     
                 nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
                 nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
