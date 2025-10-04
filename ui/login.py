@@ -52,9 +52,9 @@ def pantalla_login():
 
     st.write("")
 
-    col1 = st.columns(1)
+    
 
-    with col1:
+    with st.form("login_form"):
     
         usuario = st.text_input("Usuario", key="login_usuario")
         contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
