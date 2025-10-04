@@ -80,8 +80,8 @@ def insert_paciente(paciente: Paciente):
         edad=paciente.edad,
         profesion=paciente.profesion,
         estudios=paciente.estudios,
-        habito_lector=paciente.habito_lector,
-        aficiones=",".join(paciente.aficiones) if isinstance(paciente.aficiones, list) else paciente.aficiones
+        habito_lector=paciente.habito_lector
+        
     )
 
     sheet.append_row([
@@ -95,7 +95,7 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
         nuevo_paciente.habito_lector,
-        nuevo_paciente.aficiones
+        
     ])
     return nuevo_paciente
    
