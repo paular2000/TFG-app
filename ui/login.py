@@ -64,9 +64,10 @@ def pantalla_login():
                 
                 usuario = st.text_input("Usuario", key="login_usuario")
                 contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
-                boton_entrar = st.form_submit_button("Entrar")
-                col4 = st.columns([1])
-                with col4[0]:
+                
+                col4, col5, col6 = st.columns([1,1,1])
+                with col5:
+                    boton_entrar = st.form_submit_button("Entrar")
                     boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
 
                 if boton_entrar:
