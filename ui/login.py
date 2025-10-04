@@ -49,11 +49,11 @@ def pantalla_login():
     with col1:
         if st.button("Iniciar Sesión"):
             st.session_state.modo_login = "login"
-            st.rerun()
+            
     with col2:
         if st.button("Registrarse"):
             st.session_state.modo_login = "registro"
-            st.rerun()
+            
 
     if st.session_state.modo_login == "Iniciar sesión":
         st.subheader("Iniciar sesión")
