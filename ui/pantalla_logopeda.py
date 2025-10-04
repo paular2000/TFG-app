@@ -8,8 +8,10 @@ def pantalla_logopeda():
     st.title(f"Bienvenido, " +  usuario)
     
     
-
+    id_logopeda = st.session_state.get("id_logopeda")
     
+    st.write("Id Logopeda: " + id_logopeda)
+
     if st.button("Registrar nuevo paciente"):
         st.session_state.pantalla = 3
         
