@@ -64,10 +64,7 @@ def pantalla_login():
                 nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
                 confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
 
-                if  nueva_contrasenia == confirmar_contrasenia and nueva_contrasenia != "":
-                    password.hash_password(nueva_contrasenia)
-                else:
-                    st.warning("Las contraseñas no coinciden o están vacías.")
+                
 
                 col4, col5, col6 = st.columns([1,1,1])
                 with col5:
@@ -77,6 +74,8 @@ def pantalla_login():
                 if boton_registrar:
                     if not nuevo_usuario or not nueva_contrasenia:
                         st.error("❌ Por favor, complete todos los campos.")
+                    elif nueva_contrasenia != confirmar_contrasenia:
+                        st.error("❌ Las contraseñas no coinciden.")
                     else:
                         registrado, mensaje = logopeda_service.registrar_logopeda(nuevo_usuario, nueva_contrasenia)
                         if registrado:
