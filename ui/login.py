@@ -88,7 +88,7 @@ def pantalla_login():
                             st.rerun()                 
                         else:
                             st.error(resultado)
-            boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
+            boton_eres_nuevo = st.button("¿Eres nuevo?")
             if boton_eres_nuevo:
                 st.session_state.modo_registro = True
                 st.rerun()  # Volvemos a renderizar con el modo registro
