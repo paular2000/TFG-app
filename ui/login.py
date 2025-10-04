@@ -68,7 +68,7 @@ def pantalla_login():
                 col4, col5, col6 = st.columns([1,1,1])
                 with col5:
                     boton_entrar = st.form_submit_button("Entrar")
-                    boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
+                boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
 
                 if boton_entrar:
                     if not usuario or not contrasenia:
