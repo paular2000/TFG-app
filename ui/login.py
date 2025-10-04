@@ -6,7 +6,7 @@ from services import logopeda_service
 def pantalla_login():
 
 
-    logo_base64 = load_image_as_base64("images/Logo.png")
+    logo_base64 = load_image_as_base64("images/logo_y_nombre.png")
        
     st.markdown(
         f"""
