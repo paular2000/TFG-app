@@ -103,8 +103,10 @@ def pantalla_login():
                 nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
                 confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
 
-                boton_registrar = st.form_submit_button("Registrar")
-                boton_volver_login = st.form_submit_button("Volver al login")
+                col4, col5, col6 = st.columns([1,1,1])
+                with col5:
+                    boton_registrar = st.form_submit_button("Registrar")
+                
 
                 if boton_registrar:
                     if not nuevo_usuario or not nueva_contrasenia:
@@ -127,10 +129,10 @@ def pantalla_login():
                             st.rerun()
                         else:
                             st.error(mensaje)
-
-                if boton_volver_login:
-                    st.session_state.modo_registro = False
-                    st.rerun()
+            boton_volver_login = st.button("Volver al login")
+            if boton_volver_login:
+                st.session_state.modo_registro = False
+                st.rerun()
 
 
 
