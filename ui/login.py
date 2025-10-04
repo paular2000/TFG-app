@@ -1,10 +1,11 @@
 import streamlit as st
+import base64
 from services import logopeda_service
 
 
 def pantalla_login():
     
-    
+    logo_base64 = load_image_as_base64("images/Logo.png")
     st.markdown(
         f"""
         <style>
@@ -28,8 +29,8 @@ def pantalla_login():
         }}
         </style>
         <div class="titulo">
-        st.images(<img src="//images/Logo.png" alt="Logo">)
-        </div>        """,
+        <img src="data:image/png;base64,{logo_base64}"> 
+        </div>        """,       
         unsafe_allow_html=True
     )
 
@@ -102,3 +103,9 @@ def pantalla_login():
 
                 else:
                     st.error(mensaje)
+
+
+def load_image_as_base64(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
