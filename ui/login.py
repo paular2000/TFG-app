@@ -51,7 +51,7 @@ def pantalla_login():
 
 
     st.write("")
-    # Inicializar la variable para saber si el usuario quiere registrarse
+    
     if "modo_registro" not in st.session_state:
         st.session_state.modo_registro = False
 
@@ -59,34 +59,37 @@ def pantalla_login():
     if not st.session_state.modo_registro:
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
+            
             with st.form("login_form"):
-                usuario = st.text_input("Usuario", key="login_usuario")
-                contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
-                boton_entrar = st.form_submit_button("Entrar")
-                boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
+                col4, col5, col6 = st.columns([1,1,1])
+                with col5:
+                    usuario = st.text_input("Usuario", key="login_usuario")
+                    contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
+                    boton_entrar = st.form_submit_button("Entrar")
+                    boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
 
-                if boton_entrar:
-                    if not usuario or not contrasenia:
-                        st.error("❌ Por favor, complete todos los campos.")
-                    else:
-                        valido, resultado = logopeda_service.validar_logopeda(usuario, contrasenia)
-                        if valido:
-                            st.success("Bienvenido, "+ usuario)
-                            st.session_state["usuario"] = usuario
-                            logopeda = logopeda_service.find_logopeda_by_user(usuario)
-                            if logopeda:
-                                st.session_state["id_logopeda"] = logopeda.id
-                            else:
-                                st.error("❌ Error al recuperar el ID del logopeda registrado.")
-                                return
-                            st.session_state.pantalla = 1 
-                            st.rerun()                 
+                    if boton_entrar:
+                        if not usuario or not contrasenia:
+                            st.error("❌ Por favor, complete todos los campos.")
                         else:
-                            st.error(resultado)
+                            valido, resultado = logopeda_service.validar_logopeda(usuario, contrasenia)
+                            if valido:
+                                st.success("Bienvenido, "+ usuario)
+                                st.session_state["usuario"] = usuario
+                                logopeda = logopeda_service.find_logopeda_by_user(usuario)
+                                if logopeda:
+                                    st.session_state["id_logopeda"] = logopeda.id
+                                else:
+                                    st.error("❌ Error al recuperar el ID del logopeda registrado.")
+                                    return
+                                st.session_state.pantalla = 1 
+                                st.rerun()                 
+                            else:
+                                st.error(resultado)
 
-                if boton_eres_nuevo:
-                    st.session_state.modo_registro = True
-                    st.rerun()  # Volvemos a renderizar con el modo registro
+                    if boton_eres_nuevo:
+                        st.session_state.modo_registro = True
+                        st.rerun()  # Volvemos a renderizar con el modo registro
 
     else:  # Modo registro
         col1, col2, col3 = st.columns([1,2,1])
