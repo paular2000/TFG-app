@@ -83,13 +83,16 @@ def pantalla_login():
                     else:
                         st.error(resultado) 
             
-            boton_registrarse = st.form_submit_button("¿Eres nuevo?") # Caso de primera vez en la app
-            if boton_registrarse:
+            boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?") # Caso de primera vez en la app
+            if boton_eres_nuevo:
                 st.subheader("Registrarse") 
                 nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
                 nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
                 confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
-                if st.button("Registrar", key="btn_registro"):
+
+                boton_registrar = st.form_submit_button("Registrar")
+
+                if boton_registrar:
                     if not nuevo_usuario or not nueva_contrasenia:
                         st.error("❌ Por favor, complete todos los campos.")
                     elif nueva_contrasenia != confirmar_contrasenia:
