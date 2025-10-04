@@ -52,11 +52,7 @@ def pantalla_login():
     )
 
 
-    col0 = st.columns(1)  
-    with col0: 
-       st.write("""
-
-                """)
+    
           
 
     col1, col2, col3= st.columns([1,2,1])
