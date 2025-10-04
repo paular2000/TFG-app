@@ -26,8 +26,7 @@ def pantalla_logopeda():
 
     
 
-    if st.button("Registrar nuevo paciente"):
-        st.session_state.pantalla = 3
+    
         
     
 
