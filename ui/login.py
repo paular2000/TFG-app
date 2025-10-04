@@ -56,30 +56,32 @@ def pantalla_login():
         usuario = st.text_input("Usuario", key="login_usuario")
         contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
 
-        boton_entrar = st.form_submit_button("Entrar")
-        if boton_entrar:
-            if not usuario or not contrasenia:
-                st.error("❌ Por favor, complete todos los campos.")
-            else:
-                valido, resultado = logopeda_service.validar_logopeda(usuario, contrasenia)
-                if valido:
-                    st.success("Bienvenido, "+ usuario)
-
-                    
-                    st.session_state["usuario"] = usuario
-
-                    logopeda = logopeda_service.find_logopeda_by_user(usuario)
-                    if logopeda:
-                        st.session_state["id_logopeda"] = logopeda.id # Guardo el id del logopeda en "memoria"
-                    else:
-                        st.error("❌ Error al recuperar el ID del logopeda registrado.")
-                        return   
-                                    
-                    st.session_state.pantalla = 1 
-                    st.rerun()                 
-                    
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            boton_entrar = st.form_submit_button("Entrar")
+            if boton_entrar:
+                if not usuario or not contrasenia:
+                    st.error("❌ Por favor, complete todos los campos.")
                 else:
-                    st.error(resultado) 
+                    valido, resultado = logopeda_service.validar_logopeda(usuario, contrasenia)
+                    if valido:
+                        st.success("Bienvenido, "+ usuario)
+
+                        
+                        st.session_state["usuario"] = usuario
+
+                        logopeda = logopeda_service.find_logopeda_by_user(usuario)
+                        if logopeda:
+                            st.session_state["id_logopeda"] = logopeda.id # Guardo el id del logopeda en "memoria"
+                        else:
+                            st.error("❌ Error al recuperar el ID del logopeda registrado.")
+                            return   
+                                        
+                        st.session_state.pantalla = 1 
+                        st.rerun()                 
+                        
+                    else:
+                        st.error(resultado) 
 
 
 
