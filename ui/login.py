@@ -61,9 +61,9 @@ def pantalla_login():
 
                 st.image(imagen, use_container_width=True)
                     
-                nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
-                nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
-                confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
+                nuevo_usuario = st.text_input("", key="registro_usuario", placeholder="Nuevo usuario", help="Elige un nombre de usuario")
+                nueva_contrasenia = st.text_input("", type="password", key="registro_contrasenia", placeholder="Nueva contraseña", help="Elige una contraseña segura")
+                confirmar_contrasenia = st.text_input("", type="password",  key="registro_confirmar_contrasenia", placeholder="Confirmar contraseña", help="Vuelve a escribir la contraseña")
 
                 
 
