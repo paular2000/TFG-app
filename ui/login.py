@@ -51,11 +51,18 @@ def pantalla_login():
         unsafe_allow_html=True
     )
 
+
+    col0 = st.columns([1,6,1])  
+    with col0: 
+       st.write("""
+
+                """)
+          
+
     col1, col2, col3= st.columns([1,2,1])
 
     with col1:
         iniciar_sesion = st.button("Iniciar Sesión")
-        registrarse = st.button("Registrarse")
 
         if iniciar_sesion:
             usuario = st.text_input("Usuario", key="login_usuario")
@@ -85,6 +92,8 @@ def pantalla_login():
                         st.error(resultado)
 
     with col3:
+        registrarse = st.button("Registrarse")
+
         if registrarse:
             nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
             nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
