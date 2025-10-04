@@ -66,6 +66,8 @@ def insert_paciente(paciente: Paciente):
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
 
+    inicializar_pacientes()
+
     new_id = f"P0{len(filas)}"  # cuenta también la fila de encabezado
 
     nuevo_paciente = Paciente(
