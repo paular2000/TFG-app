@@ -33,7 +33,7 @@ def pantalla_login():
         unsafe_allow_html=True
     )
 
-    opciones = st.radio(("Iniciar sesión", "Registrarse"))
+    opciones = st.radio("", ("Iniciar sesión", "Registrarse"))
 
     if opciones == "Iniciar sesión":
         st.subheader("Iniciar sesión")
