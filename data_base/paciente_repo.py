@@ -90,9 +90,11 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.fecha_registro,
         nuevo_paciente.nombre,
         nuevo_paciente.apellidos,
+        nuevo_paciente.email,
         nuevo_paciente.edad if nuevo_paciente.edad else "",
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
+        nuevo_paciente.habito_lector,
         nuevo_paciente.aficiones
     ])
     return nuevo_paciente
