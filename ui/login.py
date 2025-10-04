@@ -41,9 +41,21 @@ def pantalla_login():
         unsafe_allow_html=True
     )
 
-    opciones = st.radio("", ("Iniciar sesión", "Registrarse"))
+    if "modo_login" not in st.session_state:
+        st.session_state.modo_login = None
+    
+    # Botones principales
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Iniciar Sesión"):
+            st.session_state.modo_login = "login"
+            st.rerun()
+    with col2:
+        if st.button("Registrarse"):
+            st.session_state.modo_login = "registro"
+            st.rerun()
 
-    if opciones == "Iniciar sesión":
+    if st.session_state.modo_login == "Iniciar sesión":
         st.subheader("Iniciar sesión")
         
         usuario = st.text_input("Usuario", key="login_usuario")
@@ -71,7 +83,7 @@ def pantalla_login():
                     
                 else:
                     st.error(resultado)
-    else:
+    elif st.session_state.modo_login == "Registrarse":
         st.subheader("Registrarse") # Caso de primera vez en la app
         
         nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
