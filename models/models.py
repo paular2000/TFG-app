@@ -22,3 +22,4 @@ class Paciente:
     profesion: str
     estudios: str
     aficiones: List[str]
+    
