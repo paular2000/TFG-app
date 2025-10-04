@@ -15,7 +15,7 @@ def pantalla_login():
             align-items: center;
             width: 500px;       
             height: 500px; 
-            border: 2px solid #4CAF50;
+            border: 2px solid black;
             padding: 12px;
             border-radius: 10px;
             text-align: center;
