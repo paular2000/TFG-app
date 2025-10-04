@@ -30,7 +30,8 @@ def pantalla_login():
                         st.error("❌ Error al recuperar el ID del logopeda registrado.")
                         return   
                                      
-                    st.session_state.pantalla = 1                  
+                    st.session_state.pantalla = 1 
+                    st.rerun()                 
                     
                 else:
                     st.error(resultado)
@@ -69,6 +70,7 @@ def pantalla_login():
                         return
                     
                     st.session_state.pantalla = 1
+                    st.rerun()
 
                 else:
                     st.error(mensaje)
