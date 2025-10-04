@@ -96,39 +96,41 @@ def pantalla_login():
     else:  # Modo registro
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
-            st.subheader("Registrarse") 
-            nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
-            nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
-            confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
+            with st.form("registro_form"):
 
-            boton_registrar = st.button("Registrar")
-            boton_volver_login = st.button("Volver al login")
+                st.subheader("Registrarse") 
+                nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
+                nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
+                confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
 
-            if boton_registrar:
-                if not nuevo_usuario or not nueva_contrasenia:
-                    st.error("❌ Por favor, complete todos los campos.")
-                elif nueva_contrasenia != confirmar_contrasenia:
-                    st.error("❌ Las contraseñas no coinciden.")
-                else:
-                    registrado, mensaje = logopeda_service.registrar_logopeda(nuevo_usuario, nueva_contrasenia)
-                    if registrado:
-                        st.success(mensaje)
-                        st.session_state["usuario"] = nuevo_usuario
-                        logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
-                        if logopeda:
-                            st.session_state["id_logopeda"] = logopeda.id
-                        else:
-                            st.error("❌ Error al recuperar el ID del logopeda registrado.")
-                            return
-                        st.session_state.pantalla = 1
-                        st.session_state.modo_registro = False
-                        st.rerun()
+                boton_registrar = st.form_submit_button("Registrar")
+                boton_volver_login = st.form_submit_button("Volver al login")
+
+                if boton_registrar:
+                    if not nuevo_usuario or not nueva_contrasenia:
+                        st.error("❌ Por favor, complete todos los campos.")
+                    elif nueva_contrasenia != confirmar_contrasenia:
+                        st.error("❌ Las contraseñas no coinciden.")
                     else:
-                        st.error(mensaje)
+                        registrado, mensaje = logopeda_service.registrar_logopeda(nuevo_usuario, nueva_contrasenia)
+                        if registrado:
+                            st.success(mensaje)
+                            st.session_state["usuario"] = nuevo_usuario
+                            logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
+                            if logopeda:
+                                st.session_state["id_logopeda"] = logopeda.id
+                            else:
+                                st.error("❌ Error al recuperar el ID del logopeda registrado.")
+                                return
+                            st.session_state.pantalla = 1
+                            st.session_state.modo_registro = False
+                            st.rerun()
+                        else:
+                            st.error(mensaje)
 
-            if boton_volver_login:
-                st.session_state.modo_registro = False
-                st.rerun()
+                if boton_volver_login:
+                    st.session_state.modo_registro = False
+                    st.rerun()
 
 
 
