@@ -7,10 +7,8 @@ from PIL import Image
 def pantalla_login():
 
 
-    logo_base64 = load_image_as_base64("images/logo_y_nombre.png")
-    imagen = Image.open("images/logo_y_nombre.png")
     
-
+    imagen = Image.open("images/logo_y_nombre.png")
     
     if "modo_registro" not in st.session_state:
         st.session_state.modo_registro = False
@@ -181,8 +179,3 @@ def pantalla_login():
 
         """
 
-
-def load_image_as_base64(path):
-    with open(path, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
