@@ -96,7 +96,6 @@ def pantalla_formulario_paciente():
                     
                     if ingresado:
                         st.success("Paciente registrado con éxito.")
-                        logging.info(f"Paciente {ingresado.nombre} {ingresado.apellidos} con id {ingresado.id} registrado por logopeda ID {st.session_state.get('id_logopeda')}")
                     else:
                         st.error("❌ Error al registrar el paciente.")
 

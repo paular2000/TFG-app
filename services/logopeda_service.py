@@ -17,6 +17,7 @@ def registrar_logopeda(usuario: str, contrasenia: str):
         
         nuevo_logopeda = logopeda_repo.insert_logopeda(usuario, contrasenia)
         return True, f"✅ Usuario {nuevo_logopeda.usuario} registrado con éxito."
+    
     except Exception as e:
         return False, f"❌ Error al registrar: {e}"
 
