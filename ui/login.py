@@ -43,6 +43,9 @@ def pantalla_login():
         <body>
             <div class="titulo">
                 <img src="data:image/png;base64,{logo_base64}"> 
+                <br>
+                <br>
+                <br>
             </div>
 
         </body>""",       
