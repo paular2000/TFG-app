@@ -22,8 +22,8 @@ def pantalla_login():
 
                 st.image(imagen, use_container_width=True)
                 
-                usuario = st.text_input( "",key="login_usuario", placeholder="Usuario")
-                contrasenia = st.text_input( "",type="password", key="login_contrasenia", placeholder="Contraseña")
+                usuario = st.text_input( "",key="login_usuario", placeholder="Usuario", help="Introduce tu nombre de usuario")
+                contrasenia = st.text_input( "",type="password", key="login_contrasenia", placeholder="Contraseña", help="Introduce tu contraseña")
                 
                 col4, col5, col6 = st.columns([1,1,1])
                 with col5:
