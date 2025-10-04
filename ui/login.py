@@ -26,10 +26,13 @@ def pantalla_login():
             cursor: pointer;
             transform: scale(1.02);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            width: 80px;       
+            height: 80px; 
         }}
         </style>
         <div class="titulo">
         <img src="data:image/png;base64,{logo_base64}"> 
+
         </div>        """,       
         unsafe_allow_html=True
     )
