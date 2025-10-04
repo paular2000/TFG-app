@@ -1,6 +1,6 @@
 
 
-from datetime import datetime
+import gspread
 from typing import Optional
 from models.models import Paciente
 from data_base import paciente_repo
