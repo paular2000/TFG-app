@@ -20,7 +20,7 @@ def pantalla_formulario_paciente():
         anios = list(range(datetime.now().year, 1900, -1))
 
         with st.container():
-            st.subheader("Fecha de nacimiento")
+            st.markdown("**Fecha de nacimiento**")
             col1, col2, col3 = st.columns(3)
             with col1:
                 dia = st.selectbox("Día", dias)
