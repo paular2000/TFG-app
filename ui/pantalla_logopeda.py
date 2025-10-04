@@ -16,6 +16,33 @@ def pantalla_logopeda():
     usuario = st.session_state.get("usuario", "Usuario desconocido")
     st.title(f"Bienvenido, " +  usuario)
     
+        
+    st.markdown(
+        f"""
+        <style>
+        .titulo {{
+            border: 2px solid #4CAF50;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #222;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }}
+        .titulo:hover {{
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }}
+        </style>
+        <div class="titulo">Bienvenido, {usuario}</div>
+        """,
+        unsafe_allow_html=True
+    )
     
     id_logopeda = st.session_state.get("id_logopeda")
     
