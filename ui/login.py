@@ -11,9 +11,10 @@ def pantalla_login():
         <style>
         .titulo {{
             display: flex;
+            flex-direction: center;
             align-items: center;
-            width: 200px;       
-            height: 200px; 
+            width: 500px;       
+            height: 500px; 
             border: 2px solid #4CAF50;
             padding: 12px;
             border-radius: 10px;
