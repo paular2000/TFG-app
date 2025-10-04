@@ -27,7 +27,7 @@ def pantalla_login():
 
         }}
         .titulo:hover {{
-            background: #1E90FF;
+            background: #FFD700;
             color: white;
             cursor: pointer;
             transform: scale(1.02);
