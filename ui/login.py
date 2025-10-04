@@ -8,7 +8,8 @@ def pantalla_login():
     logo_base64 = load_image_as_base64("images/Logo.png")
 
     
-
+    iniciar_sesion = st.button("Iniciar Sesión")
+    registrarse = st.button("Registrarse")
 
     st.markdown(
         f"""
@@ -56,8 +57,7 @@ def pantalla_login():
         unsafe_allow_html=True
     )
 
-    iniciar_sesion = st.button("Iniciar Sesión")
-    registrarse = st.button("Registrarse")
+    
 
     if iniciar_sesion:
         usuario = st.text_input("Usuario", key="login_usuario")
