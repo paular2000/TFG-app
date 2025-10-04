@@ -19,13 +19,14 @@ def pantalla_formulario_paciente():
         ]
         anios = list(range(datetime.now().year, 1900, -1))
 
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            dia = st.selectbox("Día", dias)
-        with col2:
-            mes_nombre = st.selectbox("Mes", meses)
-        with col3:
-            anio = st.selectbox("Año", anios)
+        with st.expander("Fecha de nacimiento"):
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                dia = st.selectbox("Día", dias)
+            with col2:
+                mes_nombre = st.selectbox("Mes", meses)
+            with col3:
+                anio = st.selectbox("Año", anios)
 
         profesiones_opciones = ["Escoger una opción","Jardinero", "Profesor"]
         estudios_opciones = ["Escoger una opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
