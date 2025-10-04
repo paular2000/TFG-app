@@ -17,7 +17,7 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str
         
         
 
-        nuevo_paciente = paciente_repo.insert_paciente(paciente)     
+        nuevo_paciente = paciente_repo.insert_paciente(id_logopeda, nombre, apellidos, email, edad, profesion, estudios, habito_lector, aficiones)     
         
         return True, f"✅ Usuario {nuevo_paciente.nombre} registrado con éxito."
         

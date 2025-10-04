@@ -82,7 +82,7 @@ def pantalla_formulario_paciente():
                         habito_lector = "No lector"
 
                     
-                    ingresado = paciente_service.registrar_paciente(
+                    exito, mensaje = paciente_service.registrar_paciente(
                         id_logopeda=st.session_state.get("id_logopeda"),
                         nombre=nombre,
                         apellidos=apellidos,
@@ -94,11 +94,11 @@ def pantalla_formulario_paciente():
                         aficiones=aficiones
                     )
                     
-                    if ingresado:
-                        st.success("Paciente registrado con éxito.")
+                    
+                    if exito:
+                        st.success(mensaje)
                     else:
-                        st.error("❌ Error al registrar el paciente.")
-
+                        st.error(mensaje)
                 except ValueError:
                     st.error("❌ Fecha no válida. Por favor, seleccionar una fecha correcta.")
                     return
