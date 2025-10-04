@@ -1,56 +1,16 @@
 import streamlit as st
 import base64
 from services import logopeda_service
+from PIL import Image
 
 
 def pantalla_login():
 
 
     logo_base64 = load_image_as_base64("images/logo_y_nombre.png")
-       
-    st.markdown(
-        f"""
-        <style>
-        .titulo {{
-            display: flex;
-            flex-direction: center;
-            align-items: center;
-            width: 500px;       
-            height: 500px; 
-            border: 2px solid black;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            color: #222;
-            background: #f9f9f9;
-            transition: all 0.3s ease;
+    imagen = Image.open("images/logo_y_nombre.png")
+    
 
-        }}
-        .titulo:hover {{
-            background: #FFD700;
-            color: white;
-            cursor: pointer;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }}
-
-
-        </style>
-        <body>
-            <div class="titulo">
-                <img src="data:image/png;base64,{logo_base64}"> 
-                <p></p>
-                <p></p>
-            </div>
-
-        </body>""",       
-        unsafe_allow_html=True
-    )
-
-
-    st.write("")
     
     if "modo_registro" not in st.session_state:
         st.session_state.modo_registro = False
@@ -61,6 +21,8 @@ def pantalla_login():
         with col2:
             
             with st.form("login_form"):
+
+                st.image(imagen, use_column_width=True)
                 
                 usuario = st.text_input("Usuario", key="login_usuario")
                 contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
