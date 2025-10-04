@@ -30,7 +30,7 @@ def pantalla_formulario_paciente():
         profesiones_opciones = ["Escoger una opción","Jardinero", "Profesor"]
         estudios_opciones = ["Escoger una opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
         aficiones_opciones = ["Música", "Deportes", "Lectura","Senderismo", "Cine","Teatro","Videojuegos","Arte","Cocina","Viajes","Tecnología","Jardinería","Fotografía","Baile","Animales","Manualidades","Meditación","Yoga"]
-        habito_lector_opciones = ["Lee todos/Casi todos los días", "Una/Dos veces por semana", "Alguna vez al mes", "Alguna vez al trimestre", "Casi nunca", "Nunca"]
+        habito_lector_opciones = ["Escoger una opción", "Lee todos/Casi todos los días", "Una/Dos veces por semana", "Alguna vez al mes", "Alguna vez al trimestre", "Casi nunca", "Nunca"]
 
         profesion = st.selectbox("Profesion", profesiones_opciones,  help="Selecciona la profesión del paciente")
         estudios = st.selectbox("Estudios", estudios_opciones, help="Selecciona el nivel de estudios del paciente")
