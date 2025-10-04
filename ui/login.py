@@ -10,6 +10,8 @@ def pantalla_login():
         f"""
         <style>
         .titulo {{
+            width: 80px;       
+            height: 80px; 
             border: 2px solid #4CAF50;
             padding: 12px;
             border-radius: 10px;
@@ -19,6 +21,7 @@ def pantalla_login():
             color: #222;
             background: #f9f9f9;
             transition: all 0.3s ease;
+
         }}
         .titulo:hover {{
             background: #4CAF50;
@@ -26,8 +29,6 @@ def pantalla_login():
             cursor: pointer;
             transform: scale(1.02);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            width: 80px;       
-            height: 80px; 
         }}
         </style>
         <div class="titulo">
