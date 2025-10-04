@@ -14,7 +14,7 @@ def pantalla_logopeda():
     
     
 
-    col1, col2 = st.columns([1,1])
+    col1 = st.columns([1,1])
     with col1:
         ok, pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
         if ok and pacientes:
@@ -29,5 +29,5 @@ def pantalla_logopeda():
         st.session_state.pantalla = 3
         
     
-    
+
     
