@@ -10,8 +10,10 @@ def pantalla_login():
         f"""
         <style>
         .titulo {{
-            width: 80px;       
-            height: 80px; 
+            display: flex;
+            align-items: center;
+            width: 200px;       
+            height: 200px; 
             border: 2px solid #4CAF50;
             padding: 12px;
             border-radius: 10px;
