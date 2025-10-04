@@ -51,13 +51,13 @@ def pantalla_login():
 
 
     st.write("")
-    
-    with st.form("login_form"):
-        usuario = st.text_input("Usuario", key="login_usuario")
-        contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        with st.form("login_form"):
+            usuario = st.text_input("Usuario", key="login_usuario")
+            contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
 
-        col1, col2, col3 = st.columns([1,2,1])
-        with col2:
+            
             boton_entrar = st.form_submit_button("Entrar")
             if boton_entrar:
                 if not usuario or not contrasenia:
