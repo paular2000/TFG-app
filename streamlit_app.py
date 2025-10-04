@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from ui import login, pantalla_logopeda, pantalla_registro_paciente
+from ui import login, pantalla_logopeda
 
 
 
