@@ -44,6 +44,8 @@ def obtener_pacientes_por_logopeda(id_logopeda: str):
         return False, f"❌ Error al obtener pacientes: {e}"
     
     
+    
+    
 def obtener_paciente_por_id(id_paciente: str) -> Optional[Paciente]:
     """Devuelve un paciente por su ID."""
     try:
