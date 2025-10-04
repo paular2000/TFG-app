@@ -16,6 +16,47 @@ def pantalla_login():
 
     with col2:
         logo_base64 = load_image_as_base64("images/Logo.png")
+        
+    st.markdown(
+        f"""
+        <style>
+        .titulo {{
+            display: flex;
+            flex-direction: center;
+            align-items: center;
+            width: 500px;       
+            height: 500px; 
+            border: 2px solid black;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #222;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+
+        }}
+        .titulo:hover {{
+            background: #FFD700;
+            color: white;
+            cursor: pointer;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }}
+
+
+        </style>
+        <body>
+            <div class="titulo">
+                <img src="data:image/png;base64,{logo_base64}"> 
+                <p></p>
+                <p></p>
+            </div>
+
+        </body>""",       
+        unsafe_allow_html=True
+    )
 
 
     st.write("" \
@@ -96,46 +137,6 @@ def pantalla_login():
 
 
     
-    st.markdown(
-        f"""
-        <style>
-        .titulo {{
-            display: flex;
-            flex-direction: center;
-            align-items: center;
-            width: 500px;       
-            height: 500px; 
-            border: 2px solid black;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            color: #222;
-            background: #f9f9f9;
-            transition: all 0.3s ease;
-
-        }}
-        .titulo:hover {{
-            background: #FFD700;
-            color: white;
-            cursor: pointer;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }}
-
-
-        </style>
-        <body>
-            <div class="titulo">
-                <img src="data:image/png;base64,{logo_base64}"> 
-                <p></p>
-                <p></p>
-            </div>
-
-        </body>""",       
-        unsafe_allow_html=True
-    )
 
 
 
