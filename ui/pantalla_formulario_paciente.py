@@ -8,6 +8,9 @@ def pantalla_formulario_paciente():
         
         nombre = st.text_input("", placeholder="Nombre", help="Introduce el nombre del paciente")
         apellidos = st.text_input("", placeholder="Apellidos", help="Introduce los apellidos del paciente")
+        email = st.text_input("", placeholder="Email de contacto", help="Introduce el email del contacto del paciente")
+
+
 
         dias = list(range(1, 32))
         meses = [
@@ -27,27 +30,40 @@ def pantalla_formulario_paciente():
         profesiones_opciones = ["Escoger una opción","Jardinero", "Profesor"]
         estudios_opciones = ["Escoger una opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
         aficiones_opciones = ["Música", "Deportes", "Lectura","Senderismo", "Cine","Teatro","Videojuegos","Arte","Cocina","Viajes","Tecnología","Jardinería","Fotografía","Baile","Animales","Manualidades","Meditación","Yoga"]
+        habito_lector_opciones = ["Lee todos/Casi todos los días", "Una/Dos veces por semana", "Alguna vez al mes", "Alguna vez al trimestre", "Casi nunca", "Nunca"]
 
+        profesion = st.selectbox("Profesion", profesiones_opciones,  help="Selecciona la profesión del paciente")
+        estudios = st.selectbox("Estudios", estudios_opciones, help="Selecciona el nivel de estudios del paciente")
 
-        profesion = st.selectbox("Profesion", profesiones_opciones, placeholder="Profesión", help="Selecciona la profesión del paciente")
-        estudios = st.selectbox("Estudios", estudios_opciones, placeholder="Estudios", help="Selecciona el nivel de estudios del paciente")
-        aficiones = st.multiselect("", aficiones_opciones, placeholder="Aficiones", help="Selecciona las aficiones del paciente")
+        select_habito_lector = st.selectbox("¿Tiene hábito lector?", habito_lector_opciones, help="Indica si el paciente tiene hábito lector")
+
+        
+
+        aficiones = st.multiselect("Aficiones", aficiones_opciones, placeholder="Elegir aficiones", help="Selecciona las aficiones del paciente")
 
         boton_siguiente = st.form_submit_button("Siguiente")
 
         if boton_siguiente:
             
-            campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones]
+            campos_obligatorios = [nombre, apellidos, email, profesion, estudios, habito_lector, aficiones]
 
             if all(campos_obligatorios) and \
                profesion != "Escoger una opción" and \
                estudios != "Escoger una opción" and \
+               select_habito_lector != "Escoger una opción" and \
                aficiones:
                 
                 try:
                     fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
                     edad = int(datetime.now().year - fecha_nacimiento.year)
 
+                    if (select_habito_lector=="Lee todos/Casi todos los días" or select_habito_lector=="Una/Dos veces por semana"):
+                        habito_lector = "Lector frecuente" 
+                    elif (select_habito_lector=="Alguna vez al mes" or select_habito_lector=="Alguna vez al trimestre"):
+                        habito_lector = "Lector ocasional"
+                    else:
+                        habito_lector = "No lector"
+                        
 
                 except ValueError:
                     st.error("❌ Fecha no válida. Por favor, seleccionar una fecha correcta.")
