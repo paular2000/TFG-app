@@ -23,3 +23,14 @@ def pantalla_formulario_paciente():
             mes_nombre = st.selectbox("Mes", meses)
         with col3:
             anio = st.selectbox("Año", anios)
+
+        profesiones_opciones = ["Escoger una opción","Jardinero", "Profesor"]
+        estudios_opciones = ["Escoger una opción","Primaria", "Secundaria", "Bachillerato", "Grado", "Master", "Doctorado"]
+        aficiones_opciones = ["Música", "Deportes", "Lectura","Senderismo", "Cine","Teatro","Videojuegos","Arte","Cocina","Viajes","Tecnología","Jardinería","Fotografía","Baile","Animales","Manualidades","Meditación","Yoga"]
+
+
+        profesion = st.selectbox("", profesiones_opciones, placeholder="Profesión", help="Selecciona la profesión del paciente")
+        estudios = st.selectbox("", estudios_opciones, placeholder="Estudios", help="Selecciona el nivel de estudios del paciente")
+        aficiones = st.multiselect("", aficiones_opciones, placeholder="Aficiones", help="Selecciona las aficiones del paciente")
+
+        submit = st.form_submit_button("Siguiente")
