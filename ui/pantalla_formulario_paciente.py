@@ -29,8 +29,30 @@ def pantalla_formulario_paciente():
         aficiones_opciones = ["Música", "Deportes", "Lectura","Senderismo", "Cine","Teatro","Videojuegos","Arte","Cocina","Viajes","Tecnología","Jardinería","Fotografía","Baile","Animales","Manualidades","Meditación","Yoga"]
 
 
-        profesion = st.selectbox("", profesiones_opciones, placeholder="Profesión", help="Selecciona la profesión del paciente")
-        estudios = st.selectbox("", estudios_opciones, placeholder="Estudios", help="Selecciona el nivel de estudios del paciente")
+        profesion = st.selectbox("Profesion", profesiones_opciones, placeholder="Profesión", help="Selecciona la profesión del paciente")
+        estudios = st.selectbox("Estudios", estudios_opciones, placeholder="Estudios", help="Selecciona el nivel de estudios del paciente")
         aficiones = st.multiselect("", aficiones_opciones, placeholder="Aficiones", help="Selecciona las aficiones del paciente")
 
-        submit = st.form_submit_button("Siguiente")
+        boton_siguiente = st.form_submit_button("Siguiente")
+
+        if boton_siguiente:
+            
+            campos_obligatorios = [nombre, apellidos, profesion, estudios, aficiones]
+
+            if all(campos_obligatorios) and \
+               profesion != "Escoger una opción" and \
+               estudios != "Escoger una opción" and \
+               aficiones:
+                
+                try:
+                    fecha_nacimiento = datetime(anio, meses.index(mes_nombre) + 1, dia)
+                    edad = int(datetime.now().year - fecha_nacimiento.year)
+
+
+                except ValueError:
+                    st.error("❌ Fecha no válida. Por favor, seleccionar una fecha correcta.")
+                    return
+                
+            else:
+                st.error("❌ Por favor, complete todos los campos.")
+                return
