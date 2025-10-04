@@ -7,13 +7,12 @@ from data_base import paciente_repo
 
 
 
-def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, fecha_nacimiento: str,
+def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, edad: str,
                        profesion: str, estudios: str, habito_lector: str, aficiones: list):
     try:
         
         
-        nacimiento = datetime.strptime(fecha_nacimiento, "%d/%m/%Y")
-        edad = datetime.now().year - nacimiento.year
+        
         
         
 

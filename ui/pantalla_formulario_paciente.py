@@ -87,7 +87,7 @@ def pantalla_formulario_paciente():
                         nombre=nombre,
                         apellidos=apellidos,
                         email=email,
-                        fecha_nacimiento=fecha_nacimiento.strftime("%d/%m/%Y"),
+                        edad=edad,
                         profesion=profesion,
                         estudios=estudios,
                         habito_lector=habito_lector,
