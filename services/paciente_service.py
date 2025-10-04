@@ -10,11 +10,7 @@ from data_base import paciente_repo
 def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, edad: str,
                        profesion: str, estudios: str, habito_lector: str, aficiones: list):
     try:
-        
-        
-        
-        
-        
+
 
         nuevo_paciente = paciente_repo.insert_paciente(id_logopeda, nombre, apellidos, email, edad, profesion, estudios, habito_lector, aficiones)     
         

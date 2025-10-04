@@ -74,7 +74,7 @@ def insert_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, e
     nuevo_paciente = Paciente(
         id=new_id,
         id_logopeda=id_logopeda,
-        fecha_registro=datetime.now().strftime("%d/%m/%Y"),
+        fecha_registro=datetime.datetime.now().strftime("%d/%m/%Y"),
         nombre=nombre,
         apellidos=apellidos,   
         email=email,
