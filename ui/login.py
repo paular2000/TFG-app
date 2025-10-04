@@ -56,7 +56,8 @@ def pantalla_login():
         usuario = st.text_input("Usuario", key="login_usuario")
         contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
 
-        if st.button("Entrar", key="btn_login"):
+        boton_entrar = st.form_submit_button("Entrar")
+        if boton_entrar:
             if not usuario or not contrasenia:
                 st.error("❌ Por favor, complete todos los campos.")
             else:
