@@ -22,7 +22,7 @@ def pantalla_login():
 
                 st.image(imagen, use_container_width=True)
                 
-                usuario = st.text_input("Usuario", key="login_usuario")
+                usuario = st.text_input("", key="login_usuario", placeholder="Usuario")
                 contrasenia = st.text_input("Contraseña", type="password", key="login_contrasenia")
                 
                 col4, col5, col6 = st.columns([1,1,1])
