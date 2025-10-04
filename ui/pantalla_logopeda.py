@@ -14,8 +14,6 @@ def pantalla_logopeda():
 
     
     usuario = st.session_state.get("usuario", "Usuario desconocido")
-    st.title(f"Bienvenido, " +  usuario)
-    
         
     st.markdown(
         f"""
@@ -39,8 +37,10 @@ def pantalla_logopeda():
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }}
         </style>
-        <div class="titulo">Bienvenido, {usuario}</div>
-        """,
+        <div class="titulo">
+        <img src="images/Logo- dibujo.png" alt="Logo">
+        DUARGUI - Bienvenido, {usuario}
+        </div>        """,
         unsafe_allow_html=True
     )
     
