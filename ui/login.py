@@ -28,7 +28,7 @@ def pantalla_login():
         }}
         </style>
         <div class="titulo">
-        {st.images("images/Logo.png")}
+        st.images(<img src="//images/Logo.png" alt="Logo">)
         </div>        """,
         unsafe_allow_html=True
     )
