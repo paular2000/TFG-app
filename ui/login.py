@@ -97,15 +97,13 @@ def pantalla_login():
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
             with st.form("registro_form"):
-                col4, col5, col6 = st.columns([1,1,1])
-                with col5:
-                    st.subheader("Registrarse") 
+                
                     
                 nuevo_usuario = st.text_input("Nuevo usuario", key="registro_usuario")
                 nueva_contrasenia = st.text_input("Nueva contraseña", type="password", key="registro_contrasenia")
                 confirmar_contrasenia = st.text_input("Confirmar contraseña", type="password",  key="registro_confirmar_contrasenia")
 
-                
+                col4, col5, col6 = st.columns([1,1,1])
                 with col5:
                     boton_registrar = st.form_submit_button("Registrar")
                 
