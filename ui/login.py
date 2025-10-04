@@ -68,7 +68,7 @@ def pantalla_login():
                 col4, col5, col6 = st.columns([1,1,1])
                 with col5:
                     boton_entrar = st.form_submit_button("Entrar")
-                boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
+                
 
                 if boton_entrar:
                     if not usuario or not contrasenia:
@@ -88,10 +88,10 @@ def pantalla_login():
                             st.rerun()                 
                         else:
                             st.error(resultado)
-
-                if boton_eres_nuevo:
-                    st.session_state.modo_registro = True
-                    st.rerun()  # Volvemos a renderizar con el modo registro
+            boton_eres_nuevo = st.form_submit_button("¿Eres nuevo?")
+            if boton_eres_nuevo:
+                st.session_state.modo_registro = True
+                st.rerun()  # Volvemos a renderizar con el modo registro
 
     else:  # Modo registro
         col1, col2, col3 = st.columns([1,2,1])
