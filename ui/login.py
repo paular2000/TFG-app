@@ -8,7 +8,7 @@ def pantalla_login():
 
 
     
-    imagen = Image.open("images/Logo.png")
+    imagen = Image.open("images/logo_y_nombre.png")
     
     if "modo_registro" not in st.session_state:
         st.session_state.modo_registro = False
@@ -52,7 +52,6 @@ def pantalla_login():
             if boton_eres_nuevo:
                 st.session_state.modo_registro = True
                 st.rerun()  # Volvemos a renderizar con el modo registro
-
 
     else:  # Modo registro
         col1, col2, col3 = st.columns([1,2,1])
