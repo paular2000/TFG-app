@@ -28,10 +28,10 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str
 
         nuevo_paciente = paciente_repo.insert_paciente(nuevo_paciente) # Me lo devuelve ya con su id asignado
         
-        return True, f"✅ Usuario {nuevo_paciente.nombre} registrado con éxito."
+        return True, f"✅ Usuario {nuevo_paciente.nombre} registrado con éxito.", nuevo_paciente
         
     except Exception as e:
-        return False, f"❌ Error al registrar paciente: {e}"
+        return False, f"❌ Error al registrar paciente: {e}", None
     
 
 def obtener_pacientes_por_logopeda(id_logopeda: str):
@@ -68,7 +68,7 @@ def actualizar_resultados_tareas(id_paciente: str, resultados: dict):
             raise ValueError("Paciente no encontrado.") # ID no existe
         
         fila_index = filas.index(id_paciente) + 1  # +1 porque A1-indexed
-        columna_inicio = 10  # columna J
+        columna_inicio = 12  # columna L
         valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
         columna_fin = columna_inicio + len(valores) - 1
 

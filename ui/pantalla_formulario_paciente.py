@@ -82,7 +82,7 @@ def pantalla_formulario_paciente():
                         habito_lector = "No lector"
 
                     
-                    exito, mensaje = paciente_service.registrar_paciente(
+                    exito, mensaje, nuevo_paciente = paciente_service.registrar_paciente(
                         id_logopeda=st.session_state.get("id_logopeda"),
                         nombre=nombre,
                         apellidos=apellidos,
@@ -93,10 +93,15 @@ def pantalla_formulario_paciente():
                         habito_lector=habito_lector,
                         aficiones=aficiones
                     )
+
+                    
                     
                     
                     if exito:
                         st.success(mensaje)
+                        st.session_state["id_paciente"] = nuevo_paciente.id
+                        st.session_state.pantalla = 3
+                        st.rerun()
                     else:
                         st.error(mensaje)
                 except ValueError:
