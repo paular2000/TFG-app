@@ -15,19 +15,7 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str
         nacimiento = datetime.strptime(fecha_nacimiento, "%d/%m/%Y")
         edad = datetime.now().year - nacimiento.year
         
-        paciente = Paciente(
-            id="",
-            id_logopeda=id_logopeda,
-            fecha_registro="",
-            nombre=nombre,
-            apellidos=apellidos,
-            email=email,
-            edad=edad,
-            profesion=profesion,
-            estudios=estudios,
-            habito_lector=habito_lector
-            
-        )  
+        
 
         nuevo_paciente = paciente_repo.insert_paciente(paciente)     
         

@@ -62,7 +62,8 @@ def find_paciente_by_id(paciente_id: str) -> Optional[Paciente]:
     return None
 
 
-def insert_paciente(paciente: Paciente):
+def insert_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, edad: str, profesion: str,
+                    estudios: str, habito_lector: str, aficiones: List[str]):
     sheet = get_pacientes_sheet()
     filas = sheet.get_all_values()
 
@@ -72,16 +73,16 @@ def insert_paciente(paciente: Paciente):
 
     nuevo_paciente = Paciente(
         id=new_id,
-        id_logopeda=paciente.id_logopeda,
+        id_logopeda=id_logopeda,
         fecha_registro=datetime.now().strftime("%d/%m/%Y"),
-        nombre=paciente.nombre,
-        apellidos=paciente.apellidos,
-        email=paciente.email,
-        edad=paciente.edad,
-        profesion=paciente.profesion,
-        estudios=paciente.estudios,
-        habito_lector=paciente.habito_lector
-        
+        nombre=nombre,
+        apellidos=apellidos,   
+        email=email,
+        edad=edad,
+        profesion=profesion,
+        estudios=estudios,
+        habito_lector=habito_lector,
+        aficiones=", ".join(aficiones) if aficiones else ""
     )
 
     sheet.append_row([
@@ -91,11 +92,11 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.nombre,
         nuevo_paciente.apellidos,
         nuevo_paciente.email,
-        nuevo_paciente.edad if nuevo_paciente.edad else "",
+        nuevo_paciente.edad,
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
         nuevo_paciente.habito_lector,
-        
+        nuevo_paciente.aficiones
     ])
     return nuevo_paciente
    
