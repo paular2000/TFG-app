@@ -3,6 +3,15 @@ from datetime import datetime
 import streamlit as st
 
 def pantalla_formulario_paciente():
+
+
+    with st.sidebar:
+            st.title("Menú")
+            if st.button("Cerrar sesión"):
+                st.session_state.pantalla = 0
+                st.session_state["usuario"] = ""
+                st.session_state["id_logopeda"] = ""
+                st.rerun()
     
     with st.form("formulario_paciente"):
         
