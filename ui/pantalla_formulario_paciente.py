@@ -45,7 +45,7 @@ def pantalla_formulario_paciente():
 
         if boton_siguiente:
             
-            campos_obligatorios = [nombre, apellidos, email, profesion, estudios, habito_lector, aficiones]
+            campos_obligatorios = [nombre, apellidos, email, profesion, estudios, select_habito_lector, aficiones]
 
             if all(campos_obligatorios) and \
                profesion != "Escoger una opción" and \
