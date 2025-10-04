@@ -84,7 +84,7 @@ def pantalla_login():
                             st.session_state["usuario"] = nuevo_usuario
                             logopeda = logopeda_service.find_logopeda_by_user(nuevo_usuario)
                             if logopeda:
-                                st.session_state["id_logopeda"] = logopeda.id
+                                st.session_state["id_logopeda"] = logopeda.id 
                             else:
                                 st.error("❌ Error al recuperar el ID del logopeda registrado.")
                                 return
@@ -93,7 +93,7 @@ def pantalla_login():
                             st.rerun()
                         else:
                             st.error(mensaje)
-                            
+
             boton_volver_login = st.button("Volver al login")
             if boton_volver_login:
                 st.session_state.modo_registro = False

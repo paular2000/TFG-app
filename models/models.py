@@ -18,8 +18,10 @@ class Paciente:
     fecha_registro: str
     nombre: str
     apellidos: str
+    email: str
     edad: int
     profesion: str
     estudios: str
+    habito_lector: str
     aficiones: List[str]
     

@@ -2,6 +2,8 @@
 from datetime import datetime
 import streamlit as st
 
+from services import paciente_service
+
 def pantalla_formulario_paciente():
 
 
@@ -77,7 +79,24 @@ def pantalla_formulario_paciente():
                         habito_lector = "Lector ocasional"
                     else:
                         habito_lector = "No lector"
-                        
+
+                    
+                    ingresado = paciente_service.registrar_paciente(
+                        id_logopeda=st.session_state.get("id_logopeda"),
+                        nombre=nombre,
+                        apellidos=apellidos,
+                        email=email,
+                        fecha_nacimiento=fecha_nacimiento.strftime("%d/%m/%Y"),
+                        profesion=profesion,
+                        estudios=estudios,
+                        habito_lector=habito_lector,
+                        aficiones=aficiones
+                    )
+                    
+                    if ingresado:
+                        st.success("Paciente registrado con éxito.")
+                    else:
+                        st.error("❌ Error al registrar el paciente.")
 
                 except ValueError:
                     st.error("❌ Fecha no válida. Por favor, seleccionar una fecha correcta.")

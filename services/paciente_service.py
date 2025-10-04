@@ -7,8 +7,8 @@ from data_base import paciente_repo
 
 
 
-def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_nacimiento: str,
-                       profesion: str, estudios: str, aficiones: list):
+def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, fecha_nacimiento: str,
+                       profesion: str, estudios: str, habito_lector: str, aficiones: list):
     try:
         
         
@@ -21,14 +21,21 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, fecha_naci
             fecha_registro="",
             nombre=nombre,
             apellidos=apellidos,
+            email=email,
             edad=edad,
             profesion=profesion,
             estudios=estudios,
+            habito_lector=habito_lector,
             aficiones=aficiones
         )  
 
-        paciente_repo.insert_paciente(paciente)
-        return True
+        nuevo_paciente = paciente_repo.insert_paciente(paciente)
+        
+        if nuevo_paciente:
+            return True
+        else:
+            return False
+        
     except Exception as e:
         return False, f"❌ Error al registrar paciente: {e}"
     
