@@ -14,8 +14,12 @@ def pantalla_login():
 
     col1, col2, col3 = st.columns([1,2,1])
 
+    with col1:
+        st.write("")
     with col2:
         logo_base64 = load_image_as_base64("images/Logo.png")
+    with col3:
+        st.write("")
         
     st.markdown(
         f"""
