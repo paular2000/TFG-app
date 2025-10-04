@@ -41,7 +41,7 @@ def pantalla_logopeda():
     boton_registrar_paciente = st.button("Crear nuevo paciente")
 
     if boton_registrar_paciente:
-        st.session_state.pantalla = 3 
+        st.session_state.pantalla = 2
         st.rerun()
 
 
