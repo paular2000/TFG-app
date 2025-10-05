@@ -58,14 +58,24 @@ def pantalla_logopeda():
                         for j, col in enumerate(cols):
                             if i + j < len(lista_pacientes):
                                 paciente = lista_pacientes[i + j]
-                                with col:
-                                    img_paciente = st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre + " " + paciente.apellidos)
-                                    
-                                    if st.button(img_paciente, key=f"btn_{paciente.id}"):
-                                        st.session_state["paciente_actual"] = paciente.id
+                                with col:                                    
+                                    st.markdown(
+                                        f'''
+                                            <a href="#" onclick="window.parent.location.href='?paciente_id={paciente.id}'" style="text-decoration:none;">
+                                                <img src="{imagen_paciente}" width="150" style="border-radius:10px;"/>
+                                                <p style="text-align:center; color:black;">{paciente.nombre} {paciente.apellidos}</p>
+                                            </a>
+                                            ''',
+                                            unsafe_allow_html=True
+                                            
+                                        )
+                                    query_params = st.experimental_get_query_params()
+
+                                    if "paciente_id" in query_params:
+                                        paciente_id = query_params["paciente_id"][0]
+                                        st.session_state["paciente_actual_id"] = paciente_id
                                         st.session_state.pantalla = 4
-                                        st.rerun()
-            else:
+                                        
                 st.info("No tienes pacientes asignados. Crea uno nuevo.")
 
         boton_registrar_paciente = st.button("Crear nuevo paciente")
