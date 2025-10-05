@@ -41,12 +41,14 @@ def get_all_pacientes() -> List[Paciente]:
         Paciente(
             id=fila["ID"],
             id_logopeda=fila["ID_Logopeda"],
-            fecha_registro=fila["Fecha de Registro"],
+            fecha_registro=fila["Fecha_de_Registro"],
             nombre=fila["Nombre"],
             apellidos=fila["Apellidos"],
+            email=fila["Email_contacto"],
             edad=fila["Edad"],
             profesion=fila["Profesión"],
             estudios=fila["Estudios"],  
+            habito_lector=fila["Habito_lector"],
             aficiones=fila["Aficion"].split(", ") if fila["Aficion"] else []
         )
         for fila in filas
