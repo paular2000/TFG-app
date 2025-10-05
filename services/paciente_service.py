@@ -42,7 +42,7 @@ def obtener_pacientes_por_logopeda(id_logopeda: str):
         pacientes_logopeda = [p for p in pacientes if p.id_logopeda == id_logopeda]
         return pacientes_logopeda
     except Exception as e:
-        return f"❌ Error al obtener pacientes: {e}"
+        return []
     
     
     

@@ -38,7 +38,7 @@ def pantalla_logopeda():
             
                 if lista_pacientes:
                     
-                    for paciente in lista_pacientes[1]:
+                    for paciente in lista_pacientes:
                         st.write(f"- {paciente.nombre}")
                 else:
                     st.write("No tienes pacientes asignados.")
