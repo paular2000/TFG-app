@@ -59,7 +59,10 @@ def pantalla_logopeda():
                             if i + j < len(lista_pacientes):
                                 paciente = lista_pacientes[i + j]
                                 with col:
-                                    st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre + " " + paciente.apellidos)
+                                    st.image(imagen_paciente, use_container_width=True)
+                                    if st.button(f"{paciente.nombre} {paciente.apellidos}", key=f"btn_{paciente.id}"):
+                                        st.session_state["paciente_actual_id"] = paciente.id
+                                        st.rerun()
                 else:                  
                     st.info("No tienes pacientes asignados. Crea uno nuevo.")
 
