@@ -19,18 +19,17 @@ def pantalla_logopeda():
 
     with st.container():
             
-        usuario = st.session_state.get("usuario", "Usuario desconocido")
-            
+        
+        id_logopeda = st.session_state.get("id_logopeda", "")
         
         
-        id_logopeda = st.session_state.get("id_logopeda")
-        st.write("Id Logopeda: " + id_logopeda)
         
         if id_logopeda:
             
-            #col1, col2, col3, col4 = st.columns([1,1,1,1])
+            col1, col2, col3 = st.columns([1,4,1])
 
-            st.image(imagen, use_container_width=True)
+            with col1:
+                st.image(imagen, use_container_width=True)
             
             ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
             
