@@ -21,4 +21,4 @@ def pantalla_paciente():
 
     
 
-    st.title("ID Paciente: " + id)
+    st.title("ID Paciente: " + id_paciente)
