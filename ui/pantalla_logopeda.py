@@ -7,7 +7,7 @@ from PIL import Image
 def pantalla_logopeda():
 
     imagen_logo = Image.open("images/logo_y_nombre.png")
-    imagen_paciente = Image.open("images/icon_paciente.png")
+    imagen_paciente = Image.open("images/icon_paciente.jpg")
 
 
     with st.sidebar:
