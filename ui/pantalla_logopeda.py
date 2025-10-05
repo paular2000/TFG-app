@@ -27,7 +27,7 @@ def pantalla_logopeda():
         
         
         if id_logopeda:
-            col1, col2 = st.columns([1,1,1])
+            col1, col2 = st.columns([1,1])
             with col1:
                 st.image(imagen_logo, use_container_width=True)
 
