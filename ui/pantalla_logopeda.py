@@ -42,9 +42,11 @@ def pantalla_logopeda():
         with col7:
 
             lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
-        
+
+            if busqueda:
+                lista_pacientes = paciente_service.obtener_pacientes_por_nombre(id_logopeda, busqueda)
+
             if lista_pacientes:
-                
                 
                 for i in range(0, len(lista_pacientes), 4):
                     cols = st.columns(4)  # 4 columnas por fila

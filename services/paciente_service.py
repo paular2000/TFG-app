@@ -59,10 +59,18 @@ def obtener_paciente_por_id(id_paciente: str) -> Optional[Paciente]:
         return False, f"❌ Error al obtener paciente: {e}"
     
     
+def obtener_pacientes_por_nombre(id_logopeda: str, nombre_busqueda: str):
+    """Devuelve la lista de pacientes cuyo nombre contiene el texto de búsqueda (case insensitive)."""
+    try:
+        pacientes = obtener_pacientes_por_logopeda(id_logopeda)
+        nombre_busqueda = nombre_busqueda.lower()
+        pacientes_filtrados = [p for p in pacientes if nombre_busqueda in p.nombre.lower()]
+        return pacientes_filtrados
+    except Exception as e:
+        return []
 
 
 
-    
 def actualizar_resultados_tareas(id_paciente: str, resultados: dict):
     """Actualiza los resultados de las tareas para un paciente específico."""
     try:
