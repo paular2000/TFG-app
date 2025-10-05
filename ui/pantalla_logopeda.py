@@ -36,10 +36,15 @@ def pantalla_logopeda():
             
                 if lista_pacientes:
                     
-                    for paciente in lista_pacientes:
-                        st.write(f"- {paciente.nombre}")
-                else:
-                    st.write("No tienes pacientes asignados.")
+                    # Recorremos la lista en bloques de 4
+                    for i in range(0, len(lista_pacientes), 4):
+                        cols = st.columns(4)  # 4 columnas por fila
+                        # Para cada columna, mostramos un paciente (si existe en ese bloque)
+                        for j, col in enumerate(cols):
+                            if i + j < len(lista_pacientes):
+                                paciente = lista_pacientes[i + j]
+                                with col:
+                                    st.write(f"- {paciente.nombre}")
 
         boton_registrar_paciente = st.button("Crear nuevo paciente")
 
