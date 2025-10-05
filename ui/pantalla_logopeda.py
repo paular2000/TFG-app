@@ -26,13 +26,13 @@ def pantalla_logopeda():
         
         if id_logopeda:
             
-            col1, col2, col3 = st.columns([1,4,1])
+            col1, col2 = st.columns([1,1])
 
             with col1:
                 st.image(imagen, use_container_width=True)
             
-
-            with col2:
+            col3, col4 = st.columns([1,3])
+            with col4:
 
                 ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
             
