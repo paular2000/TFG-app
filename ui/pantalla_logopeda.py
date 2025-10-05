@@ -6,7 +6,9 @@ from PIL import Image
 
 def pantalla_logopeda():
 
-    imagen = Image.open("images/logo_y_nombre.png")
+    imagen_logo = Image.open("images/logo_y_nombre.png")
+    imagen_paciente = Image.open("images/icon_paciente.png")
+
 
     with st.sidebar:
             
@@ -27,7 +29,7 @@ def pantalla_logopeda():
         if id_logopeda:
             col1, col2 = st.columns([1,1])
             with col1:
-                st.image(imagen, use_container_width=True)
+                st.image(imagen_logo, use_container_width=True)
             
             col3, col4, col5= st.columns([2,2,4])
             with col5:
@@ -44,7 +46,10 @@ def pantalla_logopeda():
                             if i + j < len(lista_pacientes):
                                 paciente = lista_pacientes[i + j]
                                 with col:
-                                    st.write(f"- {paciente.nombre}")
+                                    st.image(imagen_paciente, use_container_width=True)
+                                    st.write(f"**{paciente.nombre} {paciente.apellidos}**")
+                else:
+                    st.info("No tienes pacientes asignados. Crea uno nuevo.")
 
         boton_registrar_paciente = st.button("Crear nuevo paciente")
 
