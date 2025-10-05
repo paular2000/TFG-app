@@ -67,7 +67,7 @@ def obtener_pacientes_por_nombre(id_logopeda: str, nombre_busqueda: str):
         pacientes_filtrados = [p for p in pacientes if nombre_busqueda in p.nombre.lower()]
         return pacientes_filtrados
     except Exception as e:
-        return [
+        return []
 
 
 
