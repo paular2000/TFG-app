@@ -45,7 +45,7 @@ def pantalla_logopeda():
         
             if lista_pacientes:
                 
-                # Recorremos la lista en bloques de 4
+                
                 for i in range(0, len(lista_pacientes), 4):
                     cols = st.columns(4)  # 4 columnas por fila
                     
