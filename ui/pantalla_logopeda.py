@@ -32,7 +32,7 @@ def pantalla_logopeda():
                 st.image(imagen_logo, use_container_width=True)
 
 
-        col3, col4 = st.columns(1,2)
+        col3, col4 = st.columns([1,2])
         with col3:
             busqueda = st.text_input("", placeholder="🔍 Buscar paciente", help="Buscar un paciente por su nombre")
 
