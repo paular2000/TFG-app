@@ -60,8 +60,8 @@ def pantalla_logopeda():
                                 paciente = lista_pacientes[i + j]
                                 with col:
                                     st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre + " " + paciente.apellidos)
-                                    
-                st.info("No tienes pacientes asignados. Crea uno nuevo.")
+                else:                  
+                    st.info("No tienes pacientes asignados. Crea uno nuevo.")
 
         boton_registrar_paciente = st.button("Crear nuevo paciente")
 
