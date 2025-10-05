@@ -59,6 +59,10 @@ def obtener_paciente_por_id(id_paciente: str) -> Optional[Paciente]:
         return False, f"❌ Error al obtener paciente: {e}"
     
     
+
+
+
+    
 def actualizar_resultados_tareas(id_paciente: str, resultados: dict):
     """Actualiza los resultados de las tareas para un paciente específico."""
     try:

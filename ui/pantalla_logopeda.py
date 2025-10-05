@@ -27,12 +27,12 @@ def pantalla_logopeda():
         
         
         if id_logopeda:
-            col1, col2 = st.columns([1,1])
+            col1, col2, col3 = st.columns([1,1,1])
             with col1:
                 st.image(imagen_logo, use_container_width=True)
             
-            col3, col4, col5= st.columns([2,2,4])
-            with col5:
+            col4, col5, col6= st.columns([1,1,3])
+            with col6:
 
                 lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
             
@@ -41,7 +41,7 @@ def pantalla_logopeda():
                     # Recorremos la lista en bloques de 4
                     for i in range(0, len(lista_pacientes), 4):
                         cols = st.columns(4)  # 4 columnas por fila
-                        # Para cada columna, mostramos un paciente (si existe en ese bloque)
+                        
                         for j, col in enumerate(cols):
                             if i + j < len(lista_pacientes):
                                 paciente = lista_pacientes[i + j]
