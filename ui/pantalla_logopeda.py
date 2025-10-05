@@ -31,8 +31,8 @@ def pantalla_logopeda():
             with col1:
                 st.image(imagen, use_container_width=True)
             
-            col3, col4 = st.columns([1,3])
-            with col4:
+            col3, col4, col5= st.columns([2,2,4])
+            with col5:
 
                 ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
             
