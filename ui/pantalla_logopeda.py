@@ -48,6 +48,8 @@ def pantalla_logopeda():
                 if busqueda:
                     lista_pacientes = paciente_service.obtener_pacientes_por_nombre(id_logopeda, busqueda)
 
+                lista_pacientes = sorted(lista_pacientes, key=lambda p: p.nombre.lower())
+
                 if lista_pacientes:
                     
                     for i in range(0, len(lista_pacientes), 4):
