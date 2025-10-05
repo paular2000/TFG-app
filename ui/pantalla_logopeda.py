@@ -32,14 +32,14 @@ def pantalla_logopeda():
                 st.image(imagen_logo, use_container_width=True)
 
 
-        col3, = st.columns(1)
+        col3, col4 = st.columns(1,2)
         with col3:
             busqueda = st.text_input("", placeholder="🔍 Buscar paciente", help="Buscar un paciente por su nombre")
 
 
             
-            col4, col5, col6= st.columns([1,1,3])
-            with col6:
+            col5, col6, col7= st.columns([1,1,3])
+            with col7:
 
                 lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
             
