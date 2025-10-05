@@ -31,15 +31,17 @@ def pantalla_logopeda():
             with col1:
                 st.image(imagen, use_container_width=True)
             
-            ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
-            
 
-            if ok and lista_pacientes:
-                st.write("Pacientes asignados:")
-                for paciente in lista_pacientes[1]:
-                    st.write(f"- {paciente.nombre} {paciente.apellidos}, Edad: {paciente.edad}")
-            else:
-                st.write("No tienes pacientes asignados.")
+            with col2:
+
+                ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
+            
+                if ok and lista_pacientes:
+                    st.write("Pacientes asignados:")
+                    for paciente in lista_pacientes[1]:
+                        st.write(f"- {paciente.nombre} {paciente.apellidos}, Edad: {paciente.edad}")
+                else:
+                    st.write("No tienes pacientes asignados.")
 
         boton_registrar_paciente = st.button("Crear nuevo paciente")
 
