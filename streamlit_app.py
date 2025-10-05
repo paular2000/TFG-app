@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from ui import login, pantalla_logopeda, pantalla_formulario_paciente, pantalla_tareas
+from ui import login, pantalla_logopeda, pantalla_formulario_paciente, pantalla_tareas, pantalla_paciente
 
 
 
@@ -19,6 +19,8 @@ def main():
         pantalla_formulario_paciente.pantalla_formulario_paciente()
     if st.session_state.pantalla == 3:
         pantalla_tareas.pantalla_resultados()
+    if st.session_state.pantalla == 4:
+        pantalla_paciente.pantalla_paciente()
         
 if __name__ == "__main__":
     main()
