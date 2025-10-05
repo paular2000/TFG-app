@@ -20,7 +20,7 @@ def pantalla_logopeda():
     with st.container():
             
         
-        id_logopeda = st.session_state.get("id_logopeda", "")
+        id_logopeda = st.session_state.get("id_logopeda")
         
         
         
@@ -34,12 +34,12 @@ def pantalla_logopeda():
             col3, col4, col5= st.columns([2,2,4])
             with col5:
 
-                ok, lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
+                lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
             
-                if ok and lista_pacientes:
-                    st.write("Pacientes asignados:")
+                if lista_pacientes:
+                    
                     for paciente in lista_pacientes[1]:
-                        st.write(f"- {paciente.nombre} {paciente.apellidos}, Edad: {paciente.edad}")
+                        st.write(f"- {paciente.nombre}")
                 else:
                     st.write("No tienes pacientes asignados.")
 
