@@ -38,7 +38,7 @@ def pantalla_logopeda():
 
 
             
-        col5, col6, col7= st.columns([1,1,3])
+        col5, col6, col7= st.columns([1,1,4])
         with col7:
 
             lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
