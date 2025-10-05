@@ -33,7 +33,7 @@ def pantalla_logopeda():
 
 
         col3, col4 = st.columns([1,2])
-        with col3:
+        with col4:
             busqueda = st.text_input("", placeholder="🔍 Buscar paciente", help="Buscar un paciente por su nombre")
 
 
