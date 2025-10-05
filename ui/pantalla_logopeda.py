@@ -43,19 +43,21 @@ def pantalla_logopeda():
 
             lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
 
-            if busqueda:
-                lista_pacientes = paciente_service.obtener_pacientes_por_nombre(id_logopeda, busqueda)
-
             if lista_pacientes:
-                
-                for i in range(0, len(lista_pacientes), 4):
-                    cols = st.columns(4)  # 4 columnas por fila
+
+                if busqueda:
+                    lista_pacientes = paciente_service.obtener_pacientes_por_nombre(id_logopeda, busqueda)
+
+                if lista_pacientes:
                     
-                    for j, col in enumerate(cols):
-                        if i + j < len(lista_pacientes):
-                            paciente = lista_pacientes[i + j]
-                            with col:
-                                st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre + " " + paciente.apellidos)
+                    for i in range(0, len(lista_pacientes), 4):
+                        cols = st.columns(4)  # 4 columnas por fila
+                        
+                        for j, col in enumerate(cols):
+                            if i + j < len(lista_pacientes):
+                                paciente = lista_pacientes[i + j]
+                                with col:
+                                    st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre + " " + paciente.apellidos)
                                 
             else:
                 st.info("No tienes pacientes asignados. Crea uno nuevo.")
