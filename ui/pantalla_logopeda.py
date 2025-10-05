@@ -38,25 +38,25 @@ def pantalla_logopeda():
 
 
             
-            col5, col6, col7= st.columns([1,1,3])
-            with col7:
+        col5, col6, col7= st.columns([1,1,3])
+        with col7:
 
-                lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
-            
-                if lista_pacientes:
+            lista_pacientes = paciente_service.obtener_pacientes_por_logopeda(id_logopeda)
+        
+            if lista_pacientes:
+                
+                # Recorremos la lista en bloques de 4
+                for i in range(0, len(lista_pacientes), 4):
+                    cols = st.columns(4)  # 4 columnas por fila
                     
-                    # Recorremos la lista en bloques de 4
-                    for i in range(0, len(lista_pacientes), 4):
-                        cols = st.columns(4)  # 4 columnas por fila
-                        
-                        for j, col in enumerate(cols):
-                            if i + j < len(lista_pacientes):
-                                paciente = lista_pacientes[i + j]
-                                with col:
-                                    st.image(imagen_paciente, use_container_width=True)
-                                    st.write(f"**{paciente.nombre} {paciente.apellidos}**")
-                else:
-                    st.info("No tienes pacientes asignados. Crea uno nuevo.")
+                    for j, col in enumerate(cols):
+                        if i + j < len(lista_pacientes):
+                            paciente = lista_pacientes[i + j]
+                            with col:
+                                st.image(imagen_paciente, use_container_width=True)
+                                st.write(f"**{paciente.nombre} {paciente.apellidos}**")
+            else:
+                st.info("No tienes pacientes asignados. Crea uno nuevo.")
 
         boton_registrar_paciente = st.button("Crear nuevo paciente")
 
