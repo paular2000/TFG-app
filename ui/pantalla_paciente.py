@@ -25,8 +25,4 @@ def pantalla_paciente():
         st.error("No se ha podido cargar la ficha del paciente.")
         return
 
-    st.title(f"🧑 Paciente: {paciente.get('nombre','')} {paciente.get('apellidos','')}")
-    st.write(f"**Edad:** {paciente.get('edad','')}")
-    st.write(f"**Profesión:** {paciente.get('profesion','')}")
-    st.write(f"**Estudios:** {paciente.get('estudios','')}")
-    st.write(f"**Aficiones:** {paciente.get('aficion','')}")
+    st.title("ID Paciente: " + paciente.id)
