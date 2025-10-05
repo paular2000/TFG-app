@@ -53,8 +53,8 @@ def pantalla_logopeda():
                         if i + j < len(lista_pacientes):
                             paciente = lista_pacientes[i + j]
                             with col:
-                                st.image(imagen_paciente, use_container_width=True)
-                                st.write(f"**{paciente.nombre} {paciente.apellidos}**")
+                                st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre + " " + paciente.apellidos)
+                                
             else:
                 st.info("No tienes pacientes asignados. Crea uno nuevo.")
 
