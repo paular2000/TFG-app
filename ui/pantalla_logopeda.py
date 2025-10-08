@@ -64,20 +64,18 @@ def pantalla_logopeda():
 
                                     st.markdown("""
                                         <style>
-                                        div.stButton > button:first-child {
-                                            background: url ('{imagen_paciente}') no-repeat center;
+                                            .paciente_{paciente.id} > button:first-child {{
+                                            background: url('{imagen_paciente}') no-repeat center;
                                             background-size: contain;
                                             height: 150px;
                                             width: 150px;
                                             border: none;
-                                        }
-                                        
-                                        
-                                        div.stButton > button:first-child:hover {
+                                        }}
+                                        .paciente_{paciente.id} > button:first-child:hover {{
                                             transform: scale(1.1);
                                             transition: 0.2s;
-                                        }
-                                        </style>
+                                        }}
+                                            </style>
                                     """, unsafe_allow_html=True)
 
                                     if st.button(" ", key=f"btn_{paciente.id}"):
