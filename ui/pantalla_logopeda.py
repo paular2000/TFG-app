@@ -63,7 +63,7 @@ def pantalla_logopeda():
                                     
 
                                     st.markdown("""
-                                        
+                                        <body>
                                         div.stButton > button:first-child {
                                             background: url ('{imagen_paciente}') no-repeat center;
                                             background-size: contain;
@@ -71,6 +71,7 @@ def pantalla_logopeda():
                                             width: 150px;
                                             border: none;
                                         }
+                                        </body>
                                         <style>
                                         div.stButton > button:first-child:hover {
                                             transform: scale(1.1);
