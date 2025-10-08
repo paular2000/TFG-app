@@ -59,8 +59,32 @@ def pantalla_logopeda():
                             if i + j < len(lista_pacientes):
                                 paciente = lista_pacientes[i + j]
                                 with col:
-                                    st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre)
+                                    #st.image(imagen_paciente, use_container_width=True, caption=paciente.nombre)
                                     
+
+                                    st.markdown("""
+                                        <style>
+                                        div.stButton > button:first-child {
+                                            background: {imagen_paciente} no-repeat center;
+                                            background-size: contain;
+                                            height: 150px;
+                                            width: 150px;
+                                            border: none;
+                                        }
+                                        div.stButton > button:first-child:hover {
+                                            transform: scale(1.1);
+                                            transition: 0.2s;
+                                        }
+                                        </style>
+                                    """, unsafe_allow_html=True)
+
+                                    if st.button(" "):
+                                        st.session_state["paciente_actual_id"] = paciente.id
+                                        st.session_state.pantalla = 4
+                                        st.rerun()
+
+
+
                                     """if st.button(f"{paciente.nombre} {paciente.apellidos}", key=f"btn_{paciente.id}"):
                                         st.session_state["paciente_actual_id"] = paciente.id
                                         st.session_state.pantalla = 4
