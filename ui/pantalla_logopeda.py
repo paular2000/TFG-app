@@ -79,7 +79,7 @@ def pantalla_logopeda():
                                     """, unsafe_allow_html=True)
 
                                     if st.button(" "):
-                                        st.session_state["paciente_actual_id"] = paciente.id
+                                        #st.session_state["paciente_actual_id"] = paciente.id
                                         st.session_state.pantalla = 4
                                         st.rerun()
 
