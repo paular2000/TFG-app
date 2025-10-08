@@ -65,10 +65,10 @@ def pantalla_logopeda():
                                     st.markdown("""
                                         <style>
                                             .paciente_{paciente.id} > button:first-child {{
-                                            background: url('{imagen_paciente}') no-repeat center;
+                                            background: url("/images/icon_pacientes.jpg") no-repeat center;
                                             background-size: contain;
-                                            height: 150px;
-                                            width: 150px;
+                                            height: 300px;
+                                            width: 300px;
                                             border: none;
                                         }}
                                         .paciente_{paciente.id} > button:first-child:hover {{
