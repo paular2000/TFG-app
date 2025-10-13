@@ -41,10 +41,13 @@ def pantalla_paciente():
         st.write("")
         st.write("")
 
-        st.markdown(f'<span style="font-size: 24px; font-weight: bold">Biblioteca de actividades sugeridas</span>', unsafe_allow_html=True)
 
-        col1, col2, col3, col4 = st.columns([4,1,1,1])
+        col1, col2, col3, col4, col5 = st.columns([4,2,2,2,5])
 
+        with col2:
+            st.markdown(f'<span style="font-size: 24px; font-weight: bold">Biblioteca de actividades sugeridas</span>', unsafe_allow_html=True)
+
+        col1, col2, col3, col4, col5 = st.columns([4,2,2,2,5])
         with col2:
              st.write("-")
         with col3:
