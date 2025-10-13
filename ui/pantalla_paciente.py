@@ -30,9 +30,14 @@ def pantalla_paciente():
         with col1:
             st.image(imagen_paciente, use_container_width=True)
         with col2:
-            
             st.markdown(f'<span style="font-size: 24px; font-weight: bold">{paciente.nombre} {paciente.apellidos}</span>', unsafe_allow_html=True)
-
+            st.write("Diagnóstico: ")
+            st.write(f"Nivel educativo: {paciente.estudios}")
+            st.write(f"Proefsión: {paciente.profesion}")
+        with col3:
+            st.write(f"📌Última sesión: ")
+            st.write("🗒️Notas rápidas: ")
+             
              
          
          
