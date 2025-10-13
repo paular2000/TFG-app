@@ -101,6 +101,7 @@ def pantalla_formulario_paciente():
                     st.session_state["email"] = email
                     st.session_state["edad"] = edad
                     st.session_state["profesion"] = profesion
+                    st.session_state["estudios"]= estudios
                     st.session_state["habito_lector"] = habito_lector
                     st.session_state["aficiones"] = aficiones
                     

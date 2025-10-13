@@ -146,6 +146,7 @@ def pantalla_resultados():
                 st.session_state.get("email"),
                 st.session_state.get("edad"),
                 st.session_state.get("profesion"),
+                st.session_state.get("profesion"),
                 st.session_state.get("habito_lector"),
                 st.session_state.get("aficiones"),
                 diagnostico
