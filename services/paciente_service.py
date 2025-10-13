@@ -74,12 +74,10 @@ def actualizar_resultados_tareas(id_paciente: str, resultados: dict):
     """Actualiza los resultados de las tareas para un paciente específico."""
     try:
         sheet = paciente_repo.get_pacientes_sheet()
-        filas = sheet.col_values(1)  # columna A tiene los IDs
-        if id_paciente not in filas:
-            raise ValueError("Paciente no encontrado.") # ID no existe
-        
+        filas = sheet.get_all_values()
+
         fila_index = filas.index(id_paciente) + 1  # +1 porque A1-indexed
-        columna_inicio = 13  # columna L
+        columna_inicio = 13  # columna M
         valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
         columna_fin = columna_inicio + len(valores) - 1
 

@@ -155,6 +155,7 @@ def pantalla_resultados():
             
 
             if exito1 and nuevo_paciente:
+                
                 exito2, mensaje2 = paciente_service.actualizar_resultados_tareas(
                     nuevo_paciente.id,
                     resultados
