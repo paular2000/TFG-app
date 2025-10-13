@@ -106,7 +106,8 @@ def pantalla_formulario_paciente():
                     
                     
                     
-                    
+                    st.session_state.pantalla=3
+                    st.rerun()
                     
                     """
                     if exito and nuevo_paciente:
