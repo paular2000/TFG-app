@@ -42,7 +42,7 @@ def pantalla_paciente():
         st.write("")
 
 
-        col1, col2, col3, col4, col5 = st.columns([4,2,2,2,5])
+        col1, col2 = st.columns([4,16])
 
         with col2:
             st.markdown(f'<span style="font-size: 24px; font-weight: bold">Biblioteca de actividades sugeridas</span>', unsafe_allow_html=True)
