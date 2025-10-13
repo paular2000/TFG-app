@@ -8,10 +8,10 @@ from data_base import paciente_repo
 
 
 def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str, edad: str,
-                       profesion: str, estudios: str, habito_lector: str, aficiones: list):
+                       profesion: str, estudios: str, habito_lector: str, aficiones: list, diagnostico: str):
     try:
 
-
+        
         nuevo_paciente = Paciente(
             id="",
             id_logopeda=id_logopeda,
@@ -23,7 +23,8 @@ def registrar_paciente(id_logopeda: str, nombre: str, apellidos: str, email: str
             profesion=profesion,
             estudios=estudios,
             habito_lector=habito_lector,
-            aficiones=aficiones
+            aficiones=aficiones,
+            diagnostico=diagnostico
         )
 
         nuevo_paciente = paciente_repo.insert_paciente(nuevo_paciente) # Me lo devuelve ya con su id asignado

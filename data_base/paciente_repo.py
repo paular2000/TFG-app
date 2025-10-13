@@ -27,7 +27,7 @@ def inicializar_pacientes():
     if not filas or all(cell == "" for cell in filas[0]):
         tareas = [f"T{i+1}" for i in range(30)]
         encabezados = ["ID","ID_Logopeda","Fecha_de_Registro","Nombre", "Apellidos", "Email_contacto", "Edad", "Profesión",
-        "Estudios", "Habito_lector", "Aficion"] + tareas
+        "Estudios", "Habito_lector", "Aficion","Diagnostico"] + tareas
 
         sheet.append_row(encabezados)
 
@@ -49,7 +49,8 @@ def get_all_pacientes() -> List[Paciente]:
             profesion=fila["Profesión"],
             estudios=fila["Estudios"],  
             habito_lector=fila["Habito_lector"],
-            aficiones=fila["Aficion"].split(", ") if fila["Aficion"] else []
+            aficiones=fila["Aficion"].split(", ") if fila["Aficion"] else [],
+            diagnostico=fila["Diagnostico"]
         )
         for fila in filas
     ]
@@ -83,7 +84,8 @@ def insert_paciente(paciente: Paciente):
         profesion=paciente.profesion,
         estudios=paciente.estudios,
         habito_lector=paciente.habito_lector,
-        aficiones=", ".join(paciente.aficiones) if paciente.aficiones else ""
+        aficiones=", ".join(paciente.aficiones) if paciente.aficiones else "",
+        diagnostico=paciente.diagnostico
     )
 
     sheet.append_row([
@@ -97,7 +99,8 @@ def insert_paciente(paciente: Paciente):
         nuevo_paciente.profesion,
         nuevo_paciente.estudios,
         nuevo_paciente.habito_lector,
-        nuevo_paciente.aficiones
+        nuevo_paciente.aficiones,
+        nuevo_paciente.diagnostico
     ])
     return nuevo_paciente
    

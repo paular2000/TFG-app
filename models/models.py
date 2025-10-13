@@ -24,4 +24,5 @@ class Paciente:
     estudios: str
     habito_lector: str
     aficiones: List[str]
+    diagnostico: str
     

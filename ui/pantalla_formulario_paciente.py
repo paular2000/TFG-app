@@ -81,7 +81,7 @@ def pantalla_formulario_paciente():
                     else:
                         habito_lector = "No lector"
 
-                    
+                    """
                     exito, mensaje, nuevo_paciente = paciente_service.registrar_paciente(
                         id_logopeda=st.session_state.get("id_logopeda"),
                         nombre=nombre,
@@ -93,10 +93,22 @@ def pantalla_formulario_paciente():
                         habito_lector=habito_lector,
                         aficiones=aficiones
                     )
+                    """
+                    
 
+                    st.session_state["nombre"] = nombre
+                    st.session_state["apellidos"] = apellidos
+                    st.session_state["email"] = email
+                    st.session_state["edad"] = edad
+                    st.session_state["profesion"] = profesion
+                    st.session_state["habito_lector"] = habito_lector
+                    st.session_state["aficiones"] = aficiones
                     
                     
                     
+                    
+                    
+                    """
                     if exito and nuevo_paciente:
                         st.success(mensaje)
                         st.session_state["id_paciente"] = nuevo_paciente.id
@@ -104,6 +116,8 @@ def pantalla_formulario_paciente():
                         st.rerun()
                     else:
                         st.error(mensaje)
+                    """
+                    
                 except ValueError:
                     st.error("❌ Fecha no válida. Por favor, seleccionar una fecha correcta.")
                     return

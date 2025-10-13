@@ -3,7 +3,7 @@ import streamlit as st
 
 from services import paciente_service
 
-
+from utils import calculo_diagnostico
 
 def pantalla_resultados():
 
@@ -126,14 +126,39 @@ def pantalla_resultados():
                 "T30": resultado_T30
             }
 
-            exito, mensaje = paciente_service.actualizar_resultados_tareas(
+            diagnostico = calculo_diagnostico.determinar_diagnostico(
+                                                        resultado_T1, resultado_T2, resultado_T3,
+                                                        resultado_T4, resultado_T5, resultado_T6,
+                                                        resultado_T7, resultado_T8, resultado_T9,
+                                                        resultado_T10, resultado_T11, resultado_T12,
+                                                        resultado_T13, resultado_T14, resultado_T15,
+                                                        resultado_T16, resultado_T17, resultado_T18,
+                                                        resultado_T19, resultado_T20, resultado_T21,
+                                                        resultado_T22, resultado_T23, resultado_T24,
+                                                        resultado_T25, resultado_T26, resultado_T27,
+                                                        resultado_T28, resultado_T29, resultado_T30
+                                                    )
+            
+            exito1, mensaje1 = paciente_service.registrar_paciente(
+                st.session_state.get("id_logopeda"),
+                st.session_state.get("nombre"),
+                st.session_state.get("apellidos"),
+                st.session_state.get("email"),
+                st.session_state.get("edad"),
+                st.session_state.get("profesion"),
+                st.session_state.get("habito_lector"),
+                st.session_state.get("aficiones"),
+                diagnostico
+            )
+
+            exito2, mensaje = paciente_service.actualizar_resultados_tareas(
                 st.session_state.get("id_paciente"),
                 resultados
             )
 
-            if exito:
-                st.success(mensaje)
+            if exito1 and exito2:
+                st.success(mensaje1)
                 st.session_state.pantalla = 1
                 st.rerun()
             else:
-                st.error(mensaje)
+                st.error(mensaje1)
