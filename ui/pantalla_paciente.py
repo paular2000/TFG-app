@@ -30,8 +30,9 @@ def pantalla_paciente():
         with col1:
             st.image(imagen_paciente, use_container_width=True)
         with col2:
-            st.markdown(f"##**{paciente.nombre} {paciente.apellidos}**")
-             
+            
+            st.markdown(f'<span style="font-size: 24px;">{paciente.nombre} {paciente.apellidos}</span>', unsafe_allow_html=True)
+
              
          
          
