@@ -37,9 +37,22 @@ def pantalla_paciente():
         with col5:
             st.write(f"📌Última sesión: ----------")
             st.write("🗒️Notas rápidas: ")
-             
-             
-         
-         
 
+        st.write()
+
+        st.markdown(f'<span style="font-size: 24px; font-weight: bold">Biblioteca de actividades sugeridas</span>', unsafe_allow_html=True)
+
+        col1, col2, col3 = st.columns([1,1,1])
+
+        with col1:
+             st.write("-")
+        with col2:
+             st.write("-")
+        with col3:
+             st.write("-")
+            
+             
+             
+             
+        
     
