@@ -1,6 +1,9 @@
 
-from PIL import Image
 import streamlit as st
+import pandas as pd
+
+from PIL import Image
+
 from services import paciente_service
 
 def pantalla_paciente():
@@ -69,6 +72,9 @@ def pantalla_paciente():
         with col2:
             st.markdown(f'<span style="font-size: 24px; font-weight: bold">Evolución</span>', unsafe_allow_html=True)
              
-             
+            chart_data = pd.DataFrame({
+                "Aciertos": [120, 250, 175, 300],
+                "Errores": [80, 150, 100, 180],
+            }, index=["A", "B", "C", "D"])
         
-    
+            st.bar_chart(chart_data)
