@@ -25,7 +25,7 @@ def pantalla_paciente():
     
     if paciente:
 
-        col1, col2, col3 = st.columns([1,4,4])
+        col1, col2, col3 = st.columns([3,5,5])
 
         with col1:
             st.image(imagen_paciente, use_container_width=True)
