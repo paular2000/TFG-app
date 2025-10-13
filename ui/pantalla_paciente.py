@@ -5,7 +5,7 @@ from services import paciente_service
 
 def pantalla_paciente():
 
-    imagen_logo = Image.open("images/logo_nombre.jpg")
+    imagen_logo = Image.open("images/icon_paciente")
 
     with st.sidebar:
             
