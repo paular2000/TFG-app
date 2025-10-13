@@ -139,7 +139,7 @@ def pantalla_resultados():
                                                         resultado_T28, resultado_T29, resultado_T30
                                                     )
             
-            exito1, mensaje1 = paciente_service.registrar_paciente(
+            exito1, mensaje1, nuevo_paciente = paciente_service.registrar_paciente(
                 st.session_state.get("id_logopeda"),
                 st.session_state.get("nombre"),
                 st.session_state.get("apellidos"),
@@ -152,14 +152,18 @@ def pantalla_resultados():
                 diagnostico
             )
 
-            exito2, mensaje = paciente_service.actualizar_resultados_tareas(
-                st.session_state.get("id_paciente"),
-                resultados
-            )
+            
 
-            if exito1 and exito2:
-                st.success(mensaje1)
-                st.session_state.pantalla = 1
-                st.rerun()
+            if exito1 and nuevo_paciente:
+                exito2, mensaje2 = paciente_service.actualizar_resultados_tareas(
+                    st.session_state.get("id_paciente"),
+                    resultados
+                )
+                if exito2:
+                    st.success(mensaje1)
+                    st.session_state.pantalla = 1
+                    st.rerun()
+                else:
+                    st.error(mensaje2)
             else:
                 st.error(mensaje1)
