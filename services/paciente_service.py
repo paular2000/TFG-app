@@ -47,17 +47,15 @@ def obtener_pacientes_por_logopeda(id_logopeda: str):
     
     
     
-def obtener_paciente_por_id(id_paciente: str) -> Optional[Paciente]:
+def obtener_paciente_por_id(id_paciente: str):
     """Devuelve un paciente por su ID."""
-    try:
-        paciente = paciente_repo.find_paciente_by_id(id_paciente)
-        if paciente:
-            return True, paciente
-        else:
-            return False, "❌ Paciente no encontrado."
-    except Exception as e:
-        return False, f"❌ Error al obtener paciente: {e}"
     
+    paciente = paciente_repo.find_paciente_by_id(id_paciente)
+    
+    return paciente
+    
+    
+
     
 def obtener_pacientes_por_nombre(id_logopeda: str, nombre_busqueda: str):
     """Devuelve la lista de pacientes cuyo nombre contiene el texto de búsqueda (case insensitive)."""

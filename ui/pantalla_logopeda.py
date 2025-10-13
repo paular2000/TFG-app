@@ -11,12 +11,12 @@ def pantalla_logopeda():
 
 
     with st.sidebar:
-            
-            if st.button("Cerrar sesión"):
-                st.session_state.pantalla = 0
-                st.session_state["usuario"] = ""
-                st.session_state["id_logopeda"] = ""
-                st.rerun()
+        
+        if st.button("Cerrar sesión"):
+            st.session_state.pantalla = 0
+            st.session_state["usuario"] = ""
+            st.session_state["id_logopeda"] = ""
+            st.rerun()
 
 
     with st.container():

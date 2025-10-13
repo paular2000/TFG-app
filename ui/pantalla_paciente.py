@@ -18,7 +18,11 @@ def pantalla_paciente():
 
     id_paciente = st.session_state.get("paciente_actual_id")
     
-
+    paciente = paciente_service.obtener_paciente_por_id(id_paciente)
     
+    if paciente:
+         st.write("Nombre: "+paciente.nombre)
+         
+         
 
     st.title("ID Paciente: " + id_paciente)
