@@ -79,7 +79,7 @@ def actualizar_resultados_tareas(id_paciente: str, resultados: dict):
             raise ValueError("Paciente no encontrado.") # ID no existe
         
         fila_index = filas.index(id_paciente) + 1  # +1 porque A1-indexed
-        columna_inicio = 13  # columna L
+        columna_inicio = 12  # columna L
         valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
         columna_fin = columna_inicio + len(valores) - 1
 
