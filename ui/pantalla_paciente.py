@@ -5,7 +5,7 @@ from services import paciente_service
 
 def pantalla_paciente():
 
-    imagen_logo = Image.open("images/icon_paciente")
+    imagen_paciente = Image.open("images/icon_paciente.jpg")
 
     with st.sidebar:
             
@@ -28,7 +28,7 @@ def pantalla_paciente():
         col1, col2, col3 = st.columns([1,4,4])
 
         with col1:
-            st.image(imagen_logo, use_container_width=True)
+            st.image(imagen_paciente, use_container_width=True)
         with col2:
             st.markdown(f"**{paciente.nombre} {paciente.apellidos}**")
              
