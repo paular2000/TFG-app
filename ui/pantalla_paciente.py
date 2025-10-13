@@ -25,7 +25,7 @@ def pantalla_paciente():
     
     if paciente:
 
-        col1, col2, col3, col4, col5 = st.columns([4,2,4,3,4])
+        col1, col2, col3, col4, col5 = st.columns([4,2,6,3,5])
 
         with col1:
             st.image(imagen_paciente, use_container_width=True)
@@ -42,13 +42,13 @@ def pantalla_paciente():
 
         st.markdown(f'<span style="font-size: 24px; font-weight: bold">Biblioteca de actividades sugeridas</span>', unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns([1,1,1])
+        col1, col2, col3, col4 = st.columns([4,1,1])
 
-        with col1:
-             st.write("-")
         with col2:
              st.write("-")
         with col3:
+             st.write("-")
+        with col4:
              st.write("-")
             
              
