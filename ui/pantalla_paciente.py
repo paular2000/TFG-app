@@ -35,7 +35,7 @@ def pantalla_paciente():
             st.write(f"Nivel educativo: {paciente.estudios}")
             st.write(f"Proefsión: {paciente.profesion}")
         with col5:
-            st.write(f"📌Última sesión: ----------")
+            st.write(f"📌Última sesión: -------")
             st.write("🗒️Notas rápidas: ")
 
         st.write("")
@@ -54,8 +54,20 @@ def pantalla_paciente():
              st.write("-")
         with col4:
              st.write("-")
-            
-             
+        
+        st.write("")
+        st.write("")
+        
+        col1, col2 = st.columns([4,16])
+        with col2:
+            st.markdown(f'<span style="font-size: 24px; font-weight: bold">Favoritas</span>', unsafe_allow_html=True)
+
+        st.write("")
+        st.write("")
+        
+        col1, col2 = st.columns([4,16])
+        with col2:
+            st.markdown(f'<span style="font-size: 24px; font-weight: bold">Evolución</span>', unsafe_allow_html=True)
              
              
         
