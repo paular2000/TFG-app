@@ -74,17 +74,14 @@ def actualizar_resultados_tareas(id_paciente: str, resultados: dict):
     try:
         sheet = paciente_repo.get_pacientes_sheet()
         
-        # 1. Obtenemos solo la primera columna (que contiene los IDs)
         columna_de_ids = sheet.col_values(1)
 
-        # 2. Buscamos el ID del paciente en esta lista simple
         if id_paciente not in columna_de_ids:
-            # Es una buena práctica verificar si existe antes de buscar el índice
             raise ValueError(f"Paciente con ID '{id_paciente}' no encontrado.")
 
-        fila_index = columna_de_ids.index(id_paciente) + 1  # +1 porque las filas en gspread empiezan en 1
+        fila_index = columna_de_ids.index(id_paciente) + 1  
 
-        # El resto de tu lógica es correcta
+       
         columna_inicio = 13  # Columna M
         valores = [resultados[f"T{i+1}"] for i in range(len(resultados))]
         columna_fin = columna_inicio + len(valores) - 1
