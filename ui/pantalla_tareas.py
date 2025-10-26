@@ -161,7 +161,7 @@ def pantalla_resultados():
                     resultados
                 )
                 if exito2:
-                    st.success(mensaje1)
+                    st.success(nuevo_paciente.nombre + " registrado con éxito.")
                     st.session_state.pantalla = 1
                     st.rerun()
                 else:
