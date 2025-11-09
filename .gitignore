@@ -1,3 +1,6 @@
+# carpeta .venv
+.venv/
+
 #Ignore file secrets for Python projects
 .streamlit/secrets.toml
 
