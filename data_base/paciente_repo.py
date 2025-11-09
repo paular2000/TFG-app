@@ -1,12 +1,13 @@
 
 import datetime
+import streamlit as st
 from models.models import Paciente
 
 from git import List, Optional
 from .db import get_sheets_client, open_spreadsheet
 
 
-SPREADSHEET_KEY = "1gaOH07n1PE--QEBBkyahqnAlH5D9r5_uA7pd1UhXJdU"
+SPREADSHEET_KEY = st.secrets["database"]["spreadsheet_key"]
 SHEET_INDEX = 0
 
 
