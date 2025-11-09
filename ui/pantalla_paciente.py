@@ -70,7 +70,7 @@ def pantalla_paciente():
         
         col1, col2 = st.columns([4,16])
         with col2:
-            st.markdown(f'<span style="font-size: 24px; font-weight: bold">Evolución</span>', unsafe_allow_html=True)
+            st.markdown(f'<span style="font-size: 24px; font-weight: bold">Progreso</span>', unsafe_allow_html=True)
              
             chart_data = pd.DataFrame({
                 "Aciertos": [120, 250, 175, 300],
