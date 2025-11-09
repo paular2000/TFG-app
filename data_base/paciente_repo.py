@@ -6,10 +6,8 @@ from models.models import Paciente
 from git import List, Optional
 from .db import get_sheets_client, open_spreadsheet
 
-
 SPREADSHEET_KEY = st.secrets["database"]["spreadsheet_key"]
 SHEET_INDEX = 0
-
 
 
 def get_pacientes_sheet():
