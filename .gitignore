@@ -1,3 +1,4 @@
+#Ignore file secrets for Python projects
 .streamlit/secrets.toml
 
 # Byte-compiled / optimized / DLL files
