@@ -3,3 +3,4 @@ gspread
 pandas
 Pillow
 passlib[bcrypt]
+argon2-cffi

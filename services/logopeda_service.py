@@ -5,7 +5,7 @@ from data_base import logopeda_repo
 from passlib.context import CryptContext
 
 #Contexto de hasheo de contraseñas
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 def registrar_logopeda(usuario: str, contrasenia: str):
     try:
