@@ -4,7 +4,24 @@ import pandas as pd
 
 from PIL import Image
 
-from services import paciente_service
+from services import paciente_service, sfa_service
+from models.models import Paciente
+
+def callback_iniciar_sfa(paciente: Paciente):
+    """
+    Callback para iniciar una nueva SFA para un paciente.
+    """
+    lista_juego = sfa_service.iniciar_sesion_sfa(paciente)
+
+    if not lista_juego:
+        st.error("No se pudieron cargar los estimulos")
+    else:
+        st.session_state["sfa_lista_estimulos"] = lista_juego
+        st.session_state["sfa_item_actual"] = 0
+        st.session_state["sfa_resultados"] = []
+        st.session_state["sfa_pistas_vistas"] = []
+
+        st.session_state.pantalla = 5  # Pantalla de SFA
 
 def pantalla_paciente():
 
@@ -36,7 +53,8 @@ def pantalla_paciente():
             st.markdown(f'<span style="font-size: 24px; font-weight: bold">{paciente.nombre} {paciente.apellidos}</span>', unsafe_allow_html=True)
             st.write(f"Diagnóstico: {paciente.diagnostico} ")
             st.write(f"Nivel educativo: {paciente.estudios}")
-            st.write(f"Proefsión: {paciente.profesion}")
+            st.write(f"Profesión: {paciente.profesion}")
+            st.write(f"Aficiones: {paciente.aficiones}")
         with col5:
             st.write(f"📌Última sesión: -------")
             st.write("🗒️Notas rápidas: ")
@@ -49,14 +67,13 @@ def pantalla_paciente():
 
         with col2:
             st.markdown(f'<span style="font-size: 24px; font-weight: bold">Biblioteca de actividades sugeridas</span>', unsafe_allow_html=True)
+            st.button(
+                "Iniciar Actividad SFA", 
+                on_click=callback_iniciar_sfa,
+                args=[paciente] 
+            )
 
-        col1, col2, col3, col4, col5 = st.columns([4,2,2,2,5])
-        with col2:
-             st.write("-")
-        with col3:
-             st.write("-")
-        with col4:
-             st.write("-")
+    
         
         st.write("")
         st.write("")

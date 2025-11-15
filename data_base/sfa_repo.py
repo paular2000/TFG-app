@@ -4,7 +4,7 @@ from .db import get_sheets_client, open_spreadsheet
 from models.models import EstimuloSFA
 
 
-SFA_SHEET_NAME = "adctividad01_sfa"
+SFA_SHEET_NAME = "actividad01_sfa"
 
 
 
